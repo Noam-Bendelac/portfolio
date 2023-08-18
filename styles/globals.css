@@ -1,0 +1,13 @@
+
+
+body {
+  margin: 0;
+}
+
+
+
+p, ul, ol, h1, h2 {
+  /* get rid of default margins around text */
+	margin: 0;
+}
+
