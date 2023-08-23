@@ -5,6 +5,7 @@
   /* page margins */
   padding: 0.5in;
   box-sizing: border-box;
+  background: white;
 }
 :global(.print) .resume {
   height: 11in;

@@ -1,0 +1,23 @@
+
+
+
+.block {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+}
+
+.img {
+  border-radius: 70px;
+  width: 100%;
+  height: auto;
+}
+
+.description {
+  margin-inline: 30px;
+  border-radius: 0 0 10px 10px;
+  background: hsl(180deg, 10%, 10%);
+}
+
+
+

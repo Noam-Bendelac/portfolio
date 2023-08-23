@@ -5,6 +5,13 @@ body {
 }
 
 
+/* make background-wrapper position: absolute work */
+body {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
 
 p, ul, ol, h1, h2 {
   /* get rid of default margins around text */

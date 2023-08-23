@@ -2,6 +2,7 @@ import { PropsWithChildren } from 'react'
 import { Link, resume as data } from '../data/resume'
 import styles from '../styles/Resume.module.css'
 import Home from '.'
+import { NextPageWithLayout } from './_app'
 
 
 // export async function getStaticProps() {
@@ -11,7 +12,7 @@ import Home from '.'
 const PRINT: string = 'false'
 
 // export default function Resume({ data }: { data: typeof resume }) {
-export default function Resume() {
+const Resume: NextPageWithLayout = () => {
   return <div className={
     PRINT == 'true'
     ? 'print'
@@ -123,6 +124,11 @@ export default function Resume() {
   </div>
 }
 
+export default Resume
+
+Resume.layout = {
+  backgroundContainsFlowLayout: false,
+}
 
 
 

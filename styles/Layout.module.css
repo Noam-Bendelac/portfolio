@@ -1,0 +1,124 @@
+
+
+
+
+
+
+
+.wrapper2 {
+  /* crop background-wrapper's extra height at the bottom */
+  overflow: hidden;
+  position: absolute;
+  inset: 0;
+  min-height: 100vh;
+  /* dev tools hover will prefer resume */
+  z-index: -1;
+}
+.wrapper1 {
+  /* extra height for skew */
+  /* $dist: calc(-100vw*tan(13deg)); */
+  
+  position: absolute;
+  top: calc(-100vw*tan(13deg));
+  left: 0;
+  bottom: calc(-100vw*tan(13deg));
+  right: 0;
+  
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.block {
+  /* i think this allows the z index to work */
+  position: relative;
+  
+  /* default block height */
+  flex: 1;
+  
+}
+.block:nth-child(odd) {
+  z-index: -1;
+}
+.block:nth-child(even) {
+  z-index: -2;
+}
+
+.block:nth-child(1) {
+  /* "override" default height */
+  min-height: calc(50vh + 100vw*tan(13deg));
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+/* .block:nth-child(2) {
+  z-index: -2;
+} */
+
+
+.background {
+  transform: skewY(-13deg);
+  transform-origin: center top;
+  
+  /* always fill parent block; block determines height */
+  position: absolute;
+  inset: 0;
+  
+  /* go behind content (it seems DOM order doesn't matter because of
+  position: absolute?) */
+  z-index: -1;
+  
+  /* box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5); */
+  box-shadow: 0px 4px 40px -8px rgba(0, 0, 0, 0.65);
+  
+  background: var(--overlay) var(--backgroundColor);
+  
+  --very-light-overlay: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.08)
+  );
+  --light-overlay: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.08)
+  );
+  --dark-overlay: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05),
+    rgba(0, 0, 0, 0.35)
+  );
+}
+
+.block:nth-child(odd) .background {
+  --overlay: var(--light-overlay);
+}
+.block:nth-child(even) .background {
+  --overlay: var(--dark-overlay);
+}
+.block:nth-child(1) .background {
+  --backgroundColor: hsl(180, 40%, 76%);
+  --overlay: var(--very-light-overlay);
+}
+.block:nth-child(2) .background {
+  --backgroundColor: hsl(187, 33%, 66%);
+}
+
+
+/* ._3 {
+  background:$light-overlay, hsl(260, 33%, 76%);
+  height: 17%; // override
+  z-index: -1;
+}
+._4 {
+  background:$dark-overlay, hsl(267, 33%, 66%);
+  z-index: -2;
+}
+._5 {
+  background:$light-overlay, hsl(340, 40%, 76%);
+  height: 17%; // override
+  z-index: -1;
+}
+._6 {
+  background:$dark-overlay, hsl(347, 33%, 66%);
+  z-index: -2;
+} */
