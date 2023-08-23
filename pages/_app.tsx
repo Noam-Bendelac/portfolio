@@ -34,15 +34,22 @@ function Layout({
   layout,
 }: PropsWithChildren & { layout?: LayoutProps }) {
   return <>
-    <div className={styles.wrapper2}>
+    <div className={`
+      ${styles.wrapper2}
+      ${layout?.backgroundContainsFlowLayout ? styles.bkgdFlow : styles.bkgdNoFlow}
+    `}>
       <div className={styles.wrapper1}>
         <div className={styles.block}>
           {layout?.content1?.()}
-          <div className={styles.background} />
+          <div className={styles.backgroundWrapper}>
+            <div className={styles.background} />
+          </div>
         </div>
         <div className={styles.block}>
           {layout?.content2?.()}
-          <div className={styles.background} />
+          <div className={styles.backgroundWrapper}>
+            <div className={styles.background} />
+          </div>
         </div>
         { layout?.backgroundContainsFlowLayout && children }
       </div>

@@ -23,7 +23,15 @@ Portfolio.layout = {
 
 
 function Content1() {
-  // return <div style={{background: 'red', width: '400px', height: '200px'}}>
+  return <Block />
+}
+function Content2() {
+  return <Block />
+}
+
+
+
+function Block({}) {
   return <div className={styles.block}>
     <Image
       src={audioCapstone}
@@ -40,7 +48,3 @@ function Content1() {
     </div>
   </div>
 }
-function Content2() {
-  return <div style={{background: 'red', width: '400px', height: '200px'}}>Project2</div>
-}
-

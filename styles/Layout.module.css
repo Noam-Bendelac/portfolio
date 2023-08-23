@@ -1,11 +1,29 @@
 
 
 
+@property --angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
 
 
+
+/* portfolio */
+.bkgdFlow {
+  --angle: 10deg;
+}
+/* resume */
+.bkgdNoFlow {
+  --angle: -10deg;
+}
 
 
 .wrapper2 {
+  --abs-angle: calc(max(var(--angle), 0deg) - min(var(--angle), 0deg));
+  transition: --angle 1s;
+}
+.bkgdNoFlow.wrapper2 {
   /* crop background-wrapper's extra height at the bottom */
   overflow: hidden;
   position: absolute;
@@ -15,18 +33,16 @@
   z-index: -1;
 }
 .wrapper1 {
-  /* extra height for skew */
-  /* $dist: calc(-100vw*tan(13deg)); */
-  
-  position: absolute;
-  top: calc(-100vw*tan(13deg));
-  left: 0;
-  bottom: calc(-100vw*tan(13deg));
-  right: 0;
-  
   display: flex;
   flex-direction: column;
-  
+}
+.bkgdNoFlow .wrapper1 {
+  position: absolute;
+  /* extra height for skew */
+  top: calc(-100vw*tan(var(--abs-angle)));
+  left: 0;
+  bottom: calc(-100vw*tan(var(--abs-angle)));
+  right: 0;
 }
 
 .block {
@@ -35,7 +51,6 @@
   
   /* default block height */
   flex: 1;
-  
 }
 .block:nth-child(odd) {
   z-index: -1;
@@ -44,9 +59,9 @@
   z-index: -2;
 }
 
-.block:nth-child(1) {
+.bkgdNoFlow .block:nth-child(1) {
   /* "override" default height */
-  min-height: calc(50vh + 100vw*tan(13deg));
+  min-height: calc(50vh + 100vw*tan(var(--abs-angle)));
   flex-grow: 0;
   flex-shrink: 0;
 }
@@ -56,7 +71,7 @@
 
 
 .background {
-  transform: skewY(-13deg);
+  transform: skewY(var(--angle));
   transform-origin: center top;
   
   /* always fill parent block; block determines height */
@@ -99,8 +114,32 @@
   --backgroundColor: hsl(180, 40%, 76%);
   --overlay: var(--very-light-overlay);
 }
+.bkgdFlow .block:nth-child(1) .background {
+  top: calc(-50vw*tan(var(--abs-angle)));
+}
 .block:nth-child(2) .background {
   --backgroundColor: hsl(187, 33%, 66%);
+}
+
+
+.bkgdFlow .block:last-child .backgroundWrapper {
+  /* This is for cutting off the last skewed background block at
+  the bottom of the page while not cutting off the top of it */
+  overflow: hidden;
+  position: absolute;
+  inset: 0;
+  top: calc(-50vw*tan(var(--abs-angle)));
+}
+.bkgdFlow .block:last-child .background {
+  /* to move this back down to the right position */
+  /* EITHER */
+  bottom: calc(-50vw*tan(var(--abs-angle)));
+  top: calc(50vw*tan(var(--abs-angle)));
+  /* OR */
+  /* transform: translateY(calc(50vw*tan(13deg))) skewY(-13deg); */
+  /* OR */
+  /* margin-bottom: calc(-50vw*tan(13deg));
+  margin-top: calc(50vw*tan(13deg)); */
 }
 
 
