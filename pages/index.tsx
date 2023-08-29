@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
+import { NextPageWithLayout } from './_app'
 
-export default function Home() {
+const Home: NextPageWithLayout = () => {
   return (
     <div>
       <Head>
@@ -10,12 +11,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <nav>
+      {/* <nav>
         <h1><Link href="/">Noam Bendelac</Link></h1>
         <Link href="/portfolio">Portfolio</Link>
         <Link href="/resume">Resume</Link>
-      </nav>
+      </nav> */}
       
     </div>
   )
+}
+
+export default Home
+
+Home.layout = {
+  backgroundContainsFlowLayout: false,
+  skewAngle: 0,
 }

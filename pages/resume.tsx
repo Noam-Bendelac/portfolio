@@ -1,7 +1,6 @@
 import { PropsWithChildren } from 'react'
 import { Link, resume as data } from '../data/resume'
 import styles from '../styles/Resume.module.css'
-import Home from '.'
 import { NextPageWithLayout } from './_app'
 
 
@@ -18,7 +17,6 @@ const Resume: NextPageWithLayout = () => {
     ? 'print'
     : 'web'
   }>
-    <Home></Home>
     <article className={styles.resume}>
       <header className={styles.header}>
         <div className={styles.name}>
@@ -128,6 +126,7 @@ export default Resume
 
 Resume.layout = {
   backgroundContainsFlowLayout: false,
+  skewAngle: -10,
 }
 
 

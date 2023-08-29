@@ -19,6 +19,7 @@ Portfolio.layout = {
   content1: Content1,
   content2: Content2,
   backgroundContainsFlowLayout: true,
+  skewAngle: 10,
 }
 
 

@@ -11,11 +11,11 @@
 
 /* portfolio */
 .bkgdFlow {
-  --angle: 10deg;
+  /* --angle: 10deg; */
 }
 /* resume */
 .bkgdNoFlow {
-  --angle: -10deg;
+  /* --angle: -10deg; */
 }
 
 
@@ -38,19 +38,18 @@
 }
 .bkgdNoFlow .wrapper1 {
   position: absolute;
-  /* extra height for skew */
-  top: calc(-100vw*tan(var(--abs-angle)));
-  left: 0;
-  bottom: calc(-100vw*tan(var(--abs-angle)));
-  right: 0;
+  inset: 0;
 }
 
 .block {
   /* i think this allows the z index to work */
   position: relative;
   
-  /* default block height */
-  flex: 1;
+  /* default block height: hug contents or min-height */
+  flex: 0 0;
+  
+  /* make screen is filled during page transition */
+  min-height: 50vh;
 }
 .block:nth-child(odd) {
   z-index: -1;
@@ -59,15 +58,12 @@
   z-index: -2;
 }
 
-.bkgdNoFlow .block:nth-child(1) {
-  /* "override" default height */
-  min-height: calc(50vh + 100vw*tan(var(--abs-angle)));
-  flex-grow: 0;
-  flex-shrink: 0;
-}
-/* .block:nth-child(2) {
-  z-index: -2;
+/* .bkgdNoFlow .block:nth-child(1) {
 } */
+.bkgdNoFlow .block:nth-child(2) {
+  /* expand second block in resume page */
+  flex: 1;
+}
 
 
 .background {
@@ -113,8 +109,7 @@
 .block:nth-child(1) .background {
   --backgroundColor: hsl(180, 40%, 76%);
   --overlay: var(--very-light-overlay);
-}
-.bkgdFlow .block:nth-child(1) .background {
+  /* make background reach top of page even when skewed */
   top: calc(-50vw*tan(var(--abs-angle)));
 }
 .block:nth-child(2) .background {
@@ -122,7 +117,7 @@
 }
 
 
-.bkgdFlow .block:last-child .backgroundWrapper {
+.block:last-child .backgroundWrapper {
   /* This is for cutting off the last skewed background block at
   the bottom of the page while not cutting off the top of it */
   overflow: hidden;
@@ -130,7 +125,7 @@
   inset: 0;
   top: calc(-50vw*tan(var(--abs-angle)));
 }
-.bkgdFlow .block:last-child .background {
+.block:last-child .background {
   /* to move this back down to the right position */
   /* EITHER */
   bottom: calc(-50vw*tan(var(--abs-angle)));
@@ -161,3 +156,44 @@
   background:$dark-overlay, hsl(347, 33%, 66%);
   z-index: -2;
 } */
+
+
+
+
+
+/* nav */
+
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  
+  font-family: 'Cabin', sans-serif;
+  font-size: 28px;
+  line-height: 1.0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.nav h1 {
+  font-size: 42px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: hsl(187, 100%, 30%);
+  font-weight: bold;
+  
+  display: block;
+  margin-block: 10px;
+}
+
+a.active {
+  /* color: black; */
+  text-decoration: underline;
+}
+a.inactive {
+  color: black;
+}
+

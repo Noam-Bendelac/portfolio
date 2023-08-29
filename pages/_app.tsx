@@ -1,14 +1,17 @@
 import type { AppProps } from 'next/app'
 import '../styles/globals.css'
 import { NextPage } from 'next'
-import { PropsWithChildren, ReactElement, ReactNode } from 'react'
+import { CSSProperties, PropsWithChildren, ReactElement, ReactNode } from 'react'
 import styles from '../styles/Layout.module.css'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 // (page: ReactElement) => ReactNode
 export interface LayoutProps {
   content1?: () => ReactNode,
   content2?: () => ReactNode,
-  backgroundContainsFlowLayout?: boolean
+  backgroundContainsFlowLayout: boolean,
+  skewAngle: number,
 }
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -34,10 +37,14 @@ function Layout({
   layout,
 }: PropsWithChildren & { layout?: LayoutProps }) {
   return <>
-    <div className={`
-      ${styles.wrapper2}
-      ${layout?.backgroundContainsFlowLayout ? styles.bkgdFlow : styles.bkgdNoFlow}
-    `}>
+    <Nav />
+    <div 
+      className={`
+        ${styles.wrapper2}
+        ${layout?.backgroundContainsFlowLayout ? styles.bkgdFlow : styles.bkgdNoFlow}
+      `}
+      style={{ '--angle': `${layout?.skewAngle}deg` } as CSSProperties}
+    >
       <div className={styles.wrapper1}>
         <div className={styles.block}>
           {layout?.content1?.()}
@@ -56,4 +63,26 @@ function Layout({
     </div>
     { (layout?.backgroundContainsFlowLayout !== true) && children }
   </>
+}
+
+
+
+
+
+function Nav() {
+  const { pathname } = useRouter()
+  return <nav className={styles.nav}>
+    <h1><Link
+      href="/"
+      className={pathname === '/' ? styles.active : styles.inactive}
+    >Noam Bendelac</Link></h1>
+    <Link
+      href="/portfolio"
+      className={pathname === '/portfolio' ? styles.active : styles.inactive}
+    >Portfolio</Link>
+    <Link
+      href="/resume"
+      className={pathname === '/resume' ? styles.active : styles.inactive}
+    >Resume</Link>
+  </nav>
 }
