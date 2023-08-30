@@ -1,12 +1,6 @@
 
 
 
-@property --angle {
-  syntax: "<angle>";
-  inherits: true;
-  initial-value: 0deg;
-}
-
 
 
 /* portfolio */
@@ -20,8 +14,7 @@
 
 
 .wrapper2 {
-  --abs-angle: calc(max(var(--angle), 0deg) - min(var(--angle), 0deg));
-  transition: --angle 1s;
+  --max-angle: 10deg;
 }
 .bkgdNoFlow.wrapper2 {
   /* crop background-wrapper's extra height at the bottom */
@@ -69,6 +62,7 @@
 .background {
   transform: skewY(var(--angle));
   transform-origin: center top;
+  transition: transform 0.5s;
   
   /* always fill parent block; block determines height */
   position: absolute;
@@ -110,7 +104,7 @@
   --backgroundColor: hsl(180, 40%, 76%);
   --overlay: var(--very-light-overlay);
   /* make background reach top of page even when skewed */
-  top: calc(-50vw*tan(var(--abs-angle)));
+  top: calc(-50vw*tan(var(--max-angle)));
 }
 .block:nth-child(2) .background {
   --backgroundColor: hsl(187, 33%, 66%);
@@ -123,13 +117,13 @@
   overflow: hidden;
   position: absolute;
   inset: 0;
-  top: calc(-50vw*tan(var(--abs-angle)));
+  top: calc(-50vw*tan(var(--max-angle)));
 }
 .block:last-child .background {
   /* to move this back down to the right position */
   /* EITHER */
-  bottom: calc(-50vw*tan(var(--abs-angle)));
-  top: calc(50vw*tan(var(--abs-angle)));
+  bottom: calc(-50vw*tan(var(--max-angle)));
+  top: calc(50vw*tan(var(--max-angle)));
   /* OR */
   /* transform: translateY(calc(50vw*tan(13deg))) skewY(-13deg); */
   /* OR */
