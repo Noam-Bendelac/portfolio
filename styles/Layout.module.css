@@ -161,10 +161,10 @@
 .nav {
   position: fixed;
   top: 0;
-  left: 34px;
+  left: 24px;
   
   font-family: 'Cabin', sans-serif;
-  font-size: 28px;
+  font-size: 24px;
   line-height: 1.0;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -174,16 +174,16 @@
   box-shadow: 0 0 25px hsl(180deg 15.86% 8.5% / 49%);
   /* background: hsl(0deg 0% 100% / 80%); */
   /* box-shadow: ...; */
-  padding: 26px;
+  padding: 19px;
   display: flex;
   flex-direction: column;
   /* padding-top: 40px; */
-  gap: 12px;
-  border-radius: 0 0 26px 26px;
+  gap: 10px;
+  border-radius: 0 0 20px 20px;
 }
 
 .nav h1 {
-  font-size: 42px;
+  font-size: 36px;
 }
 
 .nav a {
