@@ -38,6 +38,7 @@ function Block({}) {
       src={audioCapstone}
       alt='Screenshot of colorful heatmap in spatial audio editor'
       className={styles.img}
+      priority
     />
     <div className={styles.description}>
       <h2>

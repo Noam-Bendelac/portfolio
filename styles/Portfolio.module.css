@@ -1,5 +1,6 @@
 
-
+@value contentHidden from './Layout.module.css';
+@value contentCollapsed from './Layout.module.css';
 
 .block {
   display: flex;
@@ -9,7 +10,21 @@
   
   max-height: 600px;
   overflow: hidden;
-  transition: max-height 0.5s;
+  /* transition: max-height 0.5s; */
+  
+  opacity: 1;
+  transform: none;
+  /* transition-property: opacity, transform;
+  transition-duration: 100ms; */
+  
+  transition: max-height 500ms, opacity 100ms, transform 100ms;
+}
+:global(.contentHidden) .block {
+  opacity: 0;
+  transform: translateY(40px);
+}
+:global(.contentCollapsed) .block {
+  max-height: 0;
 }
 
 .img {

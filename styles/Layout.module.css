@@ -13,6 +13,13 @@
 }
 
 
+/* animation states */
+.bkgdNoShadow {}
+.contentHidden {}
+.contentCollapsed {}
+
+
+
 .wrapper2 {
   --max-angle: 10deg;
 }
@@ -62,7 +69,7 @@
 .background {
   transform: skewY(var(--angle));
   transform-origin: center top;
-  transition: transform 0.5s;
+  transition: transform 400ms, box-shadow 200ms, background-image 400ms;
   
   /* always fill parent block; block determines height */
   position: absolute;
@@ -91,6 +98,27 @@
     to bottom,
     rgba(255, 255, 255, 0.05),
     rgba(0, 0, 0, 0.35)
+  );
+}
+.bkgdNoShadow .background {
+  /* TODO blur */
+  box-shadow: 0px 4px 40px -8px rgba(0, 0, 0, 0);
+  
+  /* hide overlay here? for home page but also transitions? */
+  --very-light-overlay: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0)
+  );
+  --light-overlay: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0)
+  );
+  --dark-overlay: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(0, 0, 0, 0)
   );
 }
 

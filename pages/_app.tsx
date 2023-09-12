@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import '../styles/globals.css'
 import { NextPage } from 'next'
-import { CSSProperties, PropsWithChildren, ReactElement, ReactNode } from 'react'
+import { CSSProperties, PropsWithChildren, ReactElement, ReactNode, Ref, RefObject, useRef } from 'react'
 import styles from '../styles/Layout.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -33,11 +33,15 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
 
 function Layout({
-  children,
   layout,
-}: PropsWithChildren & { layout?: LayoutProps }) {
+  children,
+}: PropsWithChildren<{
+  layout: undefined | LayoutProps,
+}>) {
+  const animClassesRef = useRef<HTMLDivElement>(null)
+  
   return <>
-    <Nav />
+    <Nav animRef={animClassesRef} />
     <div 
       className={`
         ${styles.wrapper2}
@@ -45,7 +49,7 @@ function Layout({
       `}
       style={{ '--angle': `${layout?.skewAngle}deg` } as CSSProperties}
     >
-      <div className={styles.wrapper1}>
+      <div ref={animClassesRef} className={styles.wrapper1}>
         <div className={styles.block}>
           {layout?.content1?.()}
           <div className={styles.backgroundWrapper}>
@@ -69,20 +73,92 @@ function Layout({
 
 
 
-function Nav() {
-  const { pathname } = useRouter()
+function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
+  const router = useRouter()
   return <nav className={styles.nav}>
-    <h1><Link
+    <h1><a
       href="/"
-      className={pathname === '/' ? styles.active : styles.inactive}
-    >Noam Bendelac</Link></h1>
+      className={router.pathname === '/' ? styles.active : styles.inactive}
+      onClick={(e) => {
+        e.preventDefault()
+        // trigger animations
+        const classes = animRef.current?.classList
+        // shadow immediately
+        classes?.add(styles.bkgdNoShadow)
+        // opacity immediately
+        classes?.add(styles.contentHidden)
+        // prepare portfolio? //TODO to start collapsed
+        // (transition later but not here) 
+        classes?.add(styles.contentCollapsed)
+        // bring back height and shadow later
+        setTimeout(() => {
+          classes?.remove(styles.bkgdNoShadow, styles.contentCollapsed)
+        }, 500)
+        // bring back opacity later
+        setTimeout(() => {
+          classes?.remove(styles.contentHidden)
+        }, 700)
+        setTimeout(() => {
+          router.push('/')
+        }, 100)
+      }}
+    >Noam Bendelac</a></h1>
     <Link
       href="/portfolio"
-      className={pathname === '/portfolio' ? styles.active : styles.inactive}
+      className={router.pathname === '/portfolio' ? styles.active : styles.inactive}
+      onClick={(e) => {
+        e.preventDefault()
+        // trigger animations
+        const classes = animRef.current?.classList
+        // shadow immediately
+        classes?.add(styles.bkgdNoShadow)
+        // opacity immediately
+        classes?.add(styles.contentHidden)
+        // prepare portfolio? //TODO to start collapsed
+        // (transition later but not here) 
+        classes?.add(styles.contentCollapsed)
+        // bring back height (transition here) and shadow later
+        setTimeout(() => {
+          classes?.remove(styles.bkgdNoShadow, styles.contentCollapsed)
+        }, 500)
+        // bring back opacity later
+        setTimeout(() => {
+          classes?.remove(styles.contentHidden)
+        }, 700)
+        setTimeout(() => {
+          router.push('/portfolio')
+        }, 100)
+      }}
     >Portfolio</Link>
     <Link
       href="/resume"
-      className={pathname === '/resume' ? styles.active : styles.inactive}
+      className={router.pathname === '/resume' ? styles.active : styles.inactive}
+      onClick={(e) => {
+        e.preventDefault()
+        // trigger animations
+        const classes = animRef.current?.classList
+        // opacity immediately
+        classes?.add(styles.contentHidden)
+        // only when opacity is done,
+        setTimeout(() => {
+          // shadow
+          classes?.add(styles.bkgdNoShadow)
+          // collapse transition
+          classes?.add(styles.contentCollapsed)
+          // bring back shadow later
+          setTimeout(() => {
+            classes?.remove(styles.bkgdNoShadow)
+          }, 500)
+          // bring back opacity later
+          setTimeout(() => {
+            classes?.remove(styles.contentHidden)
+          }, 700)
+          
+          // setTimeout(() => {
+          router.push('/resume').then(()=>{console.log('resume')})
+          // }, 200)
+        }, 100)
+      }}
     >Resume</Link>
   </nav>
 }
