@@ -126,6 +126,7 @@ export default Resume
 
 Resume.layout = {
   backgroundContainsFlowLayout: false,
+  classes: styles.resumeVisible,
   skewAngle: -10,
 }
 

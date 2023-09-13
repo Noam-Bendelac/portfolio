@@ -19,14 +19,15 @@ Portfolio.layout = {
   content1: Content1,
   content2: Content2,
   backgroundContainsFlowLayout: true,
+  classes: styles.portfolioVisible,
   skewAngle: 10,
 }
 
 
-function Content1() {
+export function Content1() {
   return <Block />
 }
-function Content2() {
+export function Content2() {
   return <Block />
 }
 

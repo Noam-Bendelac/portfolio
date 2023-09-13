@@ -23,7 +23,7 @@
 .wrapper2 {
   --max-angle: 10deg;
 }
-.bkgdNoFlow.wrapper2 {
+.bkgdNoFlow .wrapper2 {
   /* crop background-wrapper's extra height at the bottom */
   overflow: hidden;
   position: absolute;

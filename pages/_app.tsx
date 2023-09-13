@@ -5,12 +5,15 @@ import { CSSProperties, PropsWithChildren, ReactElement, ReactNode, Ref, RefObje
 import styles from '../styles/Layout.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Resume from './resume'
+import * as Portfolio from './portfolio'
 
 // (page: ReactElement) => ReactNode
 export interface LayoutProps {
   content1?: () => ReactNode,
   content2?: () => ReactNode,
   backgroundContainsFlowLayout: boolean,
+  classes?: string,
   skewAngle: number,
 }
 
@@ -26,47 +29,48 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   // MyApp remains mounted even as different `Component`s get mounted and unmounted
   // Component.getLayout
   
-  return <Layout layout={Component.layout}>
-    <Component {...pageProps} />
-  </Layout>
+  return <Layout layout={Component.layout} />
 }
 
 
 function Layout({
   layout,
-  children,
-}: PropsWithChildren<{
+}: {
   layout: undefined | LayoutProps,
-}>) {
+}) {
   const animClassesRef = useRef<HTMLDivElement>(null)
   
-  return <>
-    <Nav animRef={animClassesRef} />
-    <div 
-      className={`
-        ${styles.wrapper2}
-        ${layout?.backgroundContainsFlowLayout ? styles.bkgdFlow : styles.bkgdNoFlow}
-      `}
-      style={{ '--angle': `${layout?.skewAngle}deg` } as CSSProperties}
-    >
-      <div ref={animClassesRef} className={styles.wrapper1}>
-        <div className={styles.block}>
-          {layout?.content1?.()}
-          <div className={styles.backgroundWrapper}>
-            <div className={styles.background} />
+  return <div
+    // this div holds classes/styles managed by react render
+    className={`
+      ${layout?.backgroundContainsFlowLayout ? styles.bkgdFlow : styles.bkgdNoFlow}
+      ${layout?.classes}
+    `}
+    style={{ '--angle': `${layout?.skewAngle}deg` } as CSSProperties}
+  >
+    {/* this div holds classes managed by us through ref */}
+    <div ref={animClassesRef}>
+      <Nav animRef={animClassesRef} />
+      <div className={styles.wrapper2}>
+        <div className={styles.wrapper1}>
+          <div className={styles.block}>
+            <Portfolio.Content1 />
+            <div className={styles.backgroundWrapper}>
+              <div className={styles.background} />
+            </div>
           </div>
-        </div>
-        <div className={styles.block}>
-          {layout?.content2?.()}
-          <div className={styles.backgroundWrapper}>
-            <div className={styles.background} />
+          <div className={styles.block}>
+            <Portfolio.Content2 />
+            <div className={styles.backgroundWrapper}>
+              <div className={styles.background} />
+            </div>
           </div>
+          <Portfolio.default />
         </div>
-        { layout?.backgroundContainsFlowLayout && children }
       </div>
+      <Resume />
     </div>
-    { (layout?.backgroundContainsFlowLayout !== true) && children }
-  </>
+  </div>
 }
 
 
@@ -90,16 +94,18 @@ function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
         // prepare portfolio? //TODO to start collapsed
         // (transition later but not here) 
         classes?.add(styles.contentCollapsed)
-        // bring back height and shadow later
+        
         setTimeout(() => {
-          classes?.remove(styles.bkgdNoShadow, styles.contentCollapsed)
-        }, 500)
-        // bring back opacity later
-        setTimeout(() => {
-          classes?.remove(styles.contentHidden)
-        }, 700)
-        setTimeout(() => {
-          router.push('/')
+          router.push('/').then(() => {
+            // bring back height and shadow later
+            setTimeout(() => {
+              classes?.remove(styles.bkgdNoShadow, styles.contentCollapsed)
+            }, 500)
+            // bring back opacity later
+            setTimeout(() => {
+              classes?.remove(styles.contentHidden)
+            }, 700)
+          })
         }, 100)
       }}
     >Noam Bendelac</a></h1>
@@ -114,19 +120,20 @@ function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
         classes?.add(styles.bkgdNoShadow)
         // opacity immediately
         classes?.add(styles.contentHidden)
-        // prepare portfolio? //TODO to start collapsed
+        // TODO prepare portfolio to start collapsed?
         // (transition later but not here) 
         classes?.add(styles.contentCollapsed)
-        // bring back height (transition here) and shadow later
         setTimeout(() => {
-          classes?.remove(styles.bkgdNoShadow, styles.contentCollapsed)
-        }, 500)
-        // bring back opacity later
-        setTimeout(() => {
-          classes?.remove(styles.contentHidden)
-        }, 700)
-        setTimeout(() => {
-          router.push('/portfolio')
+          router.push('/portfolio').then(() => {
+            // bring back height (transition here) and shadow later
+            setTimeout(() => {
+              classes?.remove(styles.bkgdNoShadow, styles.contentCollapsed)
+            }, 500)
+            // bring back opacity later
+            setTimeout(() => {
+              classes?.remove(styles.contentHidden)
+            }, 700)
+          })
         }, 100)
       }}
     >Portfolio</Link>
@@ -139,25 +146,31 @@ function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
         const classes = animRef.current?.classList
         // opacity immediately
         classes?.add(styles.contentHidden)
-        // only when opacity is done,
+        // only when opacity is done, (anticipate a little)
         setTimeout(() => {
-          // shadow
-          classes?.add(styles.bkgdNoShadow)
+          
           // collapse transition
           classes?.add(styles.contentCollapsed)
-          // bring back shadow later
-          setTimeout(() => {
-            classes?.remove(styles.bkgdNoShadow)
-          }, 500)
-          // bring back opacity later
-          setTimeout(() => {
-            classes?.remove(styles.contentHidden)
-          }, 700)
+          // shadow
+          classes?.add(styles.bkgdNoShadow)
           
-          // setTimeout(() => {
-          router.push('/resume').then(()=>{console.log('resume')})
-          // }, 200)
-        }, 100)
+          // only when collapse is done,
+          setTimeout(() => {
+            // navigate to change react-managed classes
+            router.push('/resume').then(()=>{
+              console.log('resume')
+              
+              // bring back shadow later
+              setTimeout(() => {
+                classes?.remove(styles.bkgdNoShadow)
+              }, 500)
+              // bring back opacity later
+              setTimeout(() => {
+                classes?.remove(styles.contentHidden)
+              }, 700)
+            })
+          }, 500)
+        }, 0)
       }}
     >Resume</Link>
   </nav>

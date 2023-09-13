@@ -19,6 +19,14 @@
   opacity: 0;
   transform: translateY(40px);
 }
+
+.resume {
+  display: none;
+}
+.resumeVisible .resume {
+  display: block;
+}
+
 :global(.print) .resume {
   height: 11in;
 }

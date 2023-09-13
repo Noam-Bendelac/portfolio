@@ -9,8 +9,10 @@
   margin: 80px auto 140px;
   
   max-height: 600px;
+  /* TODO no overflow hidden so that opacity and height transitions can overlap
+  without cutting off visible image? but this causes overflow when navigating
+  away from portfolio and scrolled down */
   overflow: hidden;
-  /* transition: max-height 0.5s; */
   
   opacity: 1;
   transform: none;
@@ -21,10 +23,18 @@
 }
 :global(.contentHidden) .block {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(30px);
 }
 :global(.contentCollapsed) .block {
   max-height: 0;
+}
+
+.block {
+  /* TODO display none vs visibility hidden? */
+  display: none;
+}
+.portfolioVisible .block {
+  display: flex;
 }
 
 .img {
