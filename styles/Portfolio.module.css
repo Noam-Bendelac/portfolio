@@ -2,17 +2,20 @@
 @value contentHidden from './Layout.module.css';
 @value contentCollapsed from './Layout.module.css';
 
-.block {
+.item {
   display: flex;
   flex-direction: column;
-  width: 800px;
+  /* which width is better? constant px or decreasing for smaller screens? */
+  width: 850px;
+  /* f(1800)=850, f(1100)=700: */
+  /* width: calc(490px + 20vw); */
   margin: 80px auto 140px;
   
-  max-height: 600px;
+  max-height: 700px;
   /* TODO no overflow hidden so that opacity and height transitions can overlap
-  without cutting off visible image? but this causes overflow when navigating
-  away from portfolio and scrolled down */
-  overflow: hidden;
+  without cutting off visible image? but this causes page overflow when navigating
+  away from portfolio and scrolled down -> overflow hidden on parent? */
+  /* overflow: hidden; */
   
   opacity: 1;
   transform: none;
@@ -21,32 +24,52 @@
   
   transition: max-height 500ms, opacity 100ms, transform 100ms;
 }
-:global(.contentHidden) .block {
+:global(.contentHidden) .item {
   opacity: 0;
   transform: translateY(30px);
 }
-:global(.contentCollapsed) .block {
+:global(.contentCollapsed) .item {
   max-height: 0;
 }
 
-.block {
+.item {
   /* TODO display none vs visibility hidden? */
   display: none;
 }
-.portfolioVisible .block {
+.portfolioVisible .item {
   display: flex;
 }
 
 .img {
-  border-radius: 70px;
+  border-radius: 40px;
   width: 100%;
   height: auto;
+  box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.25);
+}
+
+.text {
+  margin-inline: 55px;
+  padding: 15px 22px 20px 22px;
+  border-radius: 0 0 16px 16px;
+  background: hsla(254, 13%, 21%, 1);
+  color: white;
+  box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.25);
+}
+
+.text h2 {
+  font-family: 'Cabin', sans-serif;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
 .description {
-  margin-inline: 30px;
-  border-radius: 0 0 10px 10px;
-  background: hsl(180deg, 10%, 10%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  line-height: 120%; /* 19.2px */
 }
 
 

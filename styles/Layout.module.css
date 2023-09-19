@@ -35,6 +35,8 @@
 .wrapper1 {
   display: flex;
   flex-direction: column;
+  /* contain shrinking background panels during portfolio->resume transition */
+  overflow: hidden;
 }
 .bkgdNoFlow .wrapper1 {
   position: absolute;
@@ -52,10 +54,10 @@
   min-height: 50vh;
 }
 .block:nth-child(odd) {
-  z-index: -1;
+  z-index: 2;
 }
 .block:nth-child(even) {
-  z-index: -2;
+  z-index: 1;
 }
 
 /* .bkgdNoFlow .block:nth-child(1) {
@@ -139,6 +141,9 @@
 }
 
 
+.backgroundWrapper {
+  pointer-events: none;
+}
 .block:last-child .backgroundWrapper {
   /* This is for cutting off the last skewed background block at
   the bottom of the page while not cutting off the top of it */
@@ -188,6 +193,8 @@
 
 .nav {
   position: fixed;
+  /* TODO fix portfolio blocks stacking context */
+  z-index: 3;
   top: 0;
   left: 24px;
   

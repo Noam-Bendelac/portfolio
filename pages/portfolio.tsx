@@ -1,9 +1,9 @@
 import Image from 'next/image'
-import Home from '.'
 import { NextPageWithLayout } from './_app'
 import styles from '../styles/Portfolio.module.css'
 
-import audioCapstone from '../images/spatial audio top view 4.png'
+import { portfolio } from '../data/portfolio'
+import { Link } from '../data/resume'
 
 
 const Portfolio: NextPageWithLayout = () => {
@@ -23,31 +23,51 @@ Portfolio.layout = {
   skewAngle: 10,
 }
 
+export const numItems = portfolio.length
 
 export function Content1() {
-  return <Block />
+  return <Item index={0} />
 }
 export function Content2() {
-  return <Block />
+  return <Item index={0} />
 }
 
 
 
-function Block({}) {
-  return <div className={styles.block}>
+export function Item({ index }: { index: number }) {
+  const data = portfolio[index]
+  return <div className={styles.item}>
     <Image
-      src={audioCapstone}
-      alt='Screenshot of colorful heatmap in spatial audio editor'
+      src={data.image}
+      alt={data.imageAlt}
       className={styles.img}
       priority
     />
-    <div className={styles.description}>
+    <div className={styles.text}>
       <h2>
-        Audio
+        {data.title}
       </h2>
-      <p>
-        
-      </p>
+      <div className={styles.description}>
+        {data.description.map((desc, i) =>
+          <p key={i}>
+            {desc.map(t =>
+              typeof t === 'string'
+              ? t
+              : <A link={t}/>
+            )}
+          </p>
+        )}
+      </div>
     </div>
   </div>
 }
+
+
+// TODO
+const A = ({ link }: { link: Link }) => (
+  <a
+    className={styles.a}
+    target="_blank" rel="noopener noreferrer"
+    href={link.href}
+  >{link.display}</a>
+)

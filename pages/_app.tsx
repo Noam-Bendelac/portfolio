@@ -53,19 +53,14 @@ function Layout({
       <Nav animRef={animClassesRef} />
       <div className={styles.wrapper2}>
         <div className={styles.wrapper1}>
-          <div className={styles.block}>
-            <Portfolio.Content1 />
-            <div className={styles.backgroundWrapper}>
-              <div className={styles.background} />
+          { [...Array(Portfolio.numItems)].map((_, i) =>
+            <div key={i} className={styles.block}>
+              <Portfolio.Item index={i} />
+              <div className={styles.backgroundWrapper}>
+                <div className={styles.background} />
+              </div>
             </div>
-          </div>
-          <div className={styles.block}>
-            <Portfolio.Content2 />
-            <div className={styles.backgroundWrapper}>
-              <div className={styles.background} />
-            </div>
-          </div>
-          <Portfolio.default />
+          )}
         </div>
       </div>
       <Resume />
