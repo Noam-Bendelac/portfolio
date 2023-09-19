@@ -1,6 +1,7 @@
 
 @value contentHidden from './Layout.module.css';
 @value contentCollapsed from './Layout.module.css';
+@value instantContentCollapsed from './Layout.module.css';
 
 
 .itemWrapper {
@@ -39,7 +40,10 @@
 :global(.contentCollapsed) .item {
   max-height: 0;
 }
-/* TODO instantContentCollapsed with duration 0 */
+:global(.instantContentCollapsed) .item {
+  /* when portfolio is not visible, transition instantly */
+  transition-duration: 0;
+}
 
 .item {
   /* TODO display none vs visibility hidden? */

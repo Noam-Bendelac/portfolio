@@ -17,6 +17,7 @@
 .bkgdNoShadow {}
 .contentHidden {}
 .contentCollapsed {}
+.instantContentCollapsed {}
 
 
 
@@ -103,8 +104,9 @@
   );
 }
 .bkgdNoShadow .background {
-  /* TODO blur */
-  box-shadow: 0px 4px 40px -8px rgba(0, 0, 0, 0);
+  /* animating blur would be a paint animation (slow) */
+  /* TODO put shadow on a different div and opacity that div */
+  /* box-shadow: none; */
   
   /* hide overlay here? for home page but also transitions? */
   --very-light-overlay: linear-gradient(

@@ -89,7 +89,7 @@ function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
         classes?.add(styles.bkgdNoShadow)
         // opacity immediately
         classes?.add(styles.contentHidden)
-        // TODO don't transition here
+        // TODO this depends on which page we come from (cleanup function)
         classes?.add(styles.contentCollapsed)
         
         setTimeout(() => {
@@ -119,14 +119,15 @@ function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
         // opacity immediately
         classes?.add(styles.contentHidden)
         setTimeout(() => {
-          // TODO don't transition here
-          classes?.add(styles.contentCollapsed)
+          // don't transition here
+          classes?.add(styles.instantContentCollapsed, styles.contentCollapsed)
           router.push('/portfolio').then(() => {
             // wait for skew angle transition
             setTimeout(() => {
               // bring back height (transition here) and shadow
+              classes?.remove(styles.instantContentCollapsed, styles.contentCollapsed)
               // TODO wait until collapse ends (layout anim) before shadow/overlay opacity anim?
-              classes?.remove(styles.bkgdNoShadow, styles.contentCollapsed)
+              classes?.remove(styles.bkgdNoShadow)
               
               // wait for collapse transition, bring back opacity
               setTimeout(() => {
@@ -152,7 +153,9 @@ function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
           // shadow
           classes?.add(styles.bkgdNoShadow)
           // TODO paint-less (composite only) shadow anim for smooth frames
-          // collapse transition
+          
+          // collapse transition (make sure it's not instant)
+          classes?.remove(styles.instantContentCollapsed)
           // TODO wait until shadow (composite anim) ends before collapse (layout anim)?
           classes?.add(styles.contentCollapsed)
           
