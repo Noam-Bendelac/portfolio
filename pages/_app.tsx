@@ -53,6 +53,8 @@ function Layout({
       <Nav animRef={animClassesRef} />
       <div className={styles.wrapper2}>
         <div className={styles.wrapper1}>
+          {/* TODO move array.map to Portfolio comp? and pass this div structure
+          through a function (item) => <div>{item}</div> */}
           { [...Array(Portfolio.numItems)].map((_, i) =>
             <div key={i} className={styles.block}>
               <Portfolio.Item index={i} />
@@ -74,6 +76,7 @@ function Layout({
 
 function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
   const router = useRouter()
+  // TODO per-page cleanup function
   return <nav className={styles.nav}>
     <h1><a
       href="/"
@@ -86,8 +89,7 @@ function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
         classes?.add(styles.bkgdNoShadow)
         // opacity immediately
         classes?.add(styles.contentHidden)
-        // prepare portfolio? //TODO to start collapsed
-        // (transition later but not here) 
+        // TODO don't transition here
         classes?.add(styles.contentCollapsed)
         
         setTimeout(() => {
@@ -101,7 +103,7 @@ function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
               classes?.remove(styles.contentHidden)
             }, 700)
           })
-        }, 100)
+        }, 200)
       }}
     >Noam Bendelac</a></h1>
     <Link
@@ -112,24 +114,27 @@ function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
         // trigger animations
         const classes = animRef.current?.classList
         // shadow immediately
+        // TODO paint-less (composite only) shadow anim for smooth frames
         classes?.add(styles.bkgdNoShadow)
         // opacity immediately
         classes?.add(styles.contentHidden)
-        // TODO prepare portfolio to start collapsed?
-        // (transition later but not here) 
-        classes?.add(styles.contentCollapsed)
         setTimeout(() => {
+          // TODO don't transition here
+          classes?.add(styles.contentCollapsed)
           router.push('/portfolio').then(() => {
-            // bring back height (transition here) and shadow later
+            // wait for skew angle transition
             setTimeout(() => {
+              // bring back height (transition here) and shadow
+              // TODO wait until collapse ends (layout anim) before shadow/overlay opacity anim?
               classes?.remove(styles.bkgdNoShadow, styles.contentCollapsed)
-            }, 500)
-            // bring back opacity later
-            setTimeout(() => {
-              classes?.remove(styles.contentHidden)
-            }, 700)
+              
+              // wait for collapse transition, bring back opacity
+              setTimeout(() => {
+                classes?.remove(styles.contentHidden)
+              }, 500)
+            }, 400)
           })
-        }, 100)
+        }, 200)
       }}
     >Portfolio</Link>
     <Link
@@ -141,13 +146,15 @@ function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
         const classes = animRef.current?.classList
         // opacity immediately
         classes?.add(styles.contentHidden)
-        // only when opacity is done, (anticipate a little)
+        // only when opacity is done, (anticipate a little?)
         setTimeout(() => {
           
-          // collapse transition
-          classes?.add(styles.contentCollapsed)
           // shadow
           classes?.add(styles.bkgdNoShadow)
+          // TODO paint-less (composite only) shadow anim for smooth frames
+          // collapse transition
+          // TODO wait until shadow (composite anim) ends before collapse (layout anim)?
+          classes?.add(styles.contentCollapsed)
           
           // only when collapse is done,
           setTimeout(() => {
@@ -155,17 +162,18 @@ function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
             router.push('/resume').then(()=>{
               console.log('resume')
               
-              // bring back shadow later
+              // wait for skew angle transition
               setTimeout(() => {
+                // bring back shadow
                 classes?.remove(styles.bkgdNoShadow)
-              }, 500)
-              // bring back opacity later
-              setTimeout(() => {
-                classes?.remove(styles.contentHidden)
-              }, 700)
+                // bring back opacity later
+                setTimeout(() => {
+                  classes?.remove(styles.contentHidden)
+                }, 200)
+              }, 400)
             })
           }, 500)
-        }, 0)
+        }, 200)
       }}
     >Resume</Link>
   </nav>

@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, memo } from 'react'
 import { Link, resume as data } from '../data/resume'
 import styles from '../styles/Resume.module.css'
 import { NextPageWithLayout } from './_app'
@@ -11,7 +11,12 @@ import { NextPageWithLayout } from './_app'
 const PRINT: string = 'false'
 
 // export default function Resume({ data }: { data: typeof resume }) {
+
 const Resume: NextPageWithLayout = () => {
+  return <ResumeMemo />
+}
+
+const ResumeMemo = memo(() => {
   return <div className={
     PRINT == 'true'
     ? 'print'
@@ -120,7 +125,7 @@ const Resume: NextPageWithLayout = () => {
       </Section> */}
     </article>
   </div>
-}
+})
 
 export default Resume
 

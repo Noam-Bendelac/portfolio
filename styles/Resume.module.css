@@ -11,13 +11,12 @@
   opacity: 1;
   transform: none;
   transition-property: opacity, transform;
-  transition-duration: 100ms;
-  /* transition-delay: 0; */
-  /* animation: fadeIn forwards 0.2s ease-out; */
+  transition-duration: 500ms;
 }
 :global(.contentHidden) .resume {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(30px);
+  transition-duration: 200ms;
 }
 
 .resume {

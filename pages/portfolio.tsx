@@ -36,27 +36,29 @@ export function Content2() {
 
 export function Item({ index }: { index: number }) {
   const data = portfolio[index]
-  return <div className={styles.item}>
-    <Image
-      src={data.image}
-      alt={data.imageAlt}
-      className={styles.img}
-      priority
-    />
-    <div className={styles.text}>
-      <h2>
-        {data.title}
-      </h2>
-      <div className={styles.description}>
-        {data.description.map((desc, i) =>
-          <p key={i}>
-            {desc.map(t =>
-              typeof t === 'string'
-              ? t
-              : <A link={t}/>
-            )}
-          </p>
-        )}
+  return <div className={styles.itemWrapper}>
+    <div className={styles.item}>
+      <Image
+        src={data.image}
+        alt={data.imageAlt}
+        className={styles.img}
+        priority
+      />
+      <div className={styles.text}>
+        <h2>
+          {data.title}
+        </h2>
+        <div className={styles.description}>
+          {data.description.map((desc, i) =>
+            <p key={i}>
+              {desc.map(t =>
+                typeof t === 'string'
+                ? t
+                : <A link={t}/>
+              )}
+            </p>
+          )}
+        </div>
       </div>
     </div>
   </div>

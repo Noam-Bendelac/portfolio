@@ -2,6 +2,23 @@
 @value contentHidden from './Layout.module.css';
 @value contentCollapsed from './Layout.module.css';
 
+
+.itemWrapper {
+  opacity: 1;
+  transform: none;
+  transition-property: opacity, transform;
+  transition-duration: 400ms;
+  /* transition-timing-function: ease-out; */
+  
+}
+:global(.contentHidden) .itemWrapper {
+  opacity: 0;
+  transform: translateY(30px);
+  /* transition-timing-function: ease-in; */
+  transition-duration: 200ms;
+}
+
+
 .item {
   display: flex;
   flex-direction: column;
@@ -17,20 +34,12 @@
   away from portfolio and scrolled down -> overflow hidden on parent? */
   /* overflow: hidden; */
   
-  opacity: 1;
-  transform: none;
-  /* transition-property: opacity, transform;
-  transition-duration: 100ms; */
-  
-  transition: max-height 500ms, opacity 100ms, transform 100ms;
-}
-:global(.contentHidden) .item {
-  opacity: 0;
-  transform: translateY(30px);
+  transition: max-height 500ms;
 }
 :global(.contentCollapsed) .item {
   max-height: 0;
 }
+/* TODO instantContentCollapsed with duration 0 */
 
 .item {
   /* TODO display none vs visibility hidden? */

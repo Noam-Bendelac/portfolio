@@ -71,7 +71,7 @@
 .background {
   transform: skewY(var(--angle));
   transform-origin: center top;
-  transition: transform 400ms, box-shadow 200ms, background-image 400ms;
+  transition: transform 400ms ease, box-shadow 200ms, background-image 400ms;
   
   /* always fill parent block; block determines height */
   position: absolute;
