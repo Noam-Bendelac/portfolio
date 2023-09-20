@@ -4,6 +4,7 @@ import styles from '../styles/Portfolio.module.css'
 
 import { portfolio } from '../data/portfolio'
 import { Link } from '../data/resume'
+import Head from 'next/head'
 
 
 const Portfolio: NextPageWithLayout = () => {
@@ -16,21 +17,16 @@ const Portfolio: NextPageWithLayout = () => {
 export default Portfolio
 
 Portfolio.layout = {
-  content1: Content1,
-  content2: Content2,
   backgroundContainsFlowLayout: true,
   classes: styles.portfolioVisible,
   skewAngle: 10,
+  head: () => <Head>
+    <title key="title">Portfolio - Noam Bendelac</title>
+    <meta key="og:title" property="og:title" content="Portfolio - Noam Bendelac" />
+  </Head>,
 }
 
 export const numItems = portfolio.length
-
-export function Content1() {
-  return <Item index={0} />
-}
-export function Content2() {
-  return <Item index={0} />
-}
 
 
 

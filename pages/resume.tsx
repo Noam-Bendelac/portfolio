@@ -2,6 +2,7 @@ import { PropsWithChildren, memo } from 'react'
 import { Link, resume as data } from '../data/resume'
 import styles from '../styles/Resume.module.css'
 import { NextPageWithLayout } from './_app'
+import Head from 'next/head'
 
 
 // export async function getStaticProps() {
@@ -133,6 +134,10 @@ Resume.layout = {
   backgroundContainsFlowLayout: false,
   classes: styles.resumeVisible,
   skewAngle: -10,
+  head: () => <Head>
+    <title key="title">Resume - Noam Bendelac</title>
+    <meta key="og:title" property="og:title" content="Resume - Noam Bendelac" />
+  </Head>,
 }
 
 

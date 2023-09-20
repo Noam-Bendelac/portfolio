@@ -1,20 +1,20 @@
 import type { AppProps } from 'next/app'
 import '../styles/globals.css'
 import { NextPage } from 'next'
-import { CSSProperties, PropsWithChildren, ReactElement, ReactNode, Ref, RefObject, useRef } from 'react'
+import { CSSProperties, ReactNode, RefObject, useRef } from 'react'
 import styles from '../styles/Layout.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Resume from './resume'
 import * as Portfolio from './portfolio'
+import Head from 'next/head'
 
 // (page: ReactElement) => ReactNode
 export interface LayoutProps {
-  content1?: () => ReactNode,
-  content2?: () => ReactNode,
   backgroundContainsFlowLayout: boolean,
   classes?: string,
   skewAngle: number,
+  head: () => ReactNode,
 }
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -40,6 +40,8 @@ function Layout({
 }) {
   const animClassesRef = useRef<HTMLDivElement>(null)
   
+  const { pathname } = useRouter()
+  
   return <div
     // this div holds classes/styles managed by react render
     className={`
@@ -50,6 +52,20 @@ function Layout({
   >
     {/* this div holds classes managed by us through ref */}
     <div ref={animClassesRef}>
+      <Head>
+        {/* default title and description can be overridden */}
+        <title key="title">Noam Bendelac</title>
+        <meta key="og:title" property="og:title" content="Noam Bendelac" />
+        
+        <meta key="description" name="description" content="I am a software engineer and UX researcher who excels at rapid prototyping and production-ready code. I love working with other developers and designers to create seamless user experiences." />
+        <meta key="og:description" property="og:description" content="I am a software engineer and UX researcher who excels at rapid prototyping and production-ready code. I love working with other developers and designers to create seamless user experiences." />
+        
+        <meta key="og:url" property="og:url" content={`https://noambendelac.xyz${pathname}`} />
+        <meta key="og:site_name" property="og:site_name" content="Noam Bendelac" />
+        <meta key="keywords" property="keywords" content="Noam Bendelac portfolio resume" />
+      </Head>
+      {/* page override */}
+      { layout?.head() }
       <Nav animRef={animClassesRef} />
       <div className={styles.wrapper2}>
         <div className={styles.wrapper1}>

@@ -6,10 +6,10 @@ import { NextPageWithLayout } from './_app'
 const Home: NextPageWithLayout = () => {
   return (
     <div>
-      <Head>
+      {/* <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </Head> */}
       
       {/* <nav>
         <h1><Link href="/">Noam Bendelac</Link></h1>
@@ -26,4 +26,8 @@ export default Home
 Home.layout = {
   backgroundContainsFlowLayout: false,
   skewAngle: 0,
+  head: () => <Head>
+    <title key="title">Noam Bendelac</title>
+    <meta key="og:title" property="og:title" content="Noam Bendelac" />
+  </Head>,
 }
