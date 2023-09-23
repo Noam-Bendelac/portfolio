@@ -50,15 +50,26 @@
   
   /* default block height: hug contents or min-height */
   flex: 0 0;
-  
-  /* make screen is filled during page transition */
-  min-height: 50vh;
 }
 .block:nth-child(odd) {
   z-index: 2;
 }
 .block:nth-child(even) {
   z-index: 1;
+}
+
+/* make sure screen is filled by first two blocks during page transition
+(don't let third block appear on screen abruptly) */
+.block:nth-child(1) {
+  min-height: 50vh;
+}
+.block:nth-child(2) {
+  /* extra to cover the bottom triangle due to skew */
+  min-height: calc(50vh + calc(50vw*tan(var(--max-angle))));
+}
+/* blocks 3,4,5... should not be visible on resume */
+.bkgdNoFlow .block:nth-child(n + 3) {
+  display: none;
 }
 
 /* .bkgdNoFlow .block:nth-child(1) {
@@ -141,50 +152,48 @@
 .block:nth-child(2) .background {
   --backgroundColor: hsl(187, 33%, 66%);
 }
+.block:nth-child(3) .background {
+  --backgroundColor: hsl(260, 33%, 76%);
+}
+.block:nth-child(4) .background {
+  --backgroundColor: hsl(267, 33%, 66%);
+}
+.block:nth-child(5) .background {
+  --backgroundColor: hsl(340, 40%, 76%);
+}
+.block:nth-child(6) .background {
+  --backgroundColor: hsl(347, 33%, 66%);
+}
+
 
 
 .backgroundWrapper {
   pointer-events: none;
 }
-.block:last-child .backgroundWrapper {
+/* "last visible skewed background block" is either the last one in the list of
+children or the second one, depending on what page: */
+.bkgdFlow .block:last-child .backgroundWrapper,
+.bkgdNoFlow .block:nth-child(2) .backgroundWrapper {
   /* This is for cutting off the last skewed background block at
   the bottom of the page while not cutting off the top of it */
   overflow: hidden;
   position: absolute;
   inset: 0;
-  top: calc(-50vw*tan(var(--max-angle)));
+  /* a little extra on top to not cut off the shadow */
+  top: calc(-60vw*tan(var(--max-angle)));
 }
-.block:last-child .background {
+.bkgdFlow .block:last-child .background,
+.bkgdNoFlow .block:nth-child(2) .background {
   /* to move this back down to the right position */
   /* EITHER */
   bottom: calc(-50vw*tan(var(--max-angle)));
-  top: calc(50vw*tan(var(--max-angle)));
+  top: calc(60vw*tan(var(--max-angle)));
   /* OR */
   /* transform: translateY(calc(50vw*tan(13deg))) skewY(-13deg); */
   /* OR */
   /* margin-bottom: calc(-50vw*tan(13deg));
   margin-top: calc(50vw*tan(13deg)); */
 }
-
-
-/* ._3 {
-  background:$light-overlay, hsl(260, 33%, 76%);
-  height: 17%; // override
-  z-index: -1;
-}
-._4 {
-  background:$dark-overlay, hsl(267, 33%, 66%);
-  z-index: -2;
-}
-._5 {
-  background:$light-overlay, hsl(340, 40%, 76%);
-  height: 17%; // override
-  z-index: -1;
-}
-._6 {
-  background:$dark-overlay, hsl(347, 33%, 66%);
-  z-index: -2;
-} */
 
 
 

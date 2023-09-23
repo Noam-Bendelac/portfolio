@@ -34,12 +34,18 @@ export function Item({ index }: { index: number }) {
   const data = portfolio[index]
   return <div className={styles.itemWrapper}>
     <div className={styles.item}>
-      <Image
-        src={data.image}
-        alt={data.imageAlt}
-        className={styles.img}
-        priority
-      />
+      { data.video && <Video
+          src={data.video}
+          className={styles.video}
+        />
+      }
+      { data.image && <Image
+          src={data.image}
+          alt={data.imageAlt}
+          className={styles.img}
+          priority
+        />
+      }
       <div className={styles.text}>
         <h2>
           {data.title}
@@ -58,6 +64,21 @@ export function Item({ index }: { index: number }) {
       </div>
     </div>
   </div>
+}
+
+
+function Video({ src, className }: { src: string, className: string }) {
+  return <iframe
+    className={className}
+    // TODO not hardcode values?
+    width="560"
+    height="315"
+    src={src}
+    title="YouTube video player"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  ></iframe>
 }
 
 

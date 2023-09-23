@@ -161,38 +161,46 @@ function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
         e.preventDefault()
         // trigger animations
         const classes = animRef.current?.classList
-        // opacity immediately
-        classes?.add(styles.contentHidden)
-        // only when opacity is done, (anticipate a little?)
+        // scroll up immediately
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        // estimate scroll duration,
+        // TODO intersection observer?
         setTimeout(() => {
           
-          // shadow
-          classes?.add(styles.bkgdNoShadow)
-          // TODO paint-less (composite only) shadow anim for smooth frames
+          // then opacity
+          classes?.add(styles.contentHidden)
           
-          // collapse transition (make sure it's not instant)
-          classes?.remove(styles.instantContentCollapsed)
-          // TODO wait until shadow (composite anim) ends before collapse (layout anim)?
-          classes?.add(styles.contentCollapsed)
-          
-          // only when collapse is done,
+          // only when opacity is done,
           setTimeout(() => {
-            // navigate to change react-managed classes
-            router.push('/resume').then(()=>{
-              console.log('resume')
-              
-              // wait for skew angle transition
-              setTimeout(() => {
-                // bring back shadow
-                classes?.remove(styles.bkgdNoShadow)
-                // bring back opacity later
+            
+            // shadow
+            classes?.add(styles.bkgdNoShadow)
+            // TODO paint-less (composite only) shadow anim for smooth frames
+            
+            // collapse transition (make sure it's not instant)
+            classes?.remove(styles.instantContentCollapsed)
+            // TODO wait until shadow (composite anim) ends before collapse (layout anim)?
+            classes?.add(styles.contentCollapsed)
+            
+            // only when collapse is done,
+            setTimeout(() => {
+              // navigate to change react-managed classes
+              router.push('/resume').then(()=>{
+                console.log('resume')
+                
+                // wait for skew angle transition
                 setTimeout(() => {
-                  classes?.remove(styles.contentHidden)
-                }, 200)
-              }, 400)
-            })
-          }, 500)
-        }, 200)
+                  // bring back shadow
+                  classes?.remove(styles.bkgdNoShadow)
+                  // bring back opacity later
+                  setTimeout(() => {
+                    classes?.remove(styles.contentHidden)
+                  }, 200)
+                }, 400)
+              })
+            }, 500)
+          }, 200)
+        }, 300)
       }}
     >Resume</Link>
   </nav>
