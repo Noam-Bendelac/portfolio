@@ -1,7 +1,6 @@
 
 import audioCapstone from '../images/spatial audio top view 4.png'
 import classroomCapstone from '../images/teacher captain1.png'
-import pianoVideo from '../images/Piano Demo.mov'
 import { Link, construct } from './resume'
 
 
@@ -33,6 +32,10 @@ export const portfolio = [
     video: 'https://www.youtube-nocookie.com/embed/C-eI5-nM-JE?si=XDQvKccZk1x7Sugx',
     description: [
       Paragraph('I created a visualization of piano performance that highlights not just note pitch and duration, but also the performer’s dynamics (loudness) and ', construct<Link>({ display: 'tempo rubato', href: 'https://en.wikipedia.org/wiki/Tempo_rubato'}), ' (changes in speed).')
+      // TODO
+      // design??
+      // midi?, pedal?, score sequence matching, tempo math, webgl rendering
+      // worked in a team
     ]
   },
 ]
