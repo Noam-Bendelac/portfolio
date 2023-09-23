@@ -22,7 +22,7 @@ Portfolio.layout = {
   skewAngle: 10,
   head: () => <Head>
     <title key="title">Portfolio - Noam Bendelac</title>
-    <meta key="og:title" property="og:title" content="Portfolio - Noam Bendelac" />
+    <meta key="og:title" property="og:title" content="Portfolio" />
   </Head>,
 }
 

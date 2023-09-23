@@ -136,7 +136,7 @@ Resume.layout = {
   skewAngle: -10,
   head: () => <Head>
     <title key="title">Resume - Noam Bendelac</title>
-    <meta key="og:title" property="og:title" content="Resume - Noam Bendelac" />
+    <meta key="og:title" property="og:title" content="Resume" />
   </Head>,
 }
 
