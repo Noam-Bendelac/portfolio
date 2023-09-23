@@ -27,7 +27,7 @@
   width: 850px;
   /* f(1800)=850, f(1100)=700: */
   /* width: calc(490px + 20vw); */
-  margin: 80px auto 140px;
+  margin: 150px auto 150px;
   
   max-height: 700px;
   /* TODO no overflow hidden so that opacity and height transitions can overlap
@@ -43,6 +43,13 @@
 :global(.instantContentCollapsed) .item {
   /* when portfolio is not visible, transition instantly */
   transition-duration: 0;
+}
+
+.item.first {
+  margin-top: 80px;
+}
+.item.last {
+  margin-bottom: 120px;
 }
 
 .item {

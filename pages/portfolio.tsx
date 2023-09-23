@@ -33,7 +33,11 @@ export const numItems = portfolio.length
 export function Item({ index }: { index: number }) {
   const data = portfolio[index]
   return <div className={styles.itemWrapper}>
-    <div className={styles.item}>
+    <div className={`
+      ${styles.item}
+      ${index === 0 ? styles.first
+      : index === numItems - 1 ? styles.last : '' }
+    `}>
       { data.video && <Video
           src={data.video}
           className={styles.video}
