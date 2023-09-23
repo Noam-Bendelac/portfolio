@@ -90,11 +90,17 @@
 .description {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 9px;
   
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
-  line-height: 120%; /* 19.2px */
+  line-height: 124%; /* out of date -> 19.2px (from figma) */
+}
+
+
+.a {
+  /* contrast 7:1 on this bkgd according to chrome devtools */
+  color: hsl(241 100% 86% / 1);
 }
 
 
