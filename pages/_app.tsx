@@ -116,7 +116,7 @@ function Nav({
         
         // cleanup current page then setup new one
         if (classList) cleanupLayout(classList).then(() => {
-          Home.layoutProps.setupLayout(classList, router)
+          Home.layoutProps?.setupLayout(classList, router)
         })
       }}
     >Noam Bendelac</a></h1>
@@ -131,7 +131,7 @@ function Nav({
         
         // cleanup current page then setup new one
         if (classList) cleanupLayout(classList).then(() => {
-          Portfolio.default.layoutProps.setupLayout(classList, router)
+          Portfolio.default.layoutProps?.setupLayout(classList, router)
         })
       }}
     >Portfolio</Link>
@@ -146,7 +146,7 @@ function Nav({
         
         // cleanup current page then setup new one
         if (classList) cleanupLayout(classList).then(() => {
-          Resume.layoutProps.setupLayout(classList, router)
+          Resume.layoutProps?.setupLayout(classList, router)
         })
       }}
     >Resume</Link>

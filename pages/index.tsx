@@ -27,6 +27,7 @@ export default Home
 Home.layoutProps = {
   backgroundContainsFlowLayout: false,
   skewAngle: 0,
+  classes: layoutStyles.bkgdNoShadow,
   head: () => <Head>
     <title key="title">Noam Bendelac</title>
     <meta key="og:title" property="og:title" content="Noam Bendelac" />

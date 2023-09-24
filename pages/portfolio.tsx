@@ -35,10 +35,13 @@ Portfolio.layoutProps = {
     
     // bring back height (transition this time) and shadow
     classList.remove(layoutStyles.instantContentCollapsed, layoutStyles.contentCollapsed)
-    // TODO wait until collapse ends (layout anim) before shadow/overlay opacity anim?
-    classList.remove(layoutStyles.bkgdNoShadow)
     // wait for collapse transition
     await delay(500)
+    
+    // TODO if shadow/overlay becomes opacity anim, should we still do it after
+    // collapse ends (layout anim)?
+    // alternatively, should we wait before contentHidden?
+    classList.remove(layoutStyles.bkgdNoShadow)
     
     // bring back opacity
     classList.remove(layoutStyles.contentHidden)
@@ -52,12 +55,15 @@ Portfolio.layoutProps = {
     
     // then opacity
     classList.add(layoutStyles.contentHidden)
-    await delay(200)
-    
-    // only when opacity is done,
     // shadow
     classList.add(layoutStyles.bkgdNoShadow)
     // TODO paint-less (composite only) shadow anim for smooth frames
+    // TODO when shadow is still visible, does it slow down collapse? (despite being opacity anim)
+    // should it coincide with collapse or contentHidden?
+    
+    // wait until opacity is done
+    await delay(200)
+    
     
     // collapse transition (make sure it's not instant)
     classList.remove(layoutStyles.instantContentCollapsed)
