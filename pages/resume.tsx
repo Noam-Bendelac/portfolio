@@ -1,8 +1,10 @@
 import { PropsWithChildren, memo } from 'react'
 import { Link, resume as data } from '../data/resume'
 import styles from '../styles/Resume.module.css'
+import layoutStyles from '../styles/Layout.module.css'
 import { NextPageWithLayout } from './_app'
 import Head from 'next/head'
+import { delay } from '../util'
 
 
 // export async function getStaticProps() {
@@ -130,7 +132,7 @@ const ResumeMemo = memo(() => {
 
 export default Resume
 
-Resume.layout = {
+Resume.layoutProps = {
   backgroundContainsFlowLayout: false,
   classes: styles.resumeVisible,
   skewAngle: -10,
@@ -138,6 +140,30 @@ Resume.layout = {
     <title key="title">Resume - Noam Bendelac</title>
     <meta key="og:title" property="og:title" content="Resume" />
   </Head>,
+  async setupLayout(classList, router) {
+    // navigate to change react-managed layout classes
+    await router.push('/resume')
+    // wait for skew angle transition
+    await delay(400)
+    
+    // change manual classes:
+    // bring back shadow
+    classList.remove(layoutStyles.bkgdNoShadow)
+    // bring back opacity later
+    // TODO i think this delay can be removed if shadow is a composite anim
+    await delay(200)
+    classList.remove(layoutStyles.contentHidden)
+  },
+  async cleanupLayout(classList) {
+    // shadow immediately
+    // TODO paint-less (composite only) shadow anim for smooth frames
+    classList.add(layoutStyles.bkgdNoShadow)
+    // opacity immediately
+    classList.add(layoutStyles.contentHidden)
+    // after waiting for animation,
+    // cede control to next page's setup function
+    return await delay(200)
+  },
 }
 
 

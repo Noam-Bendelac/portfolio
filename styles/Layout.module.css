@@ -83,7 +83,7 @@
 .background {
   transform: skewY(var(--angle));
   transform-origin: center top;
-  transition: transform 400ms ease, box-shadow 200ms, background-image 400ms;
+  transition: transform 400ms ease, box-shadow 0ms, background-image 400ms;
   
   /* always fill parent block; block determines height */
   position: absolute;
@@ -117,7 +117,7 @@
 .bkgdNoShadow .background {
   /* animating blur would be a paint animation (slow) */
   /* TODO put shadow on a different div and opacity that div */
-  /* box-shadow: none; */
+  box-shadow: none;
   
   /* hide overlay here? for home page but also transitions? */
   --very-light-overlay: linear-gradient(

@@ -1,13 +1,14 @@
 import type { AppProps } from 'next/app'
 import '../styles/globals.css'
 import { NextPage } from 'next'
-import { CSSProperties, ReactNode, RefObject, useRef } from 'react'
+import { CSSProperties, ReactNode, RefObject, useRef, useState } from 'react'
 import styles from '../styles/Layout.module.css'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { NextRouter, useRouter } from 'next/router'
 import Resume from './resume'
 import * as Portfolio from './portfolio'
 import Head from 'next/head'
+import Home from '.'
 
 // (page: ReactElement) => ReactNode
 export interface LayoutProps {
@@ -15,10 +16,12 @@ export interface LayoutProps {
   classes?: string,
   skewAngle: number,
   head: () => ReactNode,
+  setupLayout: (classList: DOMTokenList, router: NextRouter) => Promise<void>,
+  cleanupLayout: (classList: DOMTokenList) => Promise<void>,
 }
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  layout?: LayoutProps
+  layoutProps?: LayoutProps
 }
  
 type AppPropsWithLayout = AppProps & {
@@ -29,14 +32,16 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   // MyApp remains mounted even as different `Component`s get mounted and unmounted
   // Component.getLayout
   
-  return <Layout layout={Component.layout} />
+  return Component.layoutProps
+    ? <Layout layoutProps={Component.layoutProps} />
+    : <Component {...pageProps} />
 }
 
 
 function Layout({
-  layout,
+  layoutProps,
 }: {
-  layout: undefined | LayoutProps,
+  layoutProps: LayoutProps,
 }) {
   const animClassesRef = useRef<HTMLDivElement>(null)
   
@@ -45,10 +50,10 @@ function Layout({
   return <div
     // this div holds classes/styles managed by react render
     className={`
-      ${layout?.backgroundContainsFlowLayout ? styles.bkgdFlow : styles.bkgdNoFlow}
-      ${layout?.classes}
+      ${layoutProps.backgroundContainsFlowLayout ? styles.bkgdFlow : styles.bkgdNoFlow}
+      ${layoutProps.classes}
     `}
-    style={{ '--angle': `${layout?.skewAngle}deg` } as CSSProperties}
+    style={{ '--angle': `${layoutProps.skewAngle}deg` } as CSSProperties}
   >
     {/* this div holds classes managed by us through ref */}
     <div ref={animClassesRef}>
@@ -65,8 +70,8 @@ function Layout({
         <meta key="keywords" property="keywords" content="Noam Bendelac portfolio resume" />
       </Head>
       {/* page override */}
-      { layout?.head() }
-      <Nav animRef={animClassesRef} />
+      { layoutProps.head() }
+      <Nav animRef={animClassesRef} cleanupLayout={layoutProps.cleanupLayout} />
       <div className={styles.wrapper2}>
         <div className={styles.wrapper1}>
           {/* TODO move array.map to Portfolio comp? and pass this div structure
@@ -90,36 +95,29 @@ function Layout({
 
 
 
-function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
+function Nav({
+  animRef,
+  cleanupLayout,
+}: {
+  animRef: RefObject<HTMLDivElement>,
+  cleanupLayout: LayoutProps['cleanupLayout'],
+}) {
   const router = useRouter()
-  // TODO per-page cleanup function
+  
   return <nav className={styles.nav}>
     <h1><a
       href="/"
       className={router.pathname === '/' ? styles.active : styles.inactive}
       onClick={(e) => {
         e.preventDefault()
-        // trigger animations
-        const classes = animRef.current?.classList
-        // shadow immediately
-        classes?.add(styles.bkgdNoShadow)
-        // opacity immediately
-        classes?.add(styles.contentHidden)
-        // TODO this depends on which page we come from (cleanup function)
-        classes?.add(styles.contentCollapsed)
         
-        setTimeout(() => {
-          router.push('/').then(() => {
-            // bring back height and shadow later
-            setTimeout(() => {
-              classes?.remove(styles.bkgdNoShadow, styles.contentCollapsed)
-            }, 500)
-            // bring back opacity later
-            setTimeout(() => {
-              classes?.remove(styles.contentHidden)
-            }, 700)
-          })
-        }, 200)
+        // to trigger animations through the manually-managed classes
+        const classList = animRef.current?.classList
+        
+        // cleanup current page then setup new one
+        if (classList) cleanupLayout(classList).then(() => {
+          Home.layoutProps.setupLayout(classList, router)
+        })
       }}
     >Noam Bendelac</a></h1>
     <Link
@@ -127,31 +125,14 @@ function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
       className={router.pathname === '/portfolio' ? styles.active : styles.inactive}
       onClick={(e) => {
         e.preventDefault()
-        // trigger animations
-        const classes = animRef.current?.classList
-        // shadow immediately
-        // TODO paint-less (composite only) shadow anim for smooth frames
-        classes?.add(styles.bkgdNoShadow)
-        // opacity immediately
-        classes?.add(styles.contentHidden)
-        setTimeout(() => {
-          // don't transition here
-          classes?.add(styles.instantContentCollapsed, styles.contentCollapsed)
-          router.push('/portfolio').then(() => {
-            // wait for skew angle transition
-            setTimeout(() => {
-              // bring back height (transition here) and shadow
-              classes?.remove(styles.instantContentCollapsed, styles.contentCollapsed)
-              // TODO wait until collapse ends (layout anim) before shadow/overlay opacity anim?
-              classes?.remove(styles.bkgdNoShadow)
-              
-              // wait for collapse transition, bring back opacity
-              setTimeout(() => {
-                classes?.remove(styles.contentHidden)
-              }, 500)
-            }, 400)
-          })
-        }, 200)
+        
+        // to trigger animations through the manually-managed classes
+        const classList = animRef.current?.classList
+        
+        // cleanup current page then setup new one
+        if (classList) cleanupLayout(classList).then(() => {
+          Portfolio.default.layoutProps.setupLayout(classList, router)
+        })
       }}
     >Portfolio</Link>
     <Link
@@ -159,48 +140,14 @@ function Nav({ animRef }: { animRef: RefObject<HTMLDivElement> }) {
       className={router.pathname === '/resume' ? styles.active : styles.inactive}
       onClick={(e) => {
         e.preventDefault()
-        // trigger animations
-        const classes = animRef.current?.classList
-        // scroll up immediately
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-        // estimate scroll duration,
-        // TODO intersection observer?
-        setTimeout(() => {
-          
-          // then opacity
-          classes?.add(styles.contentHidden)
-          
-          // only when opacity is done,
-          setTimeout(() => {
-            
-            // shadow
-            classes?.add(styles.bkgdNoShadow)
-            // TODO paint-less (composite only) shadow anim for smooth frames
-            
-            // collapse transition (make sure it's not instant)
-            classes?.remove(styles.instantContentCollapsed)
-            // TODO wait until shadow (composite anim) ends before collapse (layout anim)?
-            classes?.add(styles.contentCollapsed)
-            
-            // only when collapse is done,
-            setTimeout(() => {
-              // navigate to change react-managed classes
-              router.push('/resume').then(()=>{
-                console.log('resume')
-                
-                // wait for skew angle transition
-                setTimeout(() => {
-                  // bring back shadow
-                  classes?.remove(styles.bkgdNoShadow)
-                  // bring back opacity later
-                  setTimeout(() => {
-                    classes?.remove(styles.contentHidden)
-                  }, 200)
-                }, 400)
-              })
-            }, 500)
-          }, 200)
-        }, 300)
+        
+        // to trigger animations through the manually-managed classes
+        const classList = animRef.current?.classList
+        
+        // cleanup current page then setup new one
+        if (classList) cleanupLayout(classList).then(() => {
+          Resume.layoutProps.setupLayout(classList, router)
+        })
       }}
     >Resume</Link>
   </nav>

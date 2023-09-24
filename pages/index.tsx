@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import Link from 'next/link'
+import layoutStyles from '../styles/Layout.module.css'
 import { NextPageWithLayout } from './_app'
+import { delay } from '../util'
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -23,11 +24,23 @@ const Home: NextPageWithLayout = () => {
 
 export default Home
 
-Home.layout = {
+Home.layoutProps = {
   backgroundContainsFlowLayout: false,
   skewAngle: 0,
   head: () => <Head>
     <title key="title">Noam Bendelac</title>
     <meta key="og:title" property="og:title" content="Noam Bendelac" />
   </Head>,
+  async setupLayout(classList, router) {
+    // navigate to change react-managed layout classes
+    await router.push('/')
+    // wait for skew angle transition
+    await delay(400)
+    
+    classList.remove(layoutStyles.contentHidden)
+  },
+  async cleanupLayout(classList) {
+    classList.add(layoutStyles.contentHidden)
+    return await delay(200)
+  },
 }
