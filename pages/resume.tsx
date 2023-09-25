@@ -140,9 +140,7 @@ Resume.layoutProps = {
     <title key="title">Resume - Noam Bendelac</title>
     <meta key="og:title" property="og:title" content="Resume" />
   </Head>,
-  async setupLayout(classList, router) {
-    // navigate to change react-managed layout classes
-    await router.push('/resume')
+  async setupLayout(classList) {
     // wait for skew angle transition
     await delay(450)
     

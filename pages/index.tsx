@@ -32,9 +32,7 @@ Home.layoutProps = {
     <title key="title">Noam Bendelac</title>
     <meta key="og:title" property="og:title" content="Noam Bendelac" />
   </Head>,
-  async setupLayout(classList, router) {
-    // navigate to change react-managed layout classes
-    await router.push('/')
+  async setupLayout(classList) {
     // wait for skew angle transition
     await delay(450)
     

@@ -1,9 +1,8 @@
 import type { AppProps } from 'next/app'
 import '../styles/globals.css'
 import { NextPage } from 'next'
-import { CSSProperties, ReactNode, RefObject, useRef, useState } from 'react'
+import { CSSProperties, PropsWithChildren, ReactNode, RefObject, useRef, useState } from 'react'
 import styles from '../styles/Layout.module.css'
-import Link from 'next/link'
 import { NextRouter, useRouter } from 'next/router'
 import Resume from './resume'
 import * as Portfolio from './portfolio'
@@ -16,7 +15,7 @@ export interface LayoutProps {
   classes?: string,
   skewAngle: number,
   head: () => ReactNode,
-  setupLayout: (classList: DOMTokenList, router: NextRouter) => Promise<void>,
+  setupLayout: (classList: DOMTokenList) => Promise<void>,
   cleanupLayout: (classList: DOMTokenList) => Promise<void>,
 }
 
@@ -105,50 +104,62 @@ function Nav({
   const router = useRouter()
   
   return <nav className={styles.nav}>
-    <h1><a
-      href="/"
-      className={router.pathname === '/' ? styles.active : styles.inactive}
-      onClick={(e) => {
-        e.preventDefault()
-        
-        // to trigger animations through the manually-managed classes
-        const classList = animRef.current?.classList
-        
-        // cleanup current page then setup new one
-        if (classList) cleanupLayout(classList).then(() => {
-          Home.layoutProps?.setupLayout(classList, router)
-        })
-      }}
-    >Noam Bendelac</a></h1>
+    <h1><Link
+      href='/'
+      cleanupLayout={cleanupLayout}
+      setupLayout={Home.layoutProps?.setupLayout}
+      animRef={animRef}
+      router={router}
+    >Noam Bendelac</Link></h1>
     <Link
-      href="/portfolio"
-      className={router.pathname === '/portfolio' ? styles.active : styles.inactive}
-      onClick={(e) => {
-        e.preventDefault()
-        
-        // to trigger animations through the manually-managed classes
-        const classList = animRef.current?.classList
-        
-        // cleanup current page then setup new one
-        if (classList) cleanupLayout(classList).then(() => {
-          Portfolio.default.layoutProps?.setupLayout(classList, router)
-        })
-      }}
+      href='/portfolio'
+      cleanupLayout={cleanupLayout}
+      setupLayout={Portfolio.default.layoutProps?.setupLayout}
+      animRef={animRef}
+      router={router}
     >Portfolio</Link>
     <Link
-      href="/resume"
-      className={router.pathname === '/resume' ? styles.active : styles.inactive}
-      onClick={(e) => {
-        e.preventDefault()
-        
-        // to trigger animations through the manually-managed classes
-        const classList = animRef.current?.classList
-        
-        // cleanup current page then setup new one
-        if (classList) cleanupLayout(classList).then(() => {
-          Resume.layoutProps?.setupLayout(classList, router)
-        })
-      }}
+      href='/resume'
+      cleanupLayout={cleanupLayout}
+      setupLayout={Resume.layoutProps?.setupLayout}
+      animRef={animRef}
+      router={router}
     >Resume</Link>
   </nav>
 }
+
+
+function Link({
+  href,
+  children,
+  cleanupLayout,
+  setupLayout,
+  router,
+  animRef,
+}: PropsWithChildren<{
+  href: string,
+  cleanupLayout: LayoutProps['cleanupLayout'],
+  setupLayout: LayoutProps['setupLayout'] | undefined,
+  router: NextRouter,
+  animRef: RefObject<HTMLDivElement>,
+}>) {
+  return <a
+    href={href}
+    className={router.pathname === href ? styles.active : styles.inactive}
+    onClick={(e) => {
+      e.preventDefault()
+      
+      // to trigger animations through the manually-managed classes
+      const classList = animRef.current?.classList
+      
+      // cleanup current page then setup new one
+      if (classList) (async () => {
+        await cleanupLayout(classList)
+        // navigate to change react-managed layout classes
+        await router.push(href)
+        await setupLayout?.(classList)
+      })()
+    }}
+  >{children}</a>
+}
+

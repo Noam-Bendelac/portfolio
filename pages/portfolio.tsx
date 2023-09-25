@@ -26,10 +26,9 @@ Portfolio.layoutProps = {
     <title key="title">Portfolio - Noam Bendelac</title>
     <meta key="og:title" property="og:title" content="Portfolio" />
   </Head>,
-  async setupLayout(classList, router) {
+  async setupLayout(classList) {
     // initialize content collapsed but without smooth transition
     classList.add(layoutStyles.instantContentCollapsed, layoutStyles.contentCollapsed)
-    await router.push('/portfolio')
     // wait for skew angle transition
     await delay(450)
     
