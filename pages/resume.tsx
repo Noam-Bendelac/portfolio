@@ -133,6 +133,7 @@ const ResumeMemo = memo(() => {
 export default Resume
 
 Resume.layoutProps = {
+  pathname: '/resume',
   backgroundContainsFlowLayout: false,
   classes: styles.resumeVisible,
   skewAngle: -10,
@@ -140,7 +141,9 @@ Resume.layoutProps = {
     <title key="title">Resume - Noam Bendelac</title>
     <meta key="og:title" property="og:title" content="Resume" />
   </Head>,
-  async setupLayout(classList) {
+  async setupLayout(classList, router) {
+    // navigate to change react-managed layout classes
+    await router.push(Resume.layoutProps.pathname)
     // wait for skew angle transition
     await delay(450)
     

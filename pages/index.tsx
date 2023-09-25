@@ -25,6 +25,7 @@ const Home: NextPageWithLayout = () => {
 export default Home
 
 Home.layoutProps = {
+  pathname: '/',
   backgroundContainsFlowLayout: false,
   skewAngle: 0,
   classes: layoutStyles.bkgdNoShadow,
@@ -32,7 +33,9 @@ Home.layoutProps = {
     <title key="title">Noam Bendelac</title>
     <meta key="og:title" property="og:title" content="Noam Bendelac" />
   </Head>,
-  async setupLayout(classList) {
+  async setupLayout(classList, router) {
+    // navigate to change react-managed layout classes
+    await router.push(Home.layoutProps.pathname)
     // wait for skew angle transition
     await delay(450)
     

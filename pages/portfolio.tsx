@@ -19,6 +19,7 @@ const Portfolio: NextPageWithLayout = () => {
 export default Portfolio
 
 Portfolio.layoutProps = {
+  pathname: '/portfolio',
   backgroundContainsFlowLayout: true,
   classes: styles.portfolioVisible,
   skewAngle: 10,
@@ -26,9 +27,11 @@ Portfolio.layoutProps = {
     <title key="title">Portfolio - Noam Bendelac</title>
     <meta key="og:title" property="og:title" content="Portfolio" />
   </Head>,
-  async setupLayout(classList) {
+  async setupLayout(classList, router) {
     // initialize content collapsed but without smooth transition
     classList.add(layoutStyles.instantContentCollapsed, layoutStyles.contentCollapsed)
+    // navigate to change react-managed layout classes
+    await router.push(Portfolio.layoutProps.pathname)
     // wait for skew angle transition
     await delay(450)
     

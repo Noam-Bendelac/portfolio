@@ -11,27 +11,31 @@ import Home from '.'
 
 // (page: ReactElement) => ReactNode
 export interface LayoutProps {
+  pathname: string,
   backgroundContainsFlowLayout: boolean,
   classes?: string,
   skewAngle: number,
   head: () => ReactNode,
-  setupLayout: (classList: DOMTokenList) => Promise<void>,
+  setupLayout: (classList: DOMTokenList, router: NextRouter) => Promise<void>,
   cleanupLayout: (classList: DOMTokenList) => Promise<void>,
 }
 
+// components defined by me definitely have layoutProps
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  layoutProps?: LayoutProps
+  layoutProps: LayoutProps
 }
- 
+
+// but the component being rendered might not be defined by me
+// e.g. 404 page
 type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout
+  Component: AppProps['Component'] | NextPageWithLayout
 }
 
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   // MyApp remains mounted even as different `Component`s get mounted and unmounted
   // Component.getLayout
   
-  return Component.layoutProps
+  return 'layoutProps' in Component
     ? <Layout layoutProps={Component.layoutProps} />
     : <Component {...pageProps} />
 }
@@ -105,23 +109,20 @@ function Nav({
   
   return <nav className={styles.nav}>
     <h1><Link
-      href='/'
+      layoutProps={Home.layoutProps}
       cleanupLayout={cleanupLayout}
-      setupLayout={Home.layoutProps?.setupLayout}
       animRef={animRef}
       router={router}
     >Noam Bendelac</Link></h1>
     <Link
-      href='/portfolio'
+      layoutProps={Portfolio.default.layoutProps}
       cleanupLayout={cleanupLayout}
-      setupLayout={Portfolio.default.layoutProps?.setupLayout}
       animRef={animRef}
       router={router}
     >Portfolio</Link>
     <Link
-      href='/resume'
+      layoutProps={Resume.layoutProps}
       cleanupLayout={cleanupLayout}
-      setupLayout={Resume.layoutProps?.setupLayout}
       animRef={animRef}
       router={router}
     >Resume</Link>
@@ -130,22 +131,23 @@ function Nav({
 
 
 function Link({
-  href,
-  children,
+  layoutProps,
   cleanupLayout,
-  setupLayout,
   router,
   animRef,
+  children,
 }: PropsWithChildren<{
-  href: string,
+  layoutProps: LayoutProps,
   cleanupLayout: LayoutProps['cleanupLayout'],
-  setupLayout: LayoutProps['setupLayout'] | undefined,
   router: NextRouter,
   animRef: RefObject<HTMLDivElement>,
 }>) {
   return <a
-    href={href}
-    className={router.pathname === href ? styles.active : styles.inactive}
+    href={layoutProps.pathname}
+    className={router.pathname === layoutProps.pathname
+      ? styles.active
+      : styles.inactive
+    }
     onClick={(e) => {
       e.preventDefault()
       
@@ -155,9 +157,7 @@ function Link({
       // cleanup current page then setup new one
       if (classList) (async () => {
         await cleanupLayout(classList)
-        // navigate to change react-managed layout classes
-        await router.push(href)
-        await setupLayout?.(classList)
+        await layoutProps.setupLayout?.(classList, router)
       })()
     }}
   >{children}</a>
