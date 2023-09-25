@@ -109,10 +109,12 @@ export function Item({ index }: { index: number }) {
         <div className={styles.description}>
           {data.description.map((desc, i) =>
             <p key={i}>
-              {desc.map(t =>
-                typeof t === 'string'
-                ? t
-                : <A link={t}/>
+              {desc.map((t, j) =>
+                <span key={j}>{
+                  typeof t === 'string'
+                  ? <span>{t}</span>
+                  : <A link={t}/>
+                }</span>
               )}
             </p>
           )}

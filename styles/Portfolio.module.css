@@ -44,7 +44,7 @@
   margin-top: 80px;
 }
 .item.last {
-  margin-bottom: 120px;
+  margin-bottom: 100px;
 }
 
 :global(.contentCollapsed) .item {
