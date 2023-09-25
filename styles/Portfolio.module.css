@@ -8,7 +8,7 @@
   opacity: 1;
   transform: none;
   transition-property: opacity, transform;
-  transition-duration: 400ms;
+  transition-duration: 500ms;
   /* transition-timing-function: ease-out; */
   
 }
@@ -16,7 +16,7 @@
   opacity: 0;
   transform: translateY(30px);
   /* transition-timing-function: ease-in; */
-  transition-duration: 200ms;
+  transition-duration: 300ms;
 }
 
 
@@ -27,7 +27,7 @@
   width: 850px;
   /* f(1800)=850, f(1100)=700: */
   /* width: calc(490px + 20vw); */
-  margin: 150px auto 150px;
+  margin: 120px auto;
   
   max-height: 700px;
   /* TODO no overflow hidden so that opacity and height transitions can overlap
@@ -35,14 +35,9 @@
   away from portfolio and scrolled down -> overflow hidden on parent? */
   /* overflow: hidden; */
   
-  transition: max-height 500ms;
-}
-:global(.contentCollapsed) .item {
-  max-height: 0;
-}
-:global(.instantContentCollapsed) .item {
-  /* when portfolio is not visible, transition instantly */
-  transition-duration: 0;
+  transition: max-height, margin;
+  transition-duration: 450ms;
+  /* transition-timing-function: cubic-bezier(0.2,0.1, 0.2,1); */
 }
 
 .item.first {
@@ -50,6 +45,16 @@
 }
 .item.last {
   margin-bottom: 120px;
+}
+
+:global(.contentCollapsed) .item {
+  max-height: 50vh;
+  /* override the first/last margins above and the default margins */
+  margin: 0 auto;
+}
+:global(.instantContentCollapsed) .item {
+  /* when portfolio is not visible, transition instantly */
+  transition-duration: 0;
 }
 
 .item {

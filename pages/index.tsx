@@ -36,12 +36,12 @@ Home.layoutProps = {
     // navigate to change react-managed layout classes
     await router.push('/')
     // wait for skew angle transition
-    await delay(400)
+    await delay(450)
     
     classList.remove(layoutStyles.contentHidden)
   },
   async cleanupLayout(classList) {
     classList.add(layoutStyles.contentHidden)
-    return await delay(200)
+    return await delay(300)
   },
 }

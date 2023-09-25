@@ -144,7 +144,7 @@ Resume.layoutProps = {
     // navigate to change react-managed layout classes
     await router.push('/resume')
     // wait for skew angle transition
-    await delay(400)
+    await delay(450)
     
     // change manual classes:
     // bring back shadow
@@ -162,7 +162,7 @@ Resume.layoutProps = {
     classList.add(layoutStyles.contentHidden)
     // after waiting for animation,
     // cede control to next page's setup function
-    return await delay(200)
+    return await delay(300)
   },
 }
 

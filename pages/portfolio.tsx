@@ -31,17 +31,19 @@ Portfolio.layoutProps = {
     classList.add(layoutStyles.instantContentCollapsed, layoutStyles.contentCollapsed)
     await router.push('/portfolio')
     // wait for skew angle transition
-    await delay(400)
+    await delay(450)
     
     // bring back height (transition this time) and shadow
     classList.remove(layoutStyles.instantContentCollapsed, layoutStyles.contentCollapsed)
     // wait for collapse transition
-    await delay(500)
+    await delay(450)
     
     // TODO if shadow/overlay becomes opacity anim, should we still do it after
     // collapse ends (layout anim)?
     // alternatively, should we wait before contentHidden?
     classList.remove(layoutStyles.bkgdNoShadow)
+    // for now just wait bc rendering shadow/overlay makes us skip a frame
+    await delay(200)
     
     // bring back opacity
     classList.remove(layoutStyles.contentHidden)
@@ -62,7 +64,7 @@ Portfolio.layoutProps = {
     // should it coincide with collapse or contentHidden?
     
     // wait until opacity is done
-    await delay(200)
+    await delay(300)
     
     
     // collapse transition (make sure it's not instant)
@@ -72,7 +74,7 @@ Portfolio.layoutProps = {
     
     // only when collapse is done,
     // cede control to next page's setup function
-    return await delay(500)
+    return await delay(450)
   },
 }
 

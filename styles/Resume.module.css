@@ -16,7 +16,7 @@
 :global(.contentHidden) .resume {
   opacity: 0;
   transform: translateY(30px);
-  transition-duration: 200ms;
+  transition-duration: 300ms;
 }
 
 .resume {
