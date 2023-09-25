@@ -151,6 +151,9 @@ function Link({
     onClick={(e) => {
       e.preventDefault()
       
+      // don't do the animations if we click on the link to the current page
+      if (router.pathname === layoutProps.pathname) return;
+      
       // to trigger animations through the manually-managed classes
       const classList = animRef.current?.classList
       
