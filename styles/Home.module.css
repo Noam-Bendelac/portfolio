@@ -1,0 +1,289 @@
+
+
+@value contentHidden from './Layout.module.css';
+
+
+.home {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  /* TODO 1fr 1.3fr? the center focal point would be off center,
+  but the overall content would be centered */
+  grid-template-columns: 1fr 1fr;
+  
+  color: hsla(190, 27%, 28%);
+}
+
+.home {
+  /* display: none; */
+  visibility: hidden;
+}
+.homeVisible .home {
+  /* display: grid; */
+  visibility: visible;
+}
+
+
+.quadrant {
+  position: relative;
+  overflow: hidden;
+}
+.social, .name, .nav, .intro {
+  composes: quadrant;
+}
+
+
+.quadrant > div {
+  position: absolute;
+  animation-direction: reverse;
+  animation-duration: 1700ms;
+  animation-delay: 200ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(1,0, 1,0);
+}
+:global(.contentHidden) .quadrant > div {
+  animation-direction: normal;
+  animation-delay: 0ms;
+  animation-duration: 400ms;
+  animation-timing-function: ease-in;
+}
+
+.social > div {
+  bottom: 0;
+  right: 0;
+  padding-bottom: 18px;
+  padding-right: 22px;
+  
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  
+  /* hug the main content of the icons, not the outer box */
+  height: calc(2px * var(--scale));
+  padding-top: calc(1px * var(--scale));
+  
+  animation-name: slide-down;
+}
+:global(.contentHidden) .social > div {
+  animation-name: slide-right;
+}
+
+.social a {
+  line-height: 0;
+}
+.social {
+  --scale: 6;
+}
+.social img {
+  width: calc(3px * var(--scale));
+  transition: filter 0.2s;
+}
+.social a:hover img {
+  filter: brightness(2.1) hue-rotate(-20deg) saturate(1.4);
+}
+.github {
+  height: calc(3px * var(--scale));
+}
+.email {
+  height: calc(2px * var(--scale));
+}
+.linkedin {
+  height: calc(3px * var(--scale));
+  margin-bottom: calc(1px * var(--scale));
+}
+
+
+
+
+.name > div {
+  bottom: 0;
+  left: 0;
+  padding-bottom: 18px;
+  padding-left: 19px;
+  animation-name: slide-left;
+}
+:global(.contentHidden) .name > div {
+  animation-name: slide-down;
+}
+.name h1 {
+  font-family: 'Cabin', sans-serif;
+  font-size: 46px;
+  /* 70% line-height gets us a height == cap-height == 32px */
+  line-height: 70%;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+.nav > div {
+  top: 0;
+  right: 0;
+  padding-top: 14px;
+  padding-right: 21px;
+  animation-name: slide-right;
+}
+:global(.contentHidden) .nav > div {
+  animation-name: slide-up;
+}
+.nav nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+  font-family: 'Cabin', sans-serif;
+  font-size: 28px;
+  line-height: 100%; /* 28px */
+  /* letter-spacing: 0.04em; */
+  letter-spacing: 1.12px;
+  font-weight: bold;
+  text-align: right;
+  text-transform: uppercase;
+}
+.nav a {
+  /* get color from parent element, not annoying user agent default */
+  color: inherit;
+  text-decoration: none;
+  transition: color 200ms;
+}
+.nav a:hover {
+  /* color: hsl(171.35deg 54.31% 34.95%); */
+  color: hsl(180deg 57.45% 30.5%);
+}
+
+
+.intro > div {
+  top: 0;
+  left: 0;
+  padding-top: 14px;
+  padding-left: 21px;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+  animation-name: slide-up;
+}
+:global(.contentHidden) .intro > div {
+  animation-name: slide-left;
+}
+.intro {
+  width: 575px;
+  
+  color: hsla(193, 32%, 17%, 1);
+  font-family: 'Raleway', sans-serif;
+  font-size: 17px;
+  line-height: 120%;
+}
+
+.carousel {
+  display: inline-block;
+  text-align: center;
+  vertical-align: text-top; /* TODO */
+  position: relative;
+  
+  padding-inline: 6px;
+  margin-inline: 4px;
+  
+  /* need these? */
+  /* transform-style: preserve-3d;
+  perspective-origin: center center; */
+  
+  /* moving this down to children */
+  /* transform: perspective(120px); */
+}
+.carousel .placeholder {
+  /* hold up the width and height of parent bc .skills are position: absolute */
+  visibility: hidden;
+}
+.carousel .background {
+  position: absolute;
+  inset: 0;
+  top: 6px;
+  bottom: 3px;
+  background: hsla(243 43% 83% / 100%);
+}
+.skill {
+  /* display: inline-block; */
+  position: absolute;
+  inset: 0;
+  
+  transition: opacity 2000ms, transform 2000ms;
+  opacity: 0;
+  
+  --angle: 45deg;
+  transform: perspective(140px) translateZ(-20px) rotateX(var(--angle)) translateZ(20px);
+  /* rotate3d(1, 0, 0, var(--angle)) */
+}
+.skill.active {
+  opacity: 1;
+  /* transform: none; */
+  /* animation: skill-in 2ms; */
+  --angle: 0deg;
+}
+.skill.down {
+  --angle: -45deg;
+}
+
+@keyframes skill-in {
+  from {
+    /* transform: perspective(10px) rotateX(-15deg); */
+    --angle: 15deg;
+  }
+  to {
+    /* transform: perspective(10px) rotateX(0deg); */
+    --angle: 0deg;
+  }
+}
+@keyframes skill-out {
+  from {
+    /* transform: perspective(10px) rotateX(0deg); */
+    --angle: 0deg;
+  }
+  to {
+    /* transform: perspective(10px) rotateX(15deg); */
+    --angle: -15deg;
+  }
+}
+
+
+
+
+
+
+@keyframes slide-up {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(0, -100%);
+  }
+}
+@keyframes slide-down {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(0, 100%);
+  }
+}
+@keyframes slide-right {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(100%, 0);
+  }
+}
+@keyframes slide-left {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-100%, 0);
+  }
+}
+
+
+
+

@@ -18,6 +18,7 @@
 .contentHidden {}
 .contentCollapsed {}
 .instantContentCollapsed {}
+.navHidden {}
 
 
 
@@ -217,7 +218,7 @@ children or the second one, depending on what page: */
   
   /* dark or light? */
   background: hsl(201.18deg 80.95% 4.12% / 80%);
-  box-shadow: 0 0 25px hsl(180deg 15.86% 8.5% / 49%);
+  box-shadow: 0 0 20px hsl(180deg 15.86% 8.5% / 49%);
   /* background: hsl(0deg 0% 100% / 80%); */
   /* box-shadow: ...; */
   padding: 19px;
@@ -226,6 +227,15 @@ children or the second one, depending on what page: */
   /* padding-top: 40px; */
   gap: 10px;
   border-radius: 0 0 20px 20px;
+  
+  transition: transform 300ms, box-shadow 50ms 250ms;
+}
+
+.navHidden .nav {
+  transform: translateY(-100%);
+  box-shadow: none;
+  transition-duration: 300ms, 0ms;
+  transition-delay: 0ms, 0ms;
 }
 
 .nav h1 {
@@ -240,6 +250,7 @@ children or the second one, depending on what page: */
   /* good for dark theme: */
   color: hsl(187, 33%, 56%);
   font-weight: bold;
+  transition: color 200ms;
 }
 
 a.active {
@@ -247,5 +258,9 @@ a.active {
   color: hsl(180, 67%, 79%);
 }
 a.inactive {
+}
+
+.nav a.inactive:hover {
+  color: hsl(185, 43%, 66%);
 }
 

@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import '../styles/globals.css'
 import { NextPage } from 'next'
-import { CSSProperties, PropsWithChildren, ReactNode, RefObject, useRef, useState } from 'react'
+import { CSSProperties, PropsWithChildren, ReactNode, RefObject, useEffect, useRef, useState } from 'react'
 import styles from '../styles/Layout.module.css'
 import { NextRouter, useRouter } from 'next/router'
 import Resume from './resume'
@@ -16,6 +16,7 @@ export interface LayoutProps {
   classes?: string,
   skewAngle: number,
   head: () => ReactNode,
+  initialSetupLayout?: (classList: DOMTokenList) => Promise<void>,
   setupLayout: (classList: DOMTokenList, router: NextRouter) => Promise<void>,
   cleanupLayout: (classList: DOMTokenList) => Promise<void>,
 }
@@ -49,6 +50,11 @@ function Layout({
   const animClassesRef = useRef<HTMLDivElement>(null)
   
   const { pathname } = useRouter()
+  
+  useEffect(() => {
+    const classes = animClassesRef.current?.classList
+    classes && layoutProps.initialSetupLayout?.(classes)
+  }, [])
   
   return <div
     // this div holds classes/styles managed by react render
@@ -89,6 +95,7 @@ function Layout({
           )}
         </div>
       </div>
+      <Home animRef={animClassesRef} />
       <Resume />
     </div>
   </div>
@@ -105,43 +112,37 @@ function Nav({
   animRef: RefObject<HTMLDivElement>,
   cleanupLayout: LayoutProps['cleanupLayout'],
 }) {
-  const router = useRouter()
-  
   return <nav className={styles.nav}>
     <h1><Link
       layoutProps={Home.layoutProps}
       cleanupLayout={cleanupLayout}
       animRef={animRef}
-      router={router}
     >Noam Bendelac</Link></h1>
     <Link
       layoutProps={Portfolio.default.layoutProps}
       cleanupLayout={cleanupLayout}
       animRef={animRef}
-      router={router}
     >Portfolio</Link>
     <Link
       layoutProps={Resume.layoutProps}
       cleanupLayout={cleanupLayout}
       animRef={animRef}
-      router={router}
     >Resume</Link>
   </nav>
 }
 
 
-function Link({
+export function Link({
   layoutProps,
   cleanupLayout,
-  router,
   animRef,
   children,
 }: PropsWithChildren<{
   layoutProps: LayoutProps,
   cleanupLayout: LayoutProps['cleanupLayout'],
-  router: NextRouter,
   animRef: RefObject<HTMLDivElement>,
 }>) {
+  const router = useRouter()
   return <a
     href={layoutProps.pathname}
     className={router.pathname === layoutProps.pathname
