@@ -142,7 +142,7 @@ const HomeMemo = memo(({
             I've worked on design and software development at
             WillowTree, Salesforce, and CACI, and I'm eager to
             find my next endeavor. If you're hiring for a role
-            starting in fall 2023, get in touch!
+            starting in fall 2023, <a className={styles.getInTouch} href="mailto:bendelac.noam@gmail.com">get in touch!</a>
           </p>
         </div>
       </div>
