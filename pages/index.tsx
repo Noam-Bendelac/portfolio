@@ -27,6 +27,8 @@ const HomeMemo = memo(({
   const indexRef = useRef<number>(0)
   const roleArrayRef = useRef<(HTMLSpanElement | null)[]>([])
   const skillArrayRef = useRef<(HTMLSpanElement | null)[]>([])
+  const roleBackgroundRef = useRef<HTMLElement>(null)
+  const skillBackgroundRef = useRef<HTMLElement>(null)
   
   useEffect(() => {
     const update = () => {
@@ -39,16 +41,24 @@ const HomeMemo = memo(({
       roleArrayRef.current[prev1]?.classList.add(styles.down)
       roleArrayRef.current[prev2]?.classList.remove(styles.down)
       
+      if (roleBackgroundRef.current) roleBackgroundRef.current.style.width = `${
+        roleArrayRef.current[curr]?.clientWidth
+      }px`
+      
       skillArrayRef.current[curr]?.classList.add(styles.active)
       skillArrayRef.current[prev1]?.classList.remove(styles.active)
       skillArrayRef.current[prev1]?.classList.add(styles.down)
       skillArrayRef.current[prev2]?.classList.remove(styles.down)
+      
+      if (skillBackgroundRef.current) skillBackgroundRef.current.style.width = `${
+        skillArrayRef.current[curr]?.clientWidth
+      }px`
     }
     update()
     setInterval(() => {
       indexRef.current = mod(indexRef.current + 1, roleArrayRef.current.length)
       update()
-    }, 4000)
+    }, 5000)
   }, [])
   
   return (
@@ -103,7 +113,7 @@ const HomeMemo = memo(({
           <p>
             Hello! I'm a <span className={styles.carousel}>
               <span className={styles.placeholder}>graphics programmer</span>
-              <span className={styles.background}></span>
+              <span ref={roleBackgroundRef} className={styles.background} />
               <CarouselSpans children={[
                 'software engineer',
                 'design technologist',
@@ -113,7 +123,7 @@ const HomeMemo = memo(({
               ]} arrayRef={roleArrayRef} className={styles.skill} />
             </span> with a focus on <span className={styles.carousel}>
               <span className={styles.placeholder}>collaboration</span>
-              <span className={styles.background}></span>
+              <span ref={skillBackgroundRef} className={styles.background} />
               <CarouselSpans children={[
                 'performance',
                 'collaboration',

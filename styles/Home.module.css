@@ -179,10 +179,10 @@
 .carousel {
   display: inline-block;
   text-align: center;
-  vertical-align: text-top; /* TODO */
+  vertical-align: text-top; /* TODO? */
   position: relative;
   
-  padding-inline: 6px;
+  padding-inline: 10px;
   margin-inline: 4px;
   
   /* need these? */
@@ -199,51 +199,34 @@
 .carousel .background {
   position: absolute;
   inset: 0;
-  top: 6px;
-  bottom: 3px;
-  background: hsla(243 43% 83% / 100%);
+  top: -1px;
+  bottom: -2px;
+  margin-inline: auto;
+  padding-inline: 10px;
+  transform: skewX(-7deg);
+  transition: width 2000ms;
+  background: hsla(220 47% 82% / 100%);
+  /* background: hsl(229 28% 69% / 1); */
 }
 .skill {
   /* display: inline-block; */
   position: absolute;
   inset: 0;
+  width: max-content;
+  margin-inline: auto;
   
   transition: opacity 2000ms, transform 2000ms;
   opacity: 0;
   
   --angle: 45deg;
-  transform: perspective(140px) translateZ(-20px) rotateX(var(--angle)) translateZ(20px);
-  /* rotate3d(1, 0, 0, var(--angle)) */
+  transform: perspective(100px) translateZ(-16px) rotateX(var(--angle)) translateZ(16px);
 }
 .skill.active {
   opacity: 1;
-  /* transform: none; */
-  /* animation: skill-in 2ms; */
   --angle: 0deg;
 }
 .skill.down {
   --angle: -45deg;
-}
-
-@keyframes skill-in {
-  from {
-    /* transform: perspective(10px) rotateX(-15deg); */
-    --angle: 15deg;
-  }
-  to {
-    /* transform: perspective(10px) rotateX(0deg); */
-    --angle: 0deg;
-  }
-}
-@keyframes skill-out {
-  from {
-    /* transform: perspective(10px) rotateX(0deg); */
-    --angle: 0deg;
-  }
-  to {
-    /* transform: perspective(10px) rotateX(15deg); */
-    --angle: -15deg;
-  }
 }
 
 
