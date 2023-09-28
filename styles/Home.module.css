@@ -204,7 +204,7 @@
   margin-inline: auto;
   padding-inline: 10px;
   transform: skewX(-7deg);
-  transition: width 2000ms;
+  transition: width 1600ms;
   /* background: hsla(220 47% 82% / 100%); */
   /* background: hsl(229 28% 69% / 1); */
   /* slightly less green, saturated, and bright than top half bkgd */
@@ -217,7 +217,9 @@
   width: max-content;
   margin-inline: auto;
   
-  transition: opacity 2000ms, transform 2000ms;
+  transition-property: opacity, transform;
+  transition-duration: 1400ms;
+  transition-timing-function: ease-in-out;
   opacity: 0;
   
   --angle: 45deg;
@@ -226,9 +228,11 @@
 .skill.active {
   opacity: 1;
   --angle: 0deg;
+  transition-timing-function: cubic-bezier(0.2,0, 0.5,1), ease-in-out;
 }
 .skill.down {
   --angle: -45deg;
+  transition-timing-function: cubic-bezier(0,0, 0.2,1), ease-in-out;
 }
 
 .getInTouch {

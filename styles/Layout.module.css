@@ -231,6 +231,12 @@ children or the second one, depending on what page: */
   transition: transform 300ms, box-shadow 50ms 250ms;
 }
 
+@media only screen and (max-width: 1600px) {
+  .nav {
+    width: min-content;
+  }
+}
+
 .navHidden .nav {
   transform: translateY(-100%);
   box-shadow: none;

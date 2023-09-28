@@ -29,15 +29,16 @@
   /* width: calc(490px + 20vw); */
   margin: 120px auto;
   
-  max-height: 700px;
-  /* TODO no overflow hidden so that opacity and height transitions can overlap
-  without cutting off visible image? but this causes page overflow when navigating
-  away from portfolio and scrolled down -> overflow hidden on parent? */
-  /* overflow: hidden; */
+  max-height: 800px;
   
   transition: max-height, margin;
   transition-duration: 450ms;
   /* transition-timing-function: cubic-bezier(0.2,0.1, 0.2,1); */
+  
+  /* --link-color: hsl(189.8deg 47.6% 67%);
+  --link-hover-color: hsl(171.8deg 67.7% 74.5%); */
+  --link-color: hsl(190deg 27.8% 78.8%);
+  --link-hover-color: hsl(162.8deg 68.6% 90%);
 }
 
 .item.first {
@@ -70,6 +71,8 @@
   width: 100%;
   height: auto;
   box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.25);
+  /* shadow over text above and below */
+  z-index: 1;
 }
 
 .video {
@@ -79,18 +82,82 @@
 
 .text {
   margin-inline: 55px;
-  padding: 15px 22px 20px 22px;
-  border-radius: 0 0 16px 16px;
+  padding-inline: 22px;
   background: hsla(254, 13%, 21%, 1);
   color: white;
   box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.25);
 }
 
+.textTop {
+  composes: text;
+  padding-block: 15px 15px;
+  border-radius: 24px 24px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.textBottom {
+  composes: text;
+  padding-block: 15px 20px;
+  border-radius: 0 0 16px 16px;
+}
+
+
+.topLine {
+  display: flex;
+  justify-content: space-between;
+  /* align github to the bottom of the line-height of h2 */
+  align-items: flex-end;
+}
+
 .text h2 {
   font-family: 'Cabin', sans-serif;
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 30px;
+  line-height: 1;
 }
+.text h3 {
+  font-family: 'Cabin', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: hsl(0 0% 83%);
+  line-height: 1;
+}
+
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.links img {
+  transition: filter 200ms;
+}
+.links a:hover img {
+  /* filter: brightness(2.8) hue-rotate(-20deg) saturate(0.9); */
+  filter: brightness(3.6) hue-rotate(-20deg) saturate(0.5);
+}
+.links a {
+  color: var(--link-color);
+  transition: color 200ms;
+  text-decoration: none;
+  line-height: 0;
+}
+.links a:hover {
+  color: var(--link-hover-color);
+}
+.links .pdf {
+  font-family: 'consolas', monospace;
+  font-weight: 700;
+  font-size: 13px;
+}
+.github {
+  width: 24px;
+  height: 24px;
+  /* filter: brightness(2.4) hue-rotate(0deg) saturate(0.9); */
+  filter: brightness(2.7) hue-rotate(0deg) saturate(0.3);
+}
+
+
 
 .description {
   display: flex;
@@ -105,7 +172,12 @@
 
 .a {
   /* contrast 7:1 on this bkgd according to chrome devtools */
-  color: hsl(241 100% 86% / 1);
+  /* color: hsl(241 100% 86% / 1); */
+  color: var(--link-color);
+  transition: color 200ms;
+}
+.a:hover {
+  color: var(--link-hover-color);
 }
 
 

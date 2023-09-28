@@ -17,7 +17,7 @@ export default function Document() {
         
         {/* https://fonts.google.com/specimen/Cabin */}
         {/* Designed by Pablo Impallari and Rodrigo Fuenzalida */}
-        <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=fallback" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400..700&display=fallback" rel="stylesheet" />
       </Head>
       <body>
         <Main />

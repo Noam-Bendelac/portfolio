@@ -10,6 +10,7 @@ import Image from 'next/image'
 import { PropsWithChildren, ReactNode, RefObject, memo, useEffect, useRef } from 'react'
 import Portfolio from './portfolio'
 import Resume from './resume'
+import { A } from '../components/A'
 
 const Home: NextPageWithLayout<{
   animRef: RefObject<HTMLDivElement>,
@@ -78,6 +79,7 @@ const HomeMemo = memo(({
               src={email}
               alt="email"
               className={styles.email}
+              title="Right click to copy email address"
             />
           </A>
           <A href="https://linkedin.com/in/noam-bendelac/">
@@ -142,7 +144,12 @@ const HomeMemo = memo(({
             I've worked on design and software development at
             WillowTree, Salesforce, and CACI, and I'm eager to
             find my next endeavor. If you're hiring for a role
-            starting in fall 2023, <a className={styles.getInTouch} href="mailto:bendelac.noam@gmail.com">get in touch!</a>
+            starting in fall 2023,{' '}
+            <a
+              className={styles.getInTouch}
+              href="mailto:bendelac.noam@gmail.com"
+              title="Right click to copy email address"
+            >get in touch!</a>
           </p>
         </div>
       </div>
@@ -220,13 +227,4 @@ function CarouselSpans({
 }
 
 
-
-// TODO
-const A = ({ href, children }: PropsWithChildren<{ href: string }>) => (
-  <a
-    className={styles.a}
-    target="_blank" rel="noopener noreferrer"
-    href={href}
-  >{children}</a>
-)
 

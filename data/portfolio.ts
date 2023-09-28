@@ -10,16 +10,26 @@ function Paragraph(...args: Paragraph) { return args }
 
 export const portfolio = [
   {
-    title: 'Spatial Sound Design Editor',
+    title: 'Spatial Audio Designer',
+    github: 'https://github.com/Noam-Bendelac/spatial-audio-designer',
+    pdf: 'https://vtechworks.lib.vt.edu/bitstream/handle/10919/113905/3564533.3564563.pdf',
     image: audioCapstone,
     imageAlt: 'Screenshot of colorful heatmap in spatial audio editor',
     description: [
-      Paragraph('I designed and implemented a 3D spatial audio editor and visualizer using Three.js, the Web Audio API, and React. I experimented with different visualization techniques, including a “heatmap” showing each sound’s loudness in space, implemented using shaders.'),
-      Paragraph('I worked with a team of students and Dr. Nicholas Polys as my advisor.'),
+      Paragraph('I designed and implemented a 3D spatial audio editor and visualizer using Three.js, WebGL, the Web Audio API, and React. I experimented with different visualization techniques, including a “heatmap” showing each sound’s loudness in space, implemented using shaders.'),
+      Paragraph(
+        'I worked with a team of students and Dr. Nicholas Polys as my advisor. We published a ',
+        { display: 'short paper', href: 'https://vtechworks.lib.vt.edu/bitstream/handle/10919/113905/3564533.3564563.pdf' },
+        ' on it in the ',
+        { display: 'Web3D 2022 conference', href: 'https://dl.acm.org/doi/10.1145/3564533.3564563'},
+        '.',
+      ),
     ],
   },
   {
-    title: 'Classroom Captain: Interactive 3D Diagrams for Hybrid Classrooms',
+    title: 'Classroom Captain',
+    subtitle: 'Interactive 3D Diagrams for Hybrid Classrooms',
+    github: 'https://github.com/Noam-Bendelac/classroom-captain',
     image: classroomCapstone,
     imageAlt: 'Screenshot of three dimensional physics diagram in web app',
     description: [
@@ -29,9 +39,14 @@ export const portfolio = [
   },
   {
     title: 'Piano Performance Visualization',
+    github: 'https://github.com/Noam-Bendelac/piano-viz',
     video: 'https://www.youtube-nocookie.com/embed/C-eI5-nM-JE?si=XDQvKccZk1x7Sugx',
     description: [
-      Paragraph('I created a visualization of piano performance that highlights not just note pitch and duration, but also the performer’s dynamics (loudness) and ', construct<Link>({ display: 'tempo rubato', href: 'https://en.wikipedia.org/wiki/Tempo_rubato'}), ' (changes in speed).')
+      Paragraph(
+        'I created a visualization of piano performance that highlights not just note pitch and duration, but also the performer’s dynamics (loudness) and ',
+        { display: 'tempo rubato', href: 'https://en.wikipedia.org/wiki/Tempo_rubato'},
+        ' (changes in speed).'
+      )
       // TODO
       // design??
       // midi?, pedal?, score sequence matching, tempo math, webgl rendering

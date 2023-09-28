@@ -1,10 +1,11 @@
 import { PropsWithChildren, memo } from 'react'
-import { Link, resume as data } from '../data/resume'
+import { resume as data } from '../data/resume'
 import styles from '../styles/Resume.module.css'
 import layoutStyles from '../styles/Layout.module.css'
 import { NextPageWithLayout } from './_app'
 import Head from 'next/head'
 import { delay } from '../util'
+import { A } from '../components/A'
 
 
 // export async function getStaticProps() {
@@ -36,9 +37,15 @@ const ResumeMemo = memo(() => {
         </div>
         <div className={styles.links}>
           
-          <p><A link={data.header.portfolio} /></p>
-          <p><A link={data.header.github} /></p>
-          <p><A link={data.header.linkedin} /></p>
+          <p><A href={data.header.portfolio.href} className={styles.a}>
+            {data.header.portfolio.display}
+          </A></p>
+          <p><A href={data.header.github.href} className={styles.a}>
+            {data.header.github.display}
+          </A></p>
+          <p><A href={data.header.linkedin.href} className={styles.a}>
+            {data.header.linkedin.display}
+          </A></p>
         </div>
       </header>
       
@@ -170,22 +177,6 @@ Resume.layoutProps = {
 
 
 
-const A = ({ link }: { link: Link }) => (
-  <a
-    className={styles.a}
-    target="_blank" rel="noopener noreferrer"
-    href={link.href}
-  >{link.display}</a>
-)
-
-// export const Text = ({ text }: { text: string | (string | Link)[] }) =>
-// 	typeof text === 'string'
-// 	? <>{text}</>
-// 	: <>{text.map(t =>
-// 			typeof t === 'string'
-// 			? t
-// 			: <A link={t} />
-// 		)}</>
 
 
 

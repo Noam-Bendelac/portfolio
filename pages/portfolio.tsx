@@ -4,9 +4,11 @@ import styles from '../styles/Portfolio.module.css'
 import layoutStyles from '../styles/Layout.module.css'
 
 import { portfolio } from '../data/portfolio'
-import { Link } from '../data/resume'
 import Head from 'next/head'
 import { delay } from '../util'
+import github from '../images/github-mark.svg'
+import { A } from '../components/A'
+
 
 
 const Portfolio: NextPageWithLayout = () => {
@@ -90,8 +92,31 @@ export function Item({ index }: { index: number }) {
     <div className={`
       ${styles.item}
       ${index === 0 ? styles.first
-      : index === numItems - 1 ? styles.last : '' }
+      : index === numItems - 1 ? styles.last
+      : '' }
     `}>
+      <div className={styles.textTop}>
+        <div className={styles.topLine}>
+          <h2>
+            {data.title}
+          </h2>
+          <div className={styles.links}>
+            { data.pdf && <A href={data.pdf} className={styles.pdf}>
+              PDF
+            </A> }
+            { data.github && <A href={data.github}>
+              <Image
+                src={github}
+                alt="GitHub Project"
+                className={styles.github}
+              />
+            </A> }
+          </div>
+        </div>
+        { data.subtitle && <div>
+          <h3>{data.subtitle}</h3>
+        </div> }
+      </div>
       { data.video && <Video
           src={data.video}
           className={styles.video}
@@ -104,10 +129,7 @@ export function Item({ index }: { index: number }) {
           priority
         />
       }
-      <div className={styles.text}>
-        <h2>
-          {data.title}
-        </h2>
+      <div className={styles.textBottom}>
         <div className={styles.description}>
           {data.description.map((desc, i) =>
             <p key={i}>
@@ -115,7 +137,9 @@ export function Item({ index }: { index: number }) {
                 <span key={j}>{
                   typeof t === 'string'
                   ? <span>{t}</span>
-                  : <A link={t}/>
+                  : <A href={t.href} className={styles.a}>
+                      {t.display}
+                    </A>
                 }</span>
               )}
             </p>
@@ -142,11 +166,3 @@ function Video({ src, className }: { src: string, className: string }) {
 }
 
 
-// TODO
-const A = ({ link }: { link: Link }) => (
-  <a
-    className={styles.a}
-    target="_blank" rel="noopener noreferrer"
-    href={link.href}
-  >{link.display}</a>
-)
