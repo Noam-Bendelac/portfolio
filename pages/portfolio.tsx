@@ -88,6 +88,9 @@ export const numItems = portfolio.length
 
 export function Item({ index }: { index: number }) {
   const data = portfolio[index]
+  const pageIdx = 0
+  const mediaIdx = 0
+  const page = data.pages[pageIdx]
   return <div className={styles.itemWrapper}>
     <div className={`
       ${styles.item}
@@ -126,21 +129,21 @@ export function Item({ index }: { index: number }) {
           <h3>{data.subtitle}</h3>
         </div> }
       </div>
-      { data.video && <Video
-          src={data.video}
-          className={styles.video}
-        />
-      }
-      { data.image && <Image
-          src={data.image}
-          alt={data.imageAlt}
+      { page.media[mediaIdx].type === 'image'
+      ? <Image
+          src={page.media[mediaIdx].src}
+          alt={page.media[mediaIdx].alt}
           className={styles.img}
           priority
+        />
+      : <Video
+          src={page.media[mediaIdx].src}
+          className={styles.video}
         />
       }
       <div className={styles.textBottom}>
         <div className={styles.description}>
-          {data.description.map((desc, i) =>
+          {page.description.map((desc, i) =>
             <p key={i}>
               {desc.map((t, j) =>
                 <span key={j}>{
