@@ -11,8 +11,11 @@ function Paragraph(...args: Paragraph) { return args }
 export const portfolio = [
   {
     title: 'Spatial Audio Designer',
-    github: 'https://github.com/Noam-Bendelac/spatial-audio-designer',
-    pdf: 'https://vtechworks.lib.vt.edu/bitstream/handle/10919/113905/3564533.3564563.pdf',
+    links: {
+      github: 'https://github.com/Noam-Bendelac/spatial-audio-designer',
+      demo: 'https://statuesque-truffle-c0f172.netlify.app/',
+      pdf: 'https://vtechworks.lib.vt.edu/bitstream/handle/10919/113905/3564533.3564563.pdf',
+    },
     image: audioCapstone,
     imageAlt: 'Screenshot of colorful heatmap in spatial audio editor',
     description: [
@@ -29,7 +32,10 @@ export const portfolio = [
   {
     title: 'Classroom Captain',
     subtitle: 'Interactive 3D Diagrams for Hybrid Classrooms',
-    github: 'https://github.com/Noam-Bendelac/classroom-captain',
+    links: {
+      github: 'https://github.com/Noam-Bendelac/classroom-captain',
+      demo: 'https://majestic-dieffenbachia-a1f56f.netlify.app/',
+    },
     image: classroomCapstone,
     imageAlt: 'Screenshot of three dimensional physics diagram in web app',
     description: [
@@ -39,7 +45,9 @@ export const portfolio = [
   },
   {
     title: 'Piano Performance Visualization',
-    github: 'https://github.com/Noam-Bendelac/piano-viz',
+    links: {
+      github: 'https://github.com/Noam-Bendelac/piano-viz',
+    },
     video: 'https://www.youtube-nocookie.com/embed/C-eI5-nM-JE?si=XDQvKccZk1x7Sugx',
     description: [
       Paragraph(
@@ -51,7 +59,7 @@ export const portfolio = [
       // design??
       // midi?, pedal?, score sequence matching, tempo math, webgl rendering
       // worked in a team
-    ]
+    ],
   },
 ]
 

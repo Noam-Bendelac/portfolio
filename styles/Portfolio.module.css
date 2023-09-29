@@ -127,7 +127,7 @@
 .links {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 .links img {
   transition: filter 200ms;
@@ -145,10 +145,12 @@
 .links a:hover {
   color: var(--link-hover-color);
 }
-.links .pdf {
-  font-family: 'consolas', monospace;
+.links .plaintext {
+  font-family: 'Ubuntu', sans-serif;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 11px;
+  transform: scaleY(1.2);
+  letter-spacing: -0.02em;
 }
 .github {
   width: 24px;

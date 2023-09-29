@@ -101,10 +101,19 @@ export function Item({ index }: { index: number }) {
             {data.title}
           </h2>
           <div className={styles.links}>
-            { data.pdf && <A href={data.pdf} className={styles.pdf}>
+            { data.links.pdf && <A
+              href={data.links.pdf}
+              className={styles.plaintext}
+            >
               PDF
             </A> }
-            { data.github && <A href={data.github}>
+            { data.links.demo && <A
+              href={data.links.demo}
+              className={styles.plaintext}
+            >
+              DEMO
+            </A> }
+            { data.links.github && <A href={data.links.github}>
               <Image
                 src={github}
                 alt="GitHub Project"
