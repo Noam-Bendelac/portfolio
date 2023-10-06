@@ -124,6 +124,10 @@
   line-height: 1;
 }
 
+.text h2:hover a {
+  text-decoration: underline;
+}
+
 
 .links {
   display: flex;
@@ -140,7 +144,6 @@
 .links a {
   color: var(--link-color);
   transition: color 200ms;
-  text-decoration: none;
   line-height: 0;
 }
 .links a:hover {
@@ -178,6 +181,7 @@
   /* color: hsl(241 100% 86% / 1); */
   color: var(--link-color);
   transition: color 200ms;
+  text-decoration: underline;
 }
 .a:hover {
   color: var(--link-hover-color);

@@ -18,6 +18,7 @@ type Media =
 interface Project {
   title: string,
   subtitle?: string,
+  hash: string,
   links: {
     github?: string,
     demo?: string,
@@ -34,6 +35,7 @@ interface Project {
 export const portfolio: Project[] = [
   {
     title: 'Spatial Audio Designer',
+    hash: 'spatial-audio-designer',
     links: {
       github: 'https://github.com/Noam-Bendelac/spatial-audio-designer',
       demo: 'https://statuesque-truffle-c0f172.netlify.app/',
@@ -60,6 +62,7 @@ export const portfolio: Project[] = [
   {
     title: 'Classroom Captain',
     subtitle: 'Interactive 3D Diagrams for Hybrid Classrooms',
+    hash: 'classroom-captain',
     links: {
       github: 'https://github.com/Noam-Bendelac/classroom-captain',
       demo: 'https://majestic-dieffenbachia-a1f56f.netlify.app/',
@@ -79,6 +82,7 @@ export const portfolio: Project[] = [
   {
     title: 'Amateur Stargazing App',
     subtitle: 'UX Research and Design',
+    hash: 'stargazing-ux',
     links: { },
     pages: [{
       media: [{
@@ -94,6 +98,7 @@ export const portfolio: Project[] = [
   },
   {
     title: 'Piano Performance Visualization',
+    hash: 'piano-visualization',
     links: {
       github: 'https://github.com/Noam-Bendelac/piano-viz',
     },

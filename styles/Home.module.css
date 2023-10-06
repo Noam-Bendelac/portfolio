@@ -141,9 +141,6 @@
   text-transform: uppercase;
 }
 .nav a, .intro a {
-  /* get color from parent element, not annoying user agent default */
-  color: inherit;
-  text-decoration: none;
   transition: color 200ms;
 }
 .nav a:hover, .intro a:hover {
