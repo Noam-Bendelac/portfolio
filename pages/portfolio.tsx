@@ -92,12 +92,13 @@ export function Item({ index }: { index: number }) {
   const mediaIdx = 0
   const page = data.pages[pageIdx]
   return <div className={styles.itemWrapper}>
-    <div id={data.hash} className={`
+    <div className={`
       ${styles.item}
       ${index === 0 ? styles.first
       : index === numItems - 1 ? styles.last
       : '' }
     `}>
+      <div id={data.hash} className={styles.linkTarget}></div>
       <div className={styles.textTop}>
         <div className={styles.topLine}>
           <h2><a href={`#${data.hash}`}>

@@ -29,6 +29,9 @@
   /* width: calc(490px + 20vw); */
   margin: 120px auto;
   
+  /* help center hash link target */
+  position: relative;
+  
   max-height: 800px;
   
   transition: max-height, margin;
@@ -65,6 +68,21 @@
 .portfolioVisible .item {
   display: flex;
 }
+
+
+.linkTarget {
+  /* position top of this element at top of item if item doesn't fit in
+  viewport, or top half of viewport with item centered inside */
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 50%;
+  /* height is max(50% of parent, 50vh) */
+  min-height: 50%;
+  height: 50vh;
+  pointer-events: none;
+}
+
 
 .img {
   border-radius: 40px;
