@@ -65,7 +65,7 @@ export const portfolio: Project[] = [
     hash: 'classroom-captain',
     links: {
       github: 'https://github.com/Noam-Bendelac/classroom-captain',
-      demo: 'https://majestic-dieffenbachia-a1f56f.netlify.app/',
+      demo: 'https://classroom-captain.noambendelac.xyz/',
     },
     pages: [{
       media: [{

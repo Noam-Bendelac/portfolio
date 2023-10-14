@@ -133,7 +133,7 @@ export const resume = {
     languages: 'Fluent in English and Hebrew',
     lists: [
       ['Typescript', 'Javascript', 'Kotlin', 'HTML/CSS', 'GLSL', 'Rust', 'C', 'C++', 'Java', 'Python'],
-      ['React', 'Android', 'OpenGL', 'Three.js', 'WebAssembly', 'Node.js', 'Git'],
+      ['React', 'Android', 'OpenGL', 'Three.js', 'Next.js', 'WebAssembly', 'Node.js', 'Git'],
       ['Figma', 'Wireframing', 'MIDI', 'DSP', 'Arduino', 'Analog circuits', '3D CAD'],
     ],
   },
