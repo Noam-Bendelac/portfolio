@@ -221,7 +221,7 @@ function CarouselSpans({
         if (arrayRef.current) arrayRef.current[i] = ref
       }}
     >
-      {ch}
+      {ch}{' '}
     </span>
   )
 }
