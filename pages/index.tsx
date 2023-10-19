@@ -122,7 +122,7 @@ const HomeMemo = memo(({
                 'UX researcher',
                 'graphics programmer',
                 'UX designer',
-              ]} arrayRef={roleArrayRef} className={styles.skill} />
+              ].map(s => `${s} `)} arrayRef={roleArrayRef} className={styles.skill} />
             </span> with a focus on <span className={styles.carousel}>
               <span className={styles.placeholder}>collaboration</span>
               <span ref={skillBackgroundRef} className={styles.background} />
@@ -132,7 +132,7 @@ const HomeMemo = memo(({
                 'empathy',
                 'immersion',
                 'intuitiveness',
-              ]} arrayRef={skillArrayRef} className={styles.skill} />
+              ].map(s => `${s} `)} arrayRef={skillArrayRef} className={styles.skill} />
             </span>.
           </p>
           <p>
@@ -221,7 +221,7 @@ function CarouselSpans({
         if (arrayRef.current) arrayRef.current[i] = ref
       }}
     >
-      {ch}{' '}
+      {ch}
     </span>
   )
 }
