@@ -143,8 +143,7 @@ const HomeMemo = memo(({
           <p>
             I've worked on design and software development at
             WillowTree, Salesforce, and CACI, and I'm eager to
-            find my next endeavor. If you're hiring for a role
-            starting in fall 2023,{' '}
+            find my next endeavor. If you're hiring,{' '}
             <a
               className={styles.getInTouch}
               href="mailto:bendelac.noam@gmail.com"

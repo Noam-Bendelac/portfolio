@@ -12,8 +12,6 @@ import { A } from '../components/A'
 //   return { props: { data: resume } }
 // }
 
-const PRINT: string = 'false'
-
 // export default function Resume({ data }: { data: typeof resume }) {
 
 const Resume: NextPageWithLayout = () => {
@@ -21,120 +19,114 @@ const Resume: NextPageWithLayout = () => {
 }
 
 const ResumeMemo = memo(() => {
-  return <div className={
-    PRINT == 'true'
-    ? 'print'
-    : 'web'
-  }>
-    <article className={styles.resume}>
-      <header className={styles.header}>
-        <div className={styles.name}>
-          <h1>{data.header.name}</h1>
-          <p className={styles.details}>
-            <span>{data.header.email}</span>
-            <span>{data.header.address}</span>
-          </p>
-        </div>
-        <div className={styles.links}>
-          
-          <p><A href={data.header.portfolio.href} className={styles.a}>
-            {data.header.portfolio.display}
-          </A></p>
-          <p><A href={data.header.github.href} className={styles.a}>
-            {data.header.github.display}
-          </A></p>
-          <p><A href={data.header.linkedin.href} className={styles.a}>
-            {data.header.linkedin.display}
-          </A></p>
-        </div>
-      </header>
-      
-      <Section heading='Summary'>
-        <p>{data.summary}</p>
-      </Section>
-      <Section heading='Education'>
-        {data.education.map((education, i) => <div key={i}>
-          <p><b>{education.school}</b>, {education.location}</p>
-          <UlBullets>
-            {education.degrees.map((degree, i) =>
-              <UlBullets.Li key={i}>
-                <b>{degree.name}</b>, {degree.details}
-                <time className={styles.time}>{degree.time}</time>
-              </UlBullets.Li>
-            )}
-            <UlBullets.Li className={styles.coursework}>
-              <UlInline>
-                <span className={styles.label}>Coursework:</span>
-                {education.coursework.map((course, i) =>
-                  <UlInline.LI key={i}>{course}</UlInline.LI>
-                )}
-              </UlInline>
+  return <article className={styles.resume}>
+    <header className={styles.header}>
+      <div className={styles.name}>
+        <h1>{data.header.name}</h1>
+        <p className={styles.details}>
+          <span>{data.header.email}</span>
+          <span>{data.header.address}</span>
+        </p>
+      </div>
+      <div className={styles.links}>
+        
+        <p><A href={data.header.portfolio.href} className={styles.a}>
+          {data.header.portfolio.display}
+        </A></p>
+        <p><A href={data.header.github.href} className={styles.a}>
+          {data.header.github.display}
+        </A></p>
+        <p><A href={data.header.linkedin.href} className={styles.a}>
+          {data.header.linkedin.display}
+        </A></p>
+      </div>
+    </header>
+    
+    <Section heading='Summary'>
+      <p>{data.summary}</p>
+    </Section>
+    <Section heading='Education'>
+      {data.education.map((education, i) => <div key={i}>
+        <p><b>{education.school}</b>, {education.location}</p>
+        <UlBullets>
+          {education.degrees.map((degree, i) =>
+            <UlBullets.Li key={i}>
+              <b>{degree.name}</b>, {degree.details}
+              <time className={styles.time}>{degree.time}</time>
             </UlBullets.Li>
-          </UlBullets>
-        </div>)}
-      </Section>
-      
-      <Section heading='Experience'>
-        <div className={styles.projectList}>
-          {data.experience.map((experience, i) =>
-            <section key={i}>
-              <p className={styles.headline}>
-                <span className={styles.name}>{experience.organization}</span>
-                <span>, {experience.role}</span>
-                <time className={styles.time}>
-                  { Array.isArray(experience.time)
-                  ? experience.time.join('\u2014')
-                  : experience.time }
-                </time>
-              </p>
-              <UlBullets>
-                {experience.details.map((detail, i) =>
-                  <UlBullets.Li key={i}>{detail}</UlBullets.Li>
-                )}
-              </UlBullets>
-            </section>
           )}
-        </div>
-      </Section>
-      
-      <Section heading='Projects'>
-        <div className={styles.projectList}>
-          {data.projects.map((project, i) =>
-            <section key={i}>
-              <p className={styles.headline}>
-                <span className={styles.name}>{project.name}</span>
-                <time className={styles.time}>{project.time}</time>
-              </p>
-              <UlBullets>
-                {project.details.map((detail, i) =>
-                  <UlBullets.Li key={i}>{detail}</UlBullets.Li>
-                )}
-              </UlBullets>
-            </section>
-          )}
-        </div>
-      </Section>
-      
-      <Section heading='Skills'>
-        <div className={styles.skillsLists}>
-          {data.skills.lists.map((list, i) =>
-            <UlInline key={i}>
-              {list.map((skill, i) =>
-                <UlInline.LI key={i}>{skill}</UlInline.LI>
+          <UlBullets.Li className={styles.coursework}>
+            <UlInline>
+              <span className={styles.label}>Coursework:</span>
+              {education.coursework.map((course, i) =>
+                <UlInline.LI key={i}>{course}</UlInline.LI>
               )}
             </UlInline>
-          )}
-        </div>
-        <p>{data.skills.languages}</p>
-      </Section>
-      
-      {/* <Section heading='Activities & Awards'>
-        {resume.awards.map(award =>
-          <p>{award.name}<Time>{award.time}</Time></p>
+          </UlBullets.Li>
+        </UlBullets>
+      </div>)}
+    </Section>
+    
+    <Section heading='Experience'>
+      <div className={styles.projectList}>
+        {data.experience.map((experience, i) =>
+          <section key={i}>
+            <p className={styles.headline}>
+              <span className={styles.name}>{experience.organization}</span>
+              <span>, {experience.role}</span>
+              <time className={styles.time}>
+                { Array.isArray(experience.time)
+                ? experience.time.join('\u2014')
+                : experience.time }
+              </time>
+            </p>
+            <UlBullets>
+              {experience.details.map((detail, i) =>
+                <UlBullets.Li key={i}>{detail}</UlBullets.Li>
+              )}
+            </UlBullets>
+          </section>
         )}
-      </Section> */}
-    </article>
-  </div>
+      </div>
+    </Section>
+    
+    <Section heading='Projects'>
+      <div className={styles.projectList}>
+        {data.projects.map((project, i) =>
+          <section key={i}>
+            <p className={styles.headline}>
+              <span className={styles.name}>{project.name}</span>
+              <time className={styles.time}>{project.time}</time>
+            </p>
+            <UlBullets>
+              {project.details.map((detail, i) =>
+                <UlBullets.Li key={i}>{detail}</UlBullets.Li>
+              )}
+            </UlBullets>
+          </section>
+        )}
+      </div>
+    </Section>
+    
+    <Section heading='Skills'>
+      <div className={styles.skillsLists}>
+        {data.skills.lists.map((list, i) =>
+          <UlInline key={i}>
+            {list.map((skill, i) =>
+              <UlInline.LI key={i}>{skill}</UlInline.LI>
+            )}
+          </UlInline>
+        )}
+      </div>
+      <p>{data.skills.languages}</p>
+    </Section>
+    
+    {/* <Section heading='Activities & Awards'>
+      {resume.awards.map(award =>
+        <p>{award.name}<Time>{award.time}</Time></p>
+      )}
+    </Section> */}
+  </article>
 })
 
 export default Resume

@@ -61,6 +61,9 @@ function Layout({
     className={`
       ${layoutProps.backgroundContainsFlowLayout ? styles.bkgdFlow : styles.bkgdNoFlow}
       ${layoutProps.classes}
+      ${process.env.NEXT_PUBLIC_PRINT_RESUME == 'true'
+      ? 'print'
+      : 'web' }
     `}
     style={{ '--angle': `${layoutProps.skewAngle}deg` } as CSSProperties}
   >

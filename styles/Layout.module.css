@@ -34,6 +34,9 @@
   /* dev tools hover will prefer resume */
   z-index: -1;
 }
+:global(.print) .wrapper2 {
+  display: none;
+}
 .wrapper1 {
   display: flex;
   flex-direction: column;
@@ -235,6 +238,10 @@ children or the second one, depending on what page: */
   .nav {
     width: min-content;
   }
+}
+
+:global(.print) .nav {
+  display: none;
 }
 
 .navHidden .nav {

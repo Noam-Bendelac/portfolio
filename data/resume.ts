@@ -132,9 +132,9 @@ export const resume = {
   skills: {
     languages: 'Fluent in English and Hebrew',
     lists: [
-      ['Typescript', 'Javascript', 'Kotlin', 'HTML/CSS', 'GLSL', 'Rust', 'C', 'C++', 'Java', 'Python'],
-      ['React', 'Android', 'OpenGL', 'Three.js', 'Next.js', 'WebAssembly', 'Node.js', 'Git'],
-      ['Figma', 'Wireframing', 'MIDI', 'DSP', 'Arduino', 'Analog circuits', '3D CAD'],
+      ['Typescript', 'Javascript', 'Python', 'Java', 'Go', 'C', 'C++', 'HTML/CSS', 'C#', 'Kotlin', 'Rust'],
+      ['React', 'SQL', 'Android', 'Django', 'Next.js', 'Cloud', 'OpenGL', 'Three.js', 'Node.js'],
+      ['Figma', 'Wireframing', 'Git', 'Agile', 'MIDI', 'DSP', 'Arduino', 'Analog circuits', '3D CAD'],
     ],
   },
   // awards: [
