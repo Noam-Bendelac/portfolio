@@ -15,8 +15,10 @@ export const construct = <T extends any> (t: T) => t
 export const resume = {
   header: {
     name: 'Noam Bendelac',
-    email: 'bendelac.noam@gmail.com',
-    address: 'Chantilly, VA 20151',
+    contact: [
+      'bendelac.noam@gmail.com',
+      'Chantilly, VA 20151',
+    ],
     portfolio: Link('noambendelac.xyz'),
     github: Link('github.com/Noam-Bendelac'),
     linkedin: Link('linkedin.com/in/noam-bendelac'),
@@ -28,7 +30,7 @@ export const resume = {
     degrees: [
       {
         name: 'M.Eng. Computer Science',
-        details: 'Human Computer Interaction concentration',
+        details: 'Human Computer Interaction concentration, GPA 3.81',
         time: 'May 2023',
       },
       {
@@ -49,43 +51,57 @@ export const resume = {
   }],
   experience: [
     {
-      role: 'Android Software Engineering Intern',
       organization: 'WillowTree',
-      time: ['2021', '2022'],
-      details: [
-        'Implemented new features, architecture refactorings, and accessibility and performance fixes',
-        'Collaborated with client and in-house designers to refine requirements and implement designs',
-        'Communicated with agile teams of test engineers, product architects, and product owners',
-        'Utilized modern Android architecture, Kotlin Flow/Coroutines, Dagger, and RxJava',
-        'Contributed to an app with 10 million downloads for a Fortune 500 media company',
+      roles: [
+        {
+          title: 'Android Software Engineering Intern',
+          time: 'Jun\u2014Aug 2022',
+        },
+        {
+          title: 'Android Software Engineering Intern',
+          time: 'May\u2014Aug 2021',
+          details: [
+            'Implemented new features, architecture refactorings, and accessibility and performance fixes',
+            'Collaborated with client and in-house designers to refine requirements and implement designs',
+            'Communicated with agile teams of test engineers, product architects, and product owners',
+            'Utilized modern Android architecture, Kotlin Flow/Coroutines, Dagger, and RxJava',
+            'Contributed to an app with 10 million downloads for a Fortune 500 media company',
+          ],
+        },
       ],
     },
     {
-      role: 'Undergraduate Research Assistant',
       organization: 'Virginia Tech',
-      time: ['2019', '2021'],
-      details: [
-        'Developed a full-stack web app for an HCI study on improving collaborative playlists UX',
-        'Designed REST API and user interface to best facilitate user communication',
-      ],
+      roles: [{
+        title: 'Undergraduate Research Assistant',
+        time: 'Oct 2019\u2014Sep 2021',
+        details: [
+          'Developed a full-stack web app for an HCI study on improving collaborative playlists UX',
+          'Designed REST API and user interface to best facilitate user communication',
+        ],
+      }],
     },
     {
-      role: 'Software Engineering Intern',
       organization: 'Salesforce Inc',
-      time: '2020',
-      details: [
-        'Collaborated closely with another intern on in-app tabs auto-close feature',
-        'Reduced memory usage by 35% and improved tab-closing UX while maintaining accessibility',
-      ],
+      roles: [{
+        title: 'Software Engineering Intern',
+        time: 'May\u2014Aug 2020',
+        details: [
+          'Collaborated closely with another intern on in-app tabs auto-close feature',
+          'Reduced memory usage by 35% and improved tab-closing UX while maintaining accessibility',
+        ],
+      }],
     },
     {
-      role: 'Digital Signal Processing Intern',
       organization: 'CACI International Inc',
-      time: '2019',
-      details: [
-        'Created a UI to control a DSP system for a customer demo',
-        'Communicated with DSP engineers to translate technical information to client-friendly UX',
-      ],
+      roles: [{
+        title: 'Digital Signal Processing Intern',
+        time: 'May\u2014Aug 2019',
+        details: [
+          'Created a UI to control a DSP system for a customer demo',
+          'Communicated with DSP engineers to translate technical information to client-friendly UX',
+        ],
+      }],
     },
   ],
   projects: [

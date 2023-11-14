@@ -83,22 +83,24 @@ function Layout({
       </Head>
       {/* page override */}
       { layoutProps.head() }
-      <Nav animRef={animClassesRef} cleanupLayout={layoutProps.cleanupLayout} />
-      <div className={styles.wrapper2}>
-        <div className={styles.wrapper1}>
-          {/* TODO move array.map to Portfolio comp? and pass this div structure
-          through a function (item) => <div>{item}</div> */}
-          { [...Array(Portfolio.numItems)].map((_, i) =>
-            <div key={i} className={styles.block}>
-              <Portfolio.Item index={i} />
-              <div className={styles.backgroundWrapper}>
-                <div className={styles.background} />
+      { process.env.NEXT_PUBLIC_PRINT_RESUME != 'true' && <>
+        <Nav animRef={animClassesRef} cleanupLayout={layoutProps.cleanupLayout} />
+        <div className={styles.wrapper2}>
+          <div className={styles.wrapper1}>
+            {/* TODO move array.map to Portfolio comp? and pass this div structure
+            through a function (item) => <div>{item}</div> */}
+            { [...Array(Portfolio.numItems)].map((_, i) =>
+              <div key={i} className={styles.block}>
+                <Portfolio.Item index={i} />
+                <div className={styles.backgroundWrapper}>
+                  <div className={styles.background} />
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
-      </div>
-      <Home animRef={animClassesRef} />
+        <Home animRef={animClassesRef} />
+      </> }
       <Resume />
     </div>
   </div>

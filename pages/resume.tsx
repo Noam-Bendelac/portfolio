@@ -24,8 +24,7 @@ const ResumeMemo = memo(() => {
       <div className={styles.name}>
         <h1>{data.header.name}</h1>
         <p className={styles.details}>
-          <span>{data.header.email}</span>
-          <span>{data.header.address}</span>
+          { data.header.contact.map((c, i) => <span key={i}>{c}</span>) }
         </p>
       </div>
       <div className={styles.links}>
@@ -71,20 +70,20 @@ const ResumeMemo = memo(() => {
       <div className={styles.projectList}>
         {data.experience.map((experience, i) =>
           <section key={i}>
-            <p className={styles.headline}>
-              <span className={styles.name}>{experience.organization}</span>
-              <span>, {experience.role}</span>
-              <time className={styles.time}>
-                { Array.isArray(experience.time)
-                ? experience.time.join('\u2014')
-                : experience.time }
-              </time>
-            </p>
-            <UlBullets>
-              {experience.details.map((detail, i) =>
-                <UlBullets.Li key={i}>{detail}</UlBullets.Li>
-              )}
-            </UlBullets>
+            {experience.roles.map((role, i) => <div key={i}>
+              <p className={styles.headline}>
+                <span className={styles.name}>{experience.organization}</span>
+                <span>, {role.title}</span>
+                <time className={styles.time}>
+                  { role.time }
+                </time>
+              </p>
+              { role.details && <UlBullets>
+                {role.details.map((detail, i) =>
+                  <UlBullets.Li key={i}>{detail}</UlBullets.Li>
+                )}
+              </UlBullets> }
+            </div>)}
           </section>
         )}
       </div>

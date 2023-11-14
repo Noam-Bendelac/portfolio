@@ -97,7 +97,7 @@
   flex-direction: row;
   
   /* spacing before rest of page */
-  margin-bottom: 18pt;
+  margin-bottom: 17pt;
 }
 .header .name h1 {
   /* get top of text closer to page margin */
@@ -122,7 +122,7 @@
   /* for separators */
   position: relative;
   display: flex;
-  padding-block: 7pt;
+  padding-block: 6pt;
 }
 .section h2 {
   width: 87pt;
@@ -155,7 +155,7 @@
 .projectList {
   display: flex;
   flex-direction: column;
-  gap: 8pt;
+  gap: 7pt;
 }
 .projectList .headline {
   /* remove spaces between child spans */
