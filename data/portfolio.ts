@@ -65,7 +65,7 @@ export const portfolio: Project[] = [
     hash: 'classroom-captain',
     links: {
       github: 'https://github.com/Noam-Bendelac/classroom-captain',
-      demo: 'https://classroom-captain.noambendelac.xyz/',
+      demo: 'https://classroom-captain.noambendelac.xyz/demo',
     },
     pages: [{
       media: [{
