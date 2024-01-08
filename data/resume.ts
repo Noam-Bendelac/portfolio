@@ -19,11 +19,11 @@ export const resume = {
       'bendelac.noam@gmail.com',
       'Chantilly, VA 20151',
     ],
+    summary: 'Software engineer and UX designer looking for a full time role.',
     portfolio: Link('noambendelac.xyz'),
     github: Link('github.com/Noam-Bendelac'),
     linkedin: Link('linkedin.com/in/noam-bendelac'),
   },
-  summary: 'I am a software engineer and UX researcher who excels at rapid prototyping and production-ready code. I love working with other developers and designers to create seamless user experiences.',
   education: [{
     school: 'Virginia Tech',
     location: 'Blacksburg, VA',
@@ -31,16 +31,16 @@ export const resume = {
       {
         name: 'M.Eng. Computer Science',
         details: 'Human Computer Interaction concentration, GPA 3.81',
-        time: 'May 2023',
+        time: '2023',
       },
       {
         name: 'B.S. Computer Science',
         details: 'Human Computer Interaction minor, GPA 3.90',
-        time: 'May 2022',
+        time: '2022',
       },
     ],
     coursework: [
-      'Human Computer Systems',
+      'Human Computer Interaction',
       'Human Centered Design',
       'Virtual Reality',
       'Information Visualization',
@@ -62,9 +62,9 @@ export const resume = {
           time: 'May\u2014Aug 2021',
           details: [
             'Implemented new features, architecture refactorings, and accessibility and performance fixes',
-            'Collaborated with client and in-house designers to refine requirements and implement designs',
-            'Communicated with agile teams of test engineers, product architects, and product owners',
             'Utilized modern Android architecture, Kotlin Flow/Coroutines, Dagger, and RxJava',
+            'Collaborated with client and in-house designers to refine requirements and implement designs',
+            // 'Participated in scrum process and code review of my pull requests',
             'Contributed to an app with 10 million downloads for a Fortune 500 media company',
           ],
         },
@@ -73,11 +73,14 @@ export const resume = {
     {
       organization: 'Virginia Tech',
       roles: [{
-        title: 'Undergraduate Research Assistant',
+        title: 'Research Assistant',
         time: 'Oct 2019\u2014Sep 2021',
+        github: 'https://github.com/echo-lab/collab-playlist',
         details: [
-          'Developed a full-stack web app for an HCI study on improving collaborative playlists UX',
-          'Designed REST API and user interface to best facilitate user communication',
+          'Sole developer on full-stack web app for an HCI study on collaborative playlists UX',
+          'Created a React frontend and a Node.js REST API using MongoDB that interfaces with Spotify API',
+          'Tracked issues and 4000 lines of code in GitHub to report progress to client',
+          'Designed variants of UI to compare improvements to asynchronous user communication',
         ],
       }],
     },
@@ -87,37 +90,40 @@ export const resume = {
         title: 'Software Engineering Intern',
         time: 'May\u2014Aug 2020',
         details: [
-          'Collaborated closely with another intern on in-app tabs auto-close feature',
-          'Reduced memory usage by 35% and improved tab-closing UX while maintaining accessibility',
+          'Added in-app tabs auto-closing in a legacy in-house pre-ES6 JS framework',
+          'Reduced memory usage by 35%; Improved tab-closing UX while meeting accessibility standards',
         ],
       }],
     },
     {
       organization: 'CACI International Inc',
       roles: [{
-        title: 'Digital Signal Processing Intern',
+        title: 'DSP Software Intern',
         time: 'May\u2014Aug 2019',
         details: [
-          'Created a UI to control a DSP system for a customer demo',
-          'Communicated with DSP engineers to translate technical information to client-friendly UX',
+          'Created a Python UI to control a DSP system for a customer sales demo',
+          'Translated DSP engineers\' technical jargon to client-friendly user flow',
         ],
       }],
     },
   ],
   projects: [
     {
-      name: 'ISE Department Website UX Research and Redesign',
+      name: 'ISE Engineering Department Website UX Research and Redesign',
       time: '2023',
       details: [
-        'Ran competitive analysis and focus groups with faculty; Redesigned info arch and wireframes',
-        'Provided the department\'s designer with deliverables of research and solutions at their request',
+        'Ran competitive analysis and faculty focus groups; Redesigned info architecture and wireframes',
+        // 'Presented research and solutions to the department\'s designer at their request to jumpstart their work',
+        'Department\'s full time designer used my research and potential solutions to jumpstart their work',
       ],
     },
     {
       name: 'Classroom Captain: Interactive 3D Diagrams for Hybrid Classrooms',
       time: '2022',
+      github: 'https://github.com/Noam-Bendelac/classroom-captain',
       details: [
-        'Designed and built an educational tool with teacher-student multiplayer control using websockets'
+        'Designed and built 3D diagrams for STEM subjects using Figma, Node, React, and Three.js',
+        'Created an HTTP and WebSocket server to give teachers and students multiplayer control'
       ],
     },
     {
@@ -132,6 +138,7 @@ export const resume = {
     {
       name: 'Spatial Audio Design Editor',
       time: '2022',
+      github: 'https://github.com/Noam-Bendelac/spatial-audio-designer',
       details: [
         'Designed and implemented a 3D spatial audio editor and visualizer using Three.js and shaders',
       ],
@@ -148,8 +155,8 @@ export const resume = {
   skills: {
     languages: 'Fluent in English and Hebrew',
     lists: [
-      ['Typescript', 'Javascript', 'Python', 'Java', 'Go', 'C', 'C++', 'HTML/CSS', 'C#', 'Kotlin', 'Rust'],
-      ['React', 'SQL', 'Android', 'Django', 'Next.js', 'Cloud', 'OpenGL', 'Three.js', 'Node.js'],
+      ['Typescript', 'Javascript', 'Python', 'Java', 'C', 'C++', 'Kotlin', 'Go', 'Rust', 'C#', 'HTML/CSS'],
+      ['React', 'SQL', 'Next.js', 'Android', 'Django', 'Cloud', 'OpenGL', 'Three.js', 'Node.js'],
       ['Figma', 'Wireframing', 'Git', 'Agile', 'MIDI', 'DSP', 'Arduino', 'Analog circuits', '3D CAD'],
     ],
   },

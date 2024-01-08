@@ -107,6 +107,10 @@
 .header .name .details {
   display: flex;
   gap: 10pt;
+  margin-bottom: 4pt;
+}
+.header .name .summary {
+  font-weight: 600;
 }
 .header .links {
   /* get top of text closer to page margin */
@@ -163,6 +167,18 @@
 }
 .projectList .name {
   font-weight: bold;
+}
+.githubContainer {
+  height: 12px;
+  margin-left: 1.3ex;
+}
+.github {
+  width: 18px;
+  height: 18px;
+  /* technically same color as links */
+  /* filter: brightness(1.6) hue-rotate(-2deg) saturate(2.4); */
+  /* feels more like it matches the links */
+  filter: brightness(1.8) hue-rotate(0deg) saturate(1.7);
 }
 
 

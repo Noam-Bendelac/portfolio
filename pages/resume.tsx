@@ -5,7 +5,9 @@ import layoutStyles from '../styles/Layout.module.css'
 import { NextPageWithLayout } from './_app'
 import Head from 'next/head'
 import { delay } from '../util'
+import github from '../images/github-mark.svg'
 import { A } from '../components/A'
+import Image from 'next/image'
 
 
 // export async function getStaticProps() {
@@ -26,6 +28,7 @@ const ResumeMemo = memo(() => {
         <p className={styles.details}>
           { data.header.contact.map((c, i) => <span key={i}>{c}</span>) }
         </p>
+        <p className={styles.summary}>{data.header.summary}</p>
       </div>
       <div className={styles.links}>
         
@@ -41,9 +44,9 @@ const ResumeMemo = memo(() => {
       </div>
     </header>
     
-    <Section heading='Summary'>
+    {/* <Section heading='Summary'>
       <p>{data.summary}</p>
-    </Section>
+    </Section> */}
     <Section heading='Education'>
       {data.education.map((education, i) => <div key={i}>
         <p><b>{education.school}</b>, {education.location}</p>
@@ -74,6 +77,16 @@ const ResumeMemo = memo(() => {
               <p className={styles.headline}>
                 <span className={styles.name}>{experience.organization}</span>
                 <span>, {role.title}</span>
+                { role.github && <A
+                  href={role.github}
+                  className={styles.githubContainer}
+                >
+                  <Image
+                    src={github}
+                    alt="GitHub Project"
+                    className={styles.github}
+                  />
+                </A> }
                 <time className={styles.time}>
                   { role.time }
                 </time>
@@ -84,24 +97,6 @@ const ResumeMemo = memo(() => {
                 )}
               </UlBullets> }
             </div>)}
-          </section>
-        )}
-      </div>
-    </Section>
-    
-    <Section heading='Projects'>
-      <div className={styles.projectList}>
-        {data.projects.map((project, i) =>
-          <section key={i}>
-            <p className={styles.headline}>
-              <span className={styles.name}>{project.name}</span>
-              <time className={styles.time}>{project.time}</time>
-            </p>
-            <UlBullets>
-              {project.details.map((detail, i) =>
-                <UlBullets.Li key={i}>{detail}</UlBullets.Li>
-              )}
-            </UlBullets>
           </section>
         )}
       </div>
@@ -119,6 +114,35 @@ const ResumeMemo = memo(() => {
       </div>
       <p>{data.skills.languages}</p>
     </Section>
+    
+    <Section heading='Projects'>
+      <div className={styles.projectList}>
+        {data.projects.map((project, i) =>
+          <section key={i}>
+            <p className={styles.headline}>
+              <span className={styles.name}>{project.name}</span>
+              { project.github && <A
+                href={project.github}
+                className={styles.githubContainer}
+              >
+                <Image
+                  src={github}
+                  alt="GitHub Project"
+                  className={styles.github}
+                />
+              </A> }
+              <time className={styles.time}>{project.time}</time>
+            </p>
+            <UlBullets>
+              {project.details.map((detail, i) =>
+                <UlBullets.Li key={i}>{detail}</UlBullets.Li>
+              )}
+            </UlBullets>
+          </section>
+        )}
+      </div>
+    </Section>
+    
     
     {/* <Section heading='Activities & Awards'>
       {resume.awards.map(award =>
