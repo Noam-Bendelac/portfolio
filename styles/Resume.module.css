@@ -108,6 +108,7 @@
   background: hsla(187, 100%, 33%, 25%);
   /* a highlighter goes on top of text, but only darkens/filters light */
   mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
 
@@ -197,7 +198,11 @@
 } */
 .githubContainer {
   height: 12px;
-  margin-left: 1.3ex;
+  margin-left: 1.6ex;
+  /* center child, overflow hitbox */
+  width: 12px;
+  display: flex;
+  justify-content: center;
 }
 .github {
   width: 18px;
@@ -215,7 +220,7 @@
 
 .time {
   font-style: italic;
-  margin-left: 1.3ex;
+  margin-left: 1.6ex;
 }
 
 

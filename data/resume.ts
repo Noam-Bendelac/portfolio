@@ -101,12 +101,22 @@ export const resume = {
   ],
   projects: [
     {
-      name: 'ISE Engineering Department Website UX Research and Redesign',
+      name: 'noambendelac.xyz Web Portfolio and Resume',
       time: '2023',
+      github: 'https://github.com/Noam-Bendelac/portfolio',
       details: [
-        paragraph`Ran ${Emphasis('competitive analysis')} and faculty ${Emphasis('focus groups')}; Redesigned ${Emphasis('info architecture')} and ${Emphasis('wireframes')}`,
-        // 'Presented research and solutions to the department\'s designer at their request to jumpstart their work',
-        'Department\'s full time designer used my research and potential solutions to jumpstart their work',
+        paragraph`Implemented this resume and my portfolio in ${Emphasis('Next.js')} and designed in ${Emphasis('Figma')}`,
+        paragraph`Optimized ${Emphasis('CSS animations')} by using only compositor properties and separating from ${Emphasis('React')} renders`,
+      ],
+    },
+    {
+      name: 'Piano Performance Visualization - Team Leader',
+      time: '2023',
+      github: 'https://github.com/Noam-Bendelac/piano-viz',
+      details: [
+        paragraph`Led design and development of a visualization of piano pitch, rhythm, loudness, and tempo`,
+        paragraph`Modified Needleman-Wunsch ${Emphasis('algorithm')} to match played and expected notes with error tolerance`,
+        paragraph`Optimized ${Emphasis('performance')}-critical compute and ${Emphasis('Three.js')} state updates to not be slowed by ${Emphasis('React')}`,
       ],
     },
     {
@@ -116,16 +126,7 @@ export const resume = {
       details: [
         paragraph`Designed and built a STEM education app in ${Emphasis('Figma')}, ${Emphasis('Node')}, ${Emphasis('Typescript')}, ${Emphasis('React')}, and ${Emphasis('Three.js')}`,
         paragraph`Created 3D diagrams for physics and calculus, and ${Emphasis('procedural geometry')} of user-defined math`,
-        paragraph`Developed a ${Emphasis('full-stack')} ${Emphasis('HTTP')} and ${Emphasis('WebSocket')} server to let teachers and students interact`
-      ],
-    },
-    {
-      name: 'Amateur Filmmaking App UX Research, Design, and Evaluation - Team Leader',
-      time: '2022',
-      details: [
-        paragraph`Conducted ${Emphasis('UX interviews')} and ${Emphasis('observations')} of filmmakers to study workflow and user needs`,
-        paragraph`Iterated ${Emphasis('low-fi wireframes')} and ${Emphasis('high-fi prototype')} of improved film schedule optimization workflow`,
-        paragraph`Ran a ${Emphasis('Wizard of Oz')} user test on a data- and decision-centric user flow that ${Emphasis('Figma')} couldn\'t support`,
+        paragraph`Developed a ${Emphasis('full-stack')} ${Emphasis('HTTP')} and ${Emphasis('WebSocket')} server to let teachers and students interact`,
       ],
     },
     {
@@ -135,7 +136,25 @@ export const resume = {
       details: [
         paragraph`Designed and implemented a 3D spatial audio editor using ${Emphasis('React')}, ${Emphasis('Typescript')}, and ${Emphasis('Three.js')}`,
         paragraph`Visualized spatial audio fields heatmap following the Web Audio standard in a custom ${Emphasis('GLSL shader')}`,
-        'Helped teach teammates React and Three.js. Won Capstone Industry Sponsor Award'
+        'Helped teach teammates React and Three.js. Won Capstone Industry Sponsor Award',
+      ],
+    },
+    {
+      name: 'ISE Engineering Department Website UX Research and Redesign',
+      time: '2023',
+      details: [
+        paragraph`Ran ${Emphasis('competitive analysis')} and faculty ${Emphasis('focus groups')}; Redesigned ${Emphasis('info architecture')} and ${Emphasis('wireframes')}`,
+        // 'Presented research and solutions to the department\'s designer at their request to jumpstart their work',
+        'Department\'s full time designer used my research and potential solutions to jumpstart their work',
+      ],
+    },
+    {
+      name: 'Amateur Filmmaking App UX Research, Design, and Evaluation - Team Leader',
+      time: '2022',
+      details: [
+        paragraph`Conducted ${Emphasis('UX interviews')} and ${Emphasis('observations')} of filmmakers to study workflow and user needs`,
+        paragraph`Iterated ${Emphasis('low-fi wireframes')} and ${Emphasis('high-fi prototype')} of improved film schedule optimization workflow`,
+        paragraph`Ran a ${Emphasis('Wizard of Oz')} user test on a data- and decision-centric user flow that ${Emphasis('Figma')} couldn\'t support`,
       ],
     },
     {
