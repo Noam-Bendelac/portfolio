@@ -27,7 +27,9 @@
 }
 
 :global(.print) .resume {
-  height: 11in;
+  /* height: 11in; */
+  /* no css padding because padding will be added to both pages in print dialog */
+  padding-top: 0;
 }
 :global(.web) .resume {
   margin: 80px auto;
@@ -101,13 +103,16 @@
   bottom: -0.5pt;
   left: -0.5pt;
   right: -0.5pt;
-  height: 2.3pt;
+  /* height: 2.3pt; */
+  border-width: 0;
+  /* border needs 3.2px-3.6px to look same as 2.3pt~2.7px height weirdly */
+  border-bottom: solid 3.0px hsla(187, 100%, 33%, 25%);
   z-index: 1;
   content: '';
   /* background: linear-gradient(hsla(187, 100%, 33%, 0%), hsla(187, 100%, 33%, 25%)); */
-  background: hsla(187, 100%, 33%, 25%);
+  /* background: hsla(187, 100%, 33%, 25%); */
   /* a highlighter goes on top of text, but only darkens/filters light */
-  mix-blend-mode: multiply;
+  /* mix-blend-mode: multiply; */
   pointer-events: none;
 }
 
@@ -119,7 +124,7 @@
   flex-direction: row;
   
   /* spacing before rest of page */
-  margin-bottom: 17pt;
+  margin-bottom: 10pt;
   
   /* font-family: 'Cabin', sans-serif; */
   /* font-size: 10pt; */
@@ -154,7 +159,7 @@
   /* for separators */
   position: relative;
   display: flex;
-  padding-block: 6pt;
+  padding-block: 5pt;
 }
 .section h2 {
   width: 84pt;
@@ -187,7 +192,10 @@
 .projectList {
   display: flex;
   flex-direction: column;
-  gap: 7pt;
+  gap: 6pt;
+}
+.projectList .item {
+  page-break-inside: avoid;
 }
 .projectList .headline {
   /* remove spaces between child spans */

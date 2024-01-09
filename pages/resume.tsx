@@ -121,7 +121,7 @@ const ResumeMemo = memo(() => {
     <Section heading='Projects'>
       <div className={styles.projectList}>
         {data.projects.map((project, i) =>
-          <section key={i}>
+          <section key={i} className={styles.item}>
             <p className={styles.headline}>
               <span className={styles.name}><b>{project.name}</b></span>
               { project.github && <A
