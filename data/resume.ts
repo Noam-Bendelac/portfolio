@@ -120,6 +120,15 @@ export const resume = {
       ],
     },
     {
+      name: 'Third Person Perspective in Virtual Reality',
+      time: '2023',
+      github: 'https://github.com/Noam-Bendelac/3rd-person-vr',
+      details: [
+        paragraph`Prototyped control schemes and game mechanics for 3rd person exocentric ${Emphasis('VR')} in ${Emphasis('Unity')} and ${Emphasis('C#')}`,
+        paragraph`Ran informal ${Emphasis('user study')} on 3rd person VR design challenges like cybersickness and clipping`
+      ],
+    },
+    {
       name: 'Classroom Captain: Interactive 3D Diagrams for Hybrid Classrooms - Team Leader',
       time: '2022',
       github: 'https://github.com/Noam-Bendelac/classroom-captain',
