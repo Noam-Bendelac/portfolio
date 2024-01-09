@@ -158,12 +158,20 @@ export const resume = {
       ],
     },
     {
-      name: 'Amateur Filmmaking App UX Research, Design, and Evaluation - Team Leader',
+      name: 'Filmmakers Club UX Research, Design, and Evaluation - Team Leader',
       time: '2022',
       details: [
-        paragraph`Conducted ${Emphasis('UX interviews')} and ${Emphasis('observations')} of filmmakers to study workflow and user needs`,
+        paragraph`Conducted ${Emphasis('UX interviews')}, ${Emphasis('observations')}, and ${Emphasis('artifact flow model')} of filmmakers to study user needs`,
         paragraph`Iterated ${Emphasis('low-fi wireframes')} and ${Emphasis('high-fi prototype')} of improved film schedule optimization workflow`,
         paragraph`Ran a ${Emphasis('Wizard of Oz')} user test on a data- and decision-centric user flow that ${Emphasis('Figma')} couldn\'t support`,
+      ],
+    },
+    {
+      name: 'Amateur Stargazing App UX Research, Design, and Evaluation',
+      time: '2021',
+      details: [
+        paragraph`Conducted ${Emphasis('UX interviews')}, ${Emphasis('observations')}, and ${Emphasis('affinity diagramming')} of shared outdoor campus space`,
+        paragraph`Designed stargazing app ${Emphasis('mockups')} and ran a ${Emphasis('cognitive walkthrough evaluation')} with target users`,
       ],
     },
     {
