@@ -8,6 +8,7 @@ import { delay } from '../util'
 import github from '../images/github-mark.svg'
 import { A } from '../components/A'
 import Image from 'next/image'
+import { Paragraph } from '../components/Paragraph'
 
 
 // export async function getStaticProps() {
@@ -75,7 +76,7 @@ const ResumeMemo = memo(() => {
           <section key={i}>
             {experience.roles.map((role, i) => <div key={i}>
               <p className={styles.headline}>
-                <span className={styles.name}>{experience.organization}</span>
+                <span className={styles.name}><b>{experience.organization}</b></span>
                 <span>, {role.title}</span>
                 { role.github && <A
                   href={role.github}
@@ -93,7 +94,9 @@ const ResumeMemo = memo(() => {
               </p>
               { role.details && <UlBullets>
                 {role.details.map((detail, i) =>
-                  <UlBullets.Li key={i}>{detail}</UlBullets.Li>
+                  <UlBullets.Li key={i}>
+                    <Paragraph emphasisClassName={styles.keyword}>{detail}</Paragraph>
+                  </UlBullets.Li>
                 )}
               </UlBullets> }
             </div>)}
@@ -120,7 +123,7 @@ const ResumeMemo = memo(() => {
         {data.projects.map((project, i) =>
           <section key={i}>
             <p className={styles.headline}>
-              <span className={styles.name}>{project.name}</span>
+              <span className={styles.name}><b>{project.name}</b></span>
               { project.github && <A
                 href={project.github}
                 className={styles.githubContainer}
@@ -135,7 +138,9 @@ const ResumeMemo = memo(() => {
             </p>
             <UlBullets>
               {project.details.map((detail, i) =>
-                <UlBullets.Li key={i}>{detail}</UlBullets.Li>
+                <UlBullets.Li key={i}>
+                  <Paragraph emphasisClassName={styles.keyword}>{detail}</Paragraph>
+                </UlBullets.Li>
               )}
             </UlBullets>
           </section>

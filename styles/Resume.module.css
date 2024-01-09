@@ -81,13 +81,34 @@
 
 .a {
   color: hsl(187, 100%, 33%);
-  font-weight: bold;
+  font-weight: 650;
 }
 :global(.print) .a:visited {
   /* default of unclicked link */
   color: hsl(187, 100%, 33%);
 }
 
+
+.resume b {
+  font-weight: 650;
+}
+.resume .keyword {
+  font-style: normal;
+  position: relative;
+}
+.resume .keyword::before {
+  position: absolute;
+  bottom: -0.5pt;
+  left: -0.5pt;
+  right: -0.5pt;
+  height: 2.3pt;
+  z-index: 1;
+  content: '';
+  /* background: linear-gradient(hsla(187, 100%, 33%, 0%), hsla(187, 100%, 33%, 25%)); */
+  background: hsla(187, 100%, 33%, 25%);
+  /* a highlighter goes on top of text, but only darkens/filters light */
+  mix-blend-mode: multiply;
+}
 
 
 
@@ -98,19 +119,25 @@
   
   /* spacing before rest of page */
   margin-bottom: 17pt;
+  
+  /* font-family: 'Cabin', sans-serif; */
+  /* font-size: 10pt; */
+  /* letter-spacing: 110%; */
 }
 .header .name h1 {
   /* get top of text closer to page margin */
   margin-top: -3.7pt;
-  margin-bottom: 4pt;
+  margin-bottom: 3pt;
 }
 .header .name .details {
   display: flex;
   gap: 10pt;
-  margin-bottom: 4pt;
+  margin-bottom: 3pt;
 }
 .header .name .summary {
-  font-weight: 600;
+  font-weight: 650;
+  /* font-family: 'Cabin', sans-serif;
+  letter-spacing: 0.01ex; */
 }
 .header .links {
   /* get top of text closer to page margin */
@@ -129,7 +156,7 @@
   padding-block: 6pt;
 }
 .section h2 {
-  width: 87pt;
+  width: 84pt;
 }
 .section .content {
   flex: 1;
@@ -165,9 +192,9 @@
   /* remove spaces between child spans */
   display: flex;
 }
-.projectList .name {
+/* .projectList .name {
   font-weight: bold;
-}
+} */
 .githubContainer {
   height: 12px;
   margin-left: 1.3ex;
@@ -178,7 +205,11 @@
   /* technically same color as links */
   /* filter: brightness(1.6) hue-rotate(-2deg) saturate(2.4); */
   /* feels more like it matches the links */
-  filter: brightness(1.8) hue-rotate(0deg) saturate(1.7);
+  filter: brightness(1.7) hue-rotate(0deg) saturate(1.5);
+  transition: filter 100ms
+}
+.github:hover {
+  filter: brightness(2.1) hue-rotate(0deg) saturate(1.4);
 }
 
 

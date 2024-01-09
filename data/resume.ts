@@ -1,16 +1,8 @@
+import { Emphasis, Link, paragraph } from '../components/Paragraph'
 
 
 
-export type Link = {
-  href: string,
-  display: string,
-}
-export const Link = (display: string): Link => ({
-  href: `https://${display}`,
-  display
-})
 
-export const construct = <T extends any> (t: T) => t
 
 export const resume = {
   header: {
@@ -61,8 +53,8 @@ export const resume = {
           title: 'Android Software Engineering Intern',
           time: 'May\u2014Aug 2021',
           details: [
-            'Implemented new features, architecture refactorings, and accessibility and performance fixes',
-            'Utilized modern Android architecture, Kotlin Flow/Coroutines, Dagger, and RxJava',
+            paragraph`Implemented new features, ${Emphasis('architecture')} refactorings, and ${Emphasis('accessibility')} and ${Emphasis('performance')} fixes`,
+            paragraph`Utilized modern ${Emphasis('Android')} architecture, ${Emphasis('Kotlin')} Flow/Coroutines, Dagger, and RxJava`,
             'Collaborated with client and in-house designers to refine requirements and implement designs',
             // 'Participated in scrum process and code review of my pull requests',
             'Contributed to an app with 10 million downloads for a Fortune 500 media company',
@@ -77,8 +69,8 @@ export const resume = {
         time: 'Oct 2019\u2014Sep 2021',
         github: 'https://github.com/echo-lab/collab-playlist',
         details: [
-          'Sole developer on full-stack web app for an HCI study on collaborative playlists UX',
-          'Created a React frontend and a Node.js REST API using MongoDB that interfaces with Spotify API',
+          paragraph`Sole developer on ${Emphasis('full-stack')} web app for an HCI study on collaborative playlists UX`,
+          paragraph`Created a ${Emphasis('React')}/${Emphasis('Typescript')} frontend and a ${Emphasis('Node.js')} ${Emphasis('REST')} API using ${Emphasis('MongoDB')} and Spotify API`,
           'Tracked issues and 4000 lines of code in GitHub to report progress to client',
           'Designed variants of UI to compare improvements to asynchronous user communication',
         ],
@@ -90,8 +82,8 @@ export const resume = {
         title: 'Software Engineering Intern',
         time: 'May\u2014Aug 2020',
         details: [
-          'Added in-app tabs auto-closing in a legacy in-house pre-ES6 JS framework',
-          'Reduced memory usage by 35%; Improved tab-closing UX while meeting accessibility standards',
+          paragraph`Added in-app tabs auto-closing in a legacy in-house pre-ES6 ${Emphasis('Javascript')} framework`,
+          paragraph`Reduced memory usage by 35%; Improved tab-closing ${Emphasis('UX')} while meeting ${Emphasis('accessibility')} standards`,
         ],
       }],
     },
@@ -101,7 +93,7 @@ export const resume = {
         title: 'DSP Software Intern',
         time: 'May\u2014Aug 2019',
         details: [
-          'Created a Python UI to control a DSP system for a customer sales demo',
+          paragraph`Created a ${Emphasis('Python')} UI to control a DSP system for a customer sales demo`,
           'Translated DSP engineers\' technical jargon to client-friendly user flow',
         ],
       }],
@@ -112,42 +104,45 @@ export const resume = {
       name: 'ISE Engineering Department Website UX Research and Redesign',
       time: '2023',
       details: [
-        'Ran competitive analysis and faculty focus groups; Redesigned info architecture and wireframes',
+        paragraph`Ran ${Emphasis('competitive analysis')} and faculty ${Emphasis('focus groups')}; Redesigned ${Emphasis('info architecture')} and ${Emphasis('wireframes')}`,
         // 'Presented research and solutions to the department\'s designer at their request to jumpstart their work',
         'Department\'s full time designer used my research and potential solutions to jumpstart their work',
       ],
     },
     {
-      name: 'Classroom Captain: Interactive 3D Diagrams for Hybrid Classrooms',
+      name: 'Classroom Captain: Interactive 3D Diagrams for Hybrid Classrooms - Team Leader',
       time: '2022',
       github: 'https://github.com/Noam-Bendelac/classroom-captain',
       details: [
-        'Designed and built 3D diagrams for STEM subjects using Figma, Node, React, and Three.js',
-        'Created an HTTP and WebSocket server to give teachers and students multiplayer control'
+        paragraph`Designed and built a STEM education app in ${Emphasis('Figma')}, ${Emphasis('Node')}, ${Emphasis('Typescript')}, ${Emphasis('React')}, and ${Emphasis('Three.js')}`,
+        paragraph`Created 3D diagrams for physics and calculus, and ${Emphasis('procedural geometry')} of user-defined math`,
+        paragraph`Developed a ${Emphasis('full-stack')} ${Emphasis('HTTP')} and ${Emphasis('WebSocket')} server to let teachers and students interact`
       ],
     },
     {
-      name: 'Amateur Filmmaking Application UX Research, Design, and Evaluation',
+      name: 'Amateur Filmmaking App UX Research, Design, and Evaluation - Team Leader',
       time: '2022',
       details: [
-        'Conducted UX interviews and observations of filmmakers to study workflow and user needs',
-        'Iterated low-fi wireframes and a high-fi prototype to improve production workflow',
-        'Ran a Wizard of Oz user test on a data- and decision-centric user flow that Figma couldn\'t support',
+        paragraph`Conducted ${Emphasis('UX interviews')} and ${Emphasis('observations')} of filmmakers to study workflow and user needs`,
+        paragraph`Iterated ${Emphasis('low-fi wireframes')} and ${Emphasis('high-fi prototype')} of improved film schedule optimization workflow`,
+        paragraph`Ran a ${Emphasis('Wizard of Oz')} user test on a data- and decision-centric user flow that ${Emphasis('Figma')} couldn\'t support`,
       ],
     },
     {
-      name: 'Spatial Audio Design Editor',
+      name: 'Spatial Audio Design Editor - Team Leader',
       time: '2022',
       github: 'https://github.com/Noam-Bendelac/spatial-audio-designer',
       details: [
-        'Designed and implemented a 3D spatial audio editor and visualizer using Three.js and shaders',
+        paragraph`Designed and implemented a 3D spatial audio editor using ${Emphasis('React')}, ${Emphasis('Typescript')}, and ${Emphasis('Three.js')}`,
+        paragraph`Visualized spatial audio fields heatmap following the Web Audio standard in a custom ${Emphasis('GLSL shader')}`,
+        'Helped teach teammates React and Three.js. Won Capstone Industry Sponsor Award'
       ],
     },
     {
       name: 'Classmate Finder Google Forms Plugin',
       time: '2019',
       details: [
-        'Volunteered to develop a Google Forms plugin that connects students in the same courses',
+        paragraph`Volunteered to develop a ${Emphasis('Javascript')} tool that connects students in the same courses`,
         'Helped my on-campus residence community make connections during the Covid-19 pandemic',
       ],
     },

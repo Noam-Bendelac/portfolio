@@ -8,6 +8,7 @@ import Head from 'next/head'
 import { delay } from '../util'
 import github from '../images/github-mark.svg'
 import { A } from '../components/A'
+import { Paragraph } from '../components/Paragraph'
 
 
 
@@ -146,15 +147,7 @@ export function Item({ index }: { index: number }) {
         <div className={styles.description}>
           {page.description.map((desc, i) =>
             <p key={i}>
-              {desc.map((t, j) =>
-                <span key={j}>{
-                  typeof t === 'string'
-                  ? <span>{t}</span>
-                  : <A href={t.href} className={styles.a}>
-                      {t.display}
-                    </A>
-                }</span>
-              )}
+              <Paragraph linkClassName={styles.a}>{desc}</Paragraph>
             </p>
           )}
         </div>
