@@ -10,8 +10,9 @@ export const resume = {
     contact: [
       'bendelac.noam@gmail.com',
       'Chantilly, VA 20151',
+      'US Citizen',
     ],
-    summary: 'Software engineer and UX designer looking for a full time role.',
+    summary: 'Software engineer and UX designer seeking a full time role.',
     portfolio: Link('noambendelac.xyz'),
     github: Link('github.com/Noam-Bendelac'),
     linkedin: Link('linkedin.com/in/noam-bendelac'),
@@ -22,12 +23,12 @@ export const resume = {
     degrees: [
       {
         name: 'M.Eng. Computer Science',
-        details: 'Human Computer Interaction concentration, GPA 3.81',
+        details: 'Human Computer Interaction concentration, GPA 3.81/4.0',
         time: '2023',
       },
       {
         name: 'B.S. Computer Science',
-        details: 'Human Computer Interaction minor, GPA 3.90',
+        details: 'Human Computer Interaction minor, GPA 3.90/4.0',
         time: '2022',
       },
     ],
@@ -54,8 +55,8 @@ export const resume = {
           time: 'May\u2014Aug 2021',
           details: [
             paragraph`Implemented new features, ${Emphasis('architecture')} refactorings, and ${Emphasis('accessibility')} and ${Emphasis('performance')} fixes`,
-            paragraph`Utilized modern ${Emphasis('Android')} architecture, ${Emphasis('Kotlin')} Flow/Coroutines, Dagger, and RxJava`,
-            'Collaborated with client and in-house designers to refine requirements and implement designs',
+            paragraph`Utilized modern ${Emphasis('Android')} architecture, ${Emphasis('Kotlin')} Flow/Coroutines, Dagger, and ${Emphasis('RxJava')}`,
+            paragraph`Collaborated with client and in-house ${Emphasis('designers')} to refine requirements and implement designs`,
             // 'Participated in scrum process and code review of my pull requests',
             'Contributed to an app with 10 million downloads for a Fortune 500 media company',
           ],
@@ -72,7 +73,7 @@ export const resume = {
           paragraph`Sole developer on ${Emphasis('full-stack')} web app for an HCI study on collaborative playlists UX`,
           paragraph`Created a ${Emphasis('React')}/${Emphasis('Typescript')} frontend and a ${Emphasis('Node.js')} ${Emphasis('REST')} API using ${Emphasis('MongoDB')} and Spotify API`,
           'Tracked issues and 4000 lines of code in GitHub to report progress to client',
-          'Designed variants of UI to compare improvements to asynchronous user communication',
+          paragraph`${Emphasis('Designed')} variants of UI to compare improvements to asynchronous user communication`,
         ],
       }],
     },
@@ -83,7 +84,7 @@ export const resume = {
         time: 'May\u2014Aug 2020',
         details: [
           paragraph`Added in-app tabs auto-closing in a legacy in-house pre-ES6 ${Emphasis('Javascript')} framework`,
-          paragraph`Reduced memory usage by 35%; Improved tab-closing ${Emphasis('UX')} while meeting ${Emphasis('accessibility')} standards`,
+          paragraph`Reduced memory usage by 35%. Improved tab-closing ${Emphasis('UX')} while meeting ${Emphasis('accessibility')} standards`,
         ],
       }],
     },
@@ -94,7 +95,7 @@ export const resume = {
         time: 'May\u2014Aug 2019',
         details: [
           paragraph`Created a ${Emphasis('Python')} UI to control a DSP system for a customer sales demo`,
-          'Translated DSP engineers\' technical jargon to client-friendly user flow',
+          paragraph`Translated ${Emphasis('DSP')} engineers\' technical jargon to client-friendly user flow`,
         ],
       }],
     },
@@ -105,7 +106,7 @@ export const resume = {
       time: '2023',
       github: 'https://github.com/Noam-Bendelac/portfolio',
       details: [
-        paragraph`Implemented this resume and my portfolio in ${Emphasis('Next.js')} and designed in ${Emphasis('Figma')}`,
+        paragraph`Implemented this resume and a personal portfolio in ${Emphasis('Next.js')} and designed in ${Emphasis('Figma')}`,
         paragraph`Optimized ${Emphasis('CSS animations')} by using only compositor properties and separating from ${Emphasis('React')} renders`,
       ],
     },
@@ -114,7 +115,7 @@ export const resume = {
       time: '2023',
       github: 'https://github.com/Noam-Bendelac/piano-viz',
       details: [
-        paragraph`Led design and development of a visualization of piano pitch, rhythm, loudness, and tempo`,
+        paragraph`Led design and development of a ${Emphasis('frontend')} app visualizing piano pitch, rhythm, volume, and tempo`,
         paragraph`Modified Needleman-Wunsch ${Emphasis('algorithm')} to match played and expected notes with error tolerance`,
         paragraph`Optimized ${Emphasis('performance')}-critical compute and ${Emphasis('Three.js')} state updates to not be slowed by ${Emphasis('React')}`,
       ],
@@ -125,36 +126,36 @@ export const resume = {
       github: 'https://github.com/Noam-Bendelac/3rd-person-vr',
       details: [
         paragraph`Prototyped control schemes and game mechanics for 3rd person exocentric ${Emphasis('VR')} in ${Emphasis('Unity')} and ${Emphasis('C#')}`,
-        paragraph`Ran informal ${Emphasis('user study')} on 3rd person VR design challenges like cybersickness and clipping`
+        paragraph`Ran ${Emphasis('user study')} on 3rd person VR design challenges like cybersickness and camera clipping`
       ],
     },
     {
-      name: 'Classroom Captain: Interactive 3D Diagrams for Hybrid Classrooms - Team Leader',
+      name: 'Graduate Capstone - Interactive 3D Diagrams for Hybrid Classrooms - Team Leader',
       time: '2022',
       github: 'https://github.com/Noam-Bendelac/classroom-captain',
       details: [
-        paragraph`Designed and built a STEM education app in ${Emphasis('Figma')}, ${Emphasis('Node')}, ${Emphasis('Typescript')}, ${Emphasis('React')}, and ${Emphasis('Three.js')}`,
+        paragraph`Designed and built a ${Emphasis('full-stack')} STEM education app in ${Emphasis('Figma, Node, Typescript, React, and Three.js')}`,
         paragraph`Created 3D diagrams for physics and calculus, and ${Emphasis('procedural geometry')} of user-defined math`,
-        paragraph`Developed a ${Emphasis('full-stack')} ${Emphasis('HTTP')} and ${Emphasis('WebSocket')} server to let teachers and students interact`,
+        paragraph`Developed an ${Emphasis('HTTP')} and ${Emphasis('WebSocket')} server hosted on ${Emphasis('cloud')} to let teachers and students interact`,
       ],
     },
     {
-      name: 'Spatial Audio Design Editor - Team Leader',
+      name: 'Undergrad Capstone - Spatial Audio Design Editor - Team Leader',
       time: '2022',
       github: 'https://github.com/Noam-Bendelac/spatial-audio-designer',
       details: [
         paragraph`Designed and implemented a 3D spatial audio editor using ${Emphasis('React')}, ${Emphasis('Typescript')}, and ${Emphasis('Three.js')}`,
         paragraph`Visualized spatial audio fields heatmap following the Web Audio standard in a custom ${Emphasis('GLSL shader')}`,
-        'Helped teach teammates React and Three.js. Won Capstone Industry Sponsor Award',
+        'Mentored teammates in React and Three.js. Won Capstone Industry Sponsor Award',
       ],
     },
     {
       name: 'ISE Engineering Department Website UX Research and Redesign',
       time: '2023',
       details: [
-        paragraph`Ran ${Emphasis('competitive analysis')} and faculty ${Emphasis('focus groups')}; Redesigned ${Emphasis('info architecture')} and ${Emphasis('wireframes')}`,
+        paragraph`Ran ${Emphasis('competitive analysis')} and faculty ${Emphasis('focus groups')}. Redesigned ${Emphasis('info architecture')} and ${Emphasis('wireframes')}`,
         // 'Presented research and solutions to the department\'s designer at their request to jumpstart their work',
-        'Department\'s full time designer used my research and potential solutions to jumpstart their work',
+        paragraph`Department\'s ${Emphasis('full time designer')} adopted research and proposed solutions to jumpstart their work`,
       ],
     },
     {
@@ -170,8 +171,8 @@ export const resume = {
       name: 'Virginia E-ZPass Landing Page Redesign',
       time: '2021',
       details: [
-        paragraph`Redesigned landing page to improve ${Emphasis('accessibility')}, reduce clutter, and clarify ${Emphasis('information hierarchy')}`,
-        paragraph`All while adhering to E-ZPass brand colors, tone of voice, and revamped image assets`,
+        paragraph`Redesigned page in ${Emphasis('Figma')} to improve ${Emphasis('accessibility')}, reduce clutter, and clarify ${Emphasis('information hierarchy')}`,
+        paragraph`All while adhering to E-ZPass ${Emphasis('brand colors')}, tone of voice, and remastered image assets`,
       ],
     },
     {
@@ -186,9 +187,9 @@ export const resume = {
       name: 'Experimental Demo Projects',
       time: '2023',
       details: [
-        paragraph`Grass 3D graphics using 100,000 mesh ${Emphasis('instancing')} and a subsurface scattering simulation ${Emphasis('shader')}`,
+        paragraph`Grass 3D graphics using 100,000 mesh ${Emphasis('instancing')} and a ${Emphasis('subsurface scattering shader')}`,
         paragraph`4-dimensional tetrahedral mesh geometry sliced into 3D ${Emphasis('procedural geometry')} in ${Emphasis('Three.js')}`,
-        paragraph`Minesweeper in ${Emphasis('Rust')} running in the browser through ${Emphasis('WebAssembly')}`
+        paragraph`Minesweeper in ${Emphasis('Rust')} running in a browser ${Emphasis('frontend')} through ${Emphasis('WebAssembly')}`
       ]
     },
     {
@@ -196,21 +197,21 @@ export const resume = {
       time: '2022',
       github: 'https://github.com/Noam-Bendelac/gas-pump-trivia-hackathon',
       details: [
-        paragraph`Lead developer on ${Emphasis('voice')} activated ${Emphasis('React')} app for digital gas pumps; helped teammates learn React`,
+        paragraph`Lead developer and taught teammates React for ${Emphasis('voice')} activated ${Emphasis('React')} app for digital gas pumps`,
       ],
     },
     {
-      name: 'C HTTP Web Server',
+      name: 'C HTTP/1.1 Web Server',
       time: '2021',
       details: [
-        paragraph`Implemented an ${Emphasis('HTTP 1.1')} server in ${Emphasis('C')}. Supports ${Emphasis('JWT auth')}, Range requests, static assets, and ${Emphasis('JSON')}`,
+        paragraph`Implemented an ${Emphasis('HTTP')} server in ${Emphasis('C')} hosted on ${Emphasis('AWS')}. Supports ${Emphasis('JWT auth')}, Range requests, and ${Emphasis('JSON')}`,
       ],
     },
     {
       name: 'Classmate Finder Google Forms Plugin',
       time: '2019',
       details: [
-        paragraph`Volunteered to develop a ${Emphasis('Javascript')} tool that connects students in the same courses`,
+        paragraph`Volunteered to develop a ${Emphasis('Javascript')} tool that connects students taking the same courses`,
         'Helped my on-campus residence community make connections during the Covid-19 pandemic',
       ],
     },
@@ -219,7 +220,7 @@ export const resume = {
     languages: 'Fluent in English and Hebrew',
     lists: [
       ['Typescript', 'Javascript', 'Python', 'Java', 'C', 'C++', 'Kotlin', 'Go', 'Rust', 'C#', 'HTML/CSS'],
-      ['React', 'SQL', 'Next.js', 'Android', 'Django', 'Cloud', 'OpenGL', 'Three.js', 'Node.js'],
+      ['React', 'Next.js', 'SQL', 'Android', 'Django', 'Cloud', 'OpenGL', 'Three.js', 'Node.js'],
       ['Figma', 'Wireframing', 'Git', 'Agile', 'MIDI', 'DSP', 'Arduino', 'Analog circuits', '3D CAD'],
     ],
   },
