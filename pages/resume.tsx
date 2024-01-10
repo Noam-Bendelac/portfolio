@@ -1,5 +1,5 @@
-import { PropsWithChildren, memo } from 'react'
-import { resume as data } from '../data/resume'
+import { Key, PropsWithChildren, ReactNode, memo } from 'react'
+import { Project, resume as data } from '../data/resume'
 import styles from '../styles/Resume.module.css'
 import layoutStyles from '../styles/Layout.module.css'
 import { NextPageWithLayout } from './_app'
@@ -118,32 +118,26 @@ const ResumeMemo = memo(() => {
       <p>{data.skills.languages}</p>
     </Section>
     
-    <Section heading='Projects'>
+    <Section heading='Software Projects'>
       <div className={styles.projectList}>
-        {data.projects.map((project, i) =>
-          <section key={i} className={styles.item}>
-            <p className={styles.headline}>
-              <span className={styles.name}><b>{project.name}</b></span>
-              { project.github && <A
-                href={project.github}
-                className={styles.githubContainer}
-              >
-                <Image
-                  src={github}
-                  alt="GitHub Project"
-                  className={styles.github}
-                />
-              </A> }
-              <time className={styles.time}>{project.time}</time>
-            </p>
-            <UlBullets>
-              {project.details.map((detail, i) =>
-                <UlBullets.Li key={i}>
-                  <Paragraph emphasisClassName={styles.keyword}>{detail}</Paragraph>
-                </UlBullets.Li>
-              )}
-            </UlBullets>
-          </section>
+        {data.projects.software.map((project, i) =>
+          <Project project={project} key={i} />
+        )}
+      </div>
+    </Section>
+    
+    <Section heading={<>Design<br/>Projects</>}>
+      <div className={styles.projectList}>
+        {data.projects.design.map((project, i) =>
+          <Project project={project} key={i} />
+        )}
+      </div>
+    </Section>
+    
+    <Section heading='Misc Projects'>
+      <div className={styles.projectList}>
+        {data.projects.other.map((project, i) =>
+          <Project project={project} key={i} />
         )}
       </div>
     </Section>
@@ -205,11 +199,42 @@ const Section = ({
   heading,
   children,
 }: PropsWithChildren<{
-  heading: string,
+  heading: ReactNode,
 }>) => (
   <section className={styles.section}>
     <h2>{heading}</h2>
     <div className={styles.content}>{children}</div>
+  </section>
+)
+
+
+const Project = ({
+  project,
+}: {
+  project: Project,
+}) => (
+  <section className={styles.item}>
+    <p className={styles.headline}>
+      <span className={styles.name}><b>{project.name}</b></span>
+      { project.github && <A
+        href={project.github}
+        className={styles.githubContainer}
+      >
+        <Image
+          src={github}
+          alt="GitHub Project"
+          className={styles.github}
+        />
+      </A> }
+      <time className={styles.time}>{project.time}</time>
+    </p>
+    <UlBullets>
+      {project.details.map((detail, i) =>
+        <UlBullets.Li key={i}>
+          <Paragraph emphasisClassName={styles.keyword}>{detail}</Paragraph>
+        </UlBullets.Li>
+      )}
+    </UlBullets>
   </section>
 )
 
