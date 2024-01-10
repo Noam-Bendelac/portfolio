@@ -167,11 +167,43 @@ export const resume = {
       ],
     },
     {
+      name: 'Virginia E-ZPass Landing Page Redesign',
+      time: '2021',
+      details: [
+        paragraph`Redesigned landing page to improve ${Emphasis('accessibility')}, reduce clutter, and clarify ${Emphasis('information hierarchy')}`,
+        paragraph`All while adhering to E-ZPass brand colors, tone of voice, and revamped image assets`,
+      ],
+    },
+    {
       name: 'Amateur Stargazing App UX Research, Design, and Evaluation',
       time: '2021',
       details: [
         paragraph`Conducted ${Emphasis('UX interviews')}, ${Emphasis('observations')}, and ${Emphasis('affinity diagramming')} of shared outdoor campus space`,
         paragraph`Designed stargazing app ${Emphasis('mockups')} and ran a ${Emphasis('cognitive walkthrough evaluation')} with target users`,
+      ],
+    },
+    {
+      name: 'Experimental Demo Projects',
+      time: '2023',
+      details: [
+        paragraph`Grass 3D graphics using 100,000 mesh ${Emphasis('instancing')} and a subsurface scattering simulation ${Emphasis('shader')}`,
+        paragraph`4-dimensional tetrahedral mesh geometry sliced into 3D ${Emphasis('procedural geometry')} in ${Emphasis('Three.js')}`,
+        paragraph`Minesweeper in ${Emphasis('Rust')} running in the browser through ${Emphasis('WebAssembly')}`
+      ]
+    },
+    {
+      name: 'Dover Fueling Solutions Hackathon Winner, 1st Place',
+      time: '2022',
+      github: 'https://github.com/Noam-Bendelac/gas-pump-trivia-hackathon',
+      details: [
+        paragraph`Lead developer on ${Emphasis('voice')} activated ${Emphasis('React')} app for digital gas pumps; helped teammates learn React`,
+      ],
+    },
+    {
+      name: 'C HTTP Web Server',
+      time: '2021',
+      details: [
+        paragraph`Implemented an ${Emphasis('HTTP 1.1')} server in ${Emphasis('C')}. Supports ${Emphasis('JWT auth')}, Range requests, static assets, and ${Emphasis('JSON')}`,
       ],
     },
     {
