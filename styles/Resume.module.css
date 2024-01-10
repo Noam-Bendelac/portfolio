@@ -96,24 +96,9 @@
 }
 .resume .keyword {
   font-style: normal;
-  position: relative;
-}
-.resume .keyword::before {
-  position: absolute;
-  bottom: -0.5pt;
-  left: -0.5pt;
-  right: -0.5pt;
-  /* height: 2.3pt; */
-  border-width: 0;
-  /* border needs 3.2px-3.6px to look same as 2.3pt~2.7px height weirdly */
-  border-bottom: solid 3.0px hsla(187, 100%, 33%, 25%);
-  z-index: 1;
-  content: '';
-  /* background: linear-gradient(hsla(187, 100%, 33%, 0%), hsla(187, 100%, 33%, 25%)); */
-  /* background: hsla(187, 100%, 33%, 25%); */
-  /* a highlighter goes on top of text, but only darkens/filters light */
-  /* mix-blend-mode: multiply; */
-  pointer-events: none;
+  text-decoration: underline hsla(187, 100%, 33%, 25%) 3px;
+  text-decoration-skip-ink: none;
+  text-underline-offset: -0.01ex;
 }
 
 
