@@ -21,7 +21,24 @@ export const Emphasis = (display: string): Emphasis => ({
   display,
 })
 
-export type Text = string | Link | Emphasis
+export type Italics = {
+  type: 'italics',
+  display: string,
+}
+export const Italics = (display: string): Italics => ({
+  type: 'italics',
+  display,
+})
+export type Bold = {
+  type: 'bold',
+  display: string,
+}
+export const Bold = (display: string): Bold => ({
+  type: 'bold',
+  display,
+})
+
+export type Text = string | Link | Emphasis | Italics | Bold
 export type Paragraph = Text[]
 
 export const construct = <T extends any> (t: T) => t
@@ -49,13 +66,17 @@ export function Paragraph({
 }) {
   return typeof children === 'string'
     ? children
-    : children.map((text, i) =>
-        <span key={i}>{
+    : children.map((text, idx) =>
+        <span key={idx}>{
           typeof text === 'string'
           ? text
           : text.type === 'link'
           ? <A href={text.href} className={linkClassName}>{text.display}</A>
-          : <em className={emphasisClassName}>{text.display}</em>
+          : text.type === 'emphasis'
+          ? <em className={emphasisClassName}>{text.display}</em>
+          : text.type === 'italics'
+          ? <i>{text.display}</i>
+          : <b>{text.display}</b>
         }</span>
       )
 }

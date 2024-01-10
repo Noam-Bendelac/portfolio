@@ -1,4 +1,4 @@
-import { Emphasis, Link, Paragraph, paragraph } from '../components/Paragraph'
+import { Bold, Emphasis, Italics, Link, Paragraph, paragraph } from '../components/Paragraph'
 
 
 
@@ -237,6 +237,14 @@ export const resume = {
       },
     ],
   },
+  extracurriculars: [
+    
+  ],
+  languages: 'Fluent in English and Hebrew',
+  publications: [
+    // '"Spatial Audio Designer," Web3D 2022, November 2022',
+    paragraph`Polys, N., & ${Bold('Bendelac, N.')} (2022, November). Spatial Audio Designer. In ${Italics('Proceedings of the 27th International Conference on 3D Web Technology')}.`,
+  ],
 
   // awards: [
   //   // {

@@ -171,6 +171,10 @@
   width: 100%;
 }
 
+.section.publications h2 {
+  font-size: 12pt;
+}
+
 
 
 /* sections like experience and projects */

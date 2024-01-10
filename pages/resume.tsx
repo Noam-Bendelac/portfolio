@@ -142,6 +142,11 @@ const ResumeMemo = memo(() => {
       </div>
     </Section>
     
+    <Section heading='Publications' className={styles.publications}>
+      {data.publications.map(pub =>
+        <p><Paragraph>{pub}</Paragraph></p>
+      )}
+    </Section>
     
     {/* <Section heading='Activities & Awards'>
       {resume.awards.map(award =>
@@ -197,11 +202,13 @@ Resume.layoutProps = {
 
 const Section = ({
   heading,
+  className,
   children,
 }: PropsWithChildren<{
   heading: ReactNode,
+  className?: string | undefined,
 }>) => (
-  <section className={styles.section}>
+  <section className={`${styles.section} ${className}`}>
     <h2>{heading}</h2>
     <div className={styles.content}>{children}</div>
   </section>
