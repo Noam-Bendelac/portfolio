@@ -78,7 +78,7 @@ const ResumeMemo = memo(() => {
               <p className={styles.headline}>
                 <span className={styles.name}><b>{experience.organization}</b></span>
                 <span>, {role.title}</span>
-                { role.github && <A
+                { 'github' in role && <A
                   href={role.github}
                   className={styles.githubContainer}
                 >
