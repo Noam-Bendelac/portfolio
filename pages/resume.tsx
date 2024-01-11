@@ -115,7 +115,6 @@ const ResumeMemo = memo(() => {
           </UlInline>
         )}
       </div>
-      <p>{data.skills.languages}</p>
     </Section>
     
     <Section heading='Software Projects'>
@@ -142,7 +141,19 @@ const ResumeMemo = memo(() => {
       </div>
     </Section>
     
-    <Section heading='Publications' className={styles.publications}>
+    <Section heading='Extra-curriculars' className={styles.smallHeading}>
+      <div className={styles.projectList}>
+        {data.extracurriculars.map(activity =>
+          <Project project={activity} />
+        )}
+      </div>
+    </Section>
+    
+    <Section heading='Languages' className={styles.smallHeading}>
+      {data.languages}
+    </Section>
+    
+    <Section heading='Publications' className={styles.smallHeading}>
       {data.publications.map(pub =>
         <p><Paragraph>{pub}</Paragraph></p>
       )}

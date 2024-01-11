@@ -144,7 +144,7 @@
   /* for separators */
   position: relative;
   display: flex;
-  padding-block: 5pt;
+  padding-block: 6pt 5pt;
 }
 .section h2 {
   width: 84pt;
@@ -171,7 +171,7 @@
   width: 100%;
 }
 
-.section.publications h2 {
+.section.smallHeading h2 {
   font-size: 12pt;
 }
 
@@ -223,7 +223,7 @@
 
 .skillsLists {
   margin-top: 2pt;
-  margin-bottom: 2.8pt;
+  margin-bottom: 2pt;
   display: flex;
   flex-direction: column;
   gap: 4pt;

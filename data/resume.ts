@@ -108,7 +108,6 @@ export const resume = {
     },
   ],
   skills: {
-    languages: 'Fluent in English and Hebrew',
     lists: [
       ['Typescript', 'Javascript', 'Python', 'Java', 'C', 'C++', 'Kotlin', 'Go', 'Rust', 'C#', 'HTML/CSS'],
       ['React', 'Next.js', 'SQL', 'Android', 'Django', 'Cloud', 'OpenGL', 'Three.js', 'Node.js'],
@@ -123,7 +122,7 @@ export const resume = {
         github: 'https://github.com/Noam-Bendelac/portfolio',
         details: [
           paragraph`Implemented this resume and a personal portfolio in ${Emphasis('Next.js')} and designed in ${Emphasis('Figma')}`,
-          paragraph`Optimized ${Emphasis('CSS animations')} by using only compositor properties and separating from ${Emphasis('React')} renders`,
+          paragraph`Optimized ${Emphasis('CSS animations')} by using only compositor properties and segregating from ${Emphasis('React')} renders`,
         ],
       },
       {
@@ -238,31 +237,32 @@ export const resume = {
     ],
   },
   extracurriculars: [
-    
+    {
+      name: 'Chamber Music at Virginia Tech, led ensemble of 6 musicians',
+      time: '2023',
+      details: [
+        'Transcribed and arranged video game music. Assembled, directed, and performed with ensemble',
+      ],
+    },
+    {
+      name: 'Technical Artist on a Multimedia Installation Art Project',
+      time: '2021\u20142022',
+      details: [
+        paragraph`Created 3D graphics inspired by and synchronized to a piece of music using ${Emphasis('Processing')} and ${Emphasis('Kotlin')}`,
+      ],
+    },
+    {
+      name: 'Linguistics Club, Officer',
+      time: '2019\u20142020',
+      details: [
+        'Helped prepare and lead meetings on linguistics topics',
+      ],
+    },
   ],
   languages: 'Fluent in English and Hebrew',
   publications: [
     // '"Spatial Audio Designer," Web3D 2022, November 2022',
     paragraph`Polys, N., & ${Bold('Bendelac, N.')} (2022, November). Spatial Audio Designer. In ${Italics('Proceedings of the 27th International Conference on 3D Web Technology')}.`,
   ],
-
-  // awards: [
-  //   // {
-  //   // 	name: 'Dean\'s list',
-  //   // 	time: '2018-2022',
-  //   // },
-  //   {
-  //     name: 'Capstone industry sponsor award, 2nd place',
-  //     time: '2022',
-  //   },
-  //   {
-  //     name: 'Linguistics Club, officer',
-  //     time: '2019-2020',
-  //   },
-  //   {
-  //     name: 'School and regional science fair winner, state-level participant',
-  //     time: '2016',
-  //   },
-  // ],
 }
 
