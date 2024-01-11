@@ -189,7 +189,7 @@ export const resume = {
         time: '2021',
         details: [
           paragraph`Redesigned page in ${Emphasis('Figma')} to improve ${Emphasis('accessibility')}, reduce clutter, and clarify ${Emphasis('information hierarchy')}`,
-          paragraph`All while adhering to E-ZPass ${Emphasis('brand colors')}, tone of voice, and remastered image assets`,
+          paragraph`Adhered to E-ZPass ${Emphasis('brand colors')}, tone of voice, and image assets remastered to ${Emphasis('vector graphics')}`,
         ],
       },
       {

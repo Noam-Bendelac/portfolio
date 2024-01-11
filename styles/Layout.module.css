@@ -34,8 +34,10 @@
   /* dev tools hover will prefer resume */
   z-index: -1;
 }
-:global(.print) .wrapper2 {
-  display: none;
+@media print {
+  .wrapper2 {
+    display: none;
+  }
 }
 .wrapper1 {
   display: flex;
@@ -240,8 +242,10 @@ children or the second one, depending on what page: */
   }
 }
 
-:global(.print) .nav {
-  display: none;
+@media print {
+  .nav {
+    display: none;
+  }
 }
 
 .navHidden .nav {

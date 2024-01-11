@@ -61,9 +61,6 @@ function Layout({
     className={`
       ${layoutProps.backgroundContainsFlowLayout ? styles.bkgdFlow : styles.bkgdNoFlow}
       ${layoutProps.classes}
-      ${process.env.NEXT_PUBLIC_PRINT_RESUME == 'true'
-      ? 'print'
-      : 'web' }
     `}
     style={{ '--angle': `${layoutProps.skewAngle}deg` } as CSSProperties}
   >
@@ -83,24 +80,22 @@ function Layout({
       </Head>
       {/* page override */}
       { layoutProps.head() }
-      { process.env.NEXT_PUBLIC_PRINT_RESUME != 'true' && <>
-        <Nav animRef={animClassesRef} cleanupLayout={layoutProps.cleanupLayout} />
-        <div className={styles.wrapper2}>
-          <div className={styles.wrapper1}>
-            {/* TODO move array.map to Portfolio comp? and pass this div structure
-            through a function (item) => <div>{item}</div> */}
-            { [...Array(Portfolio.numItems)].map((_, i) =>
-              <div key={i} className={styles.block}>
-                <Portfolio.Item index={i} />
-                <div className={styles.backgroundWrapper}>
-                  <div className={styles.background} />
-                </div>
+      <Nav animRef={animClassesRef} cleanupLayout={layoutProps.cleanupLayout} />
+      <div className={styles.wrapper2}>
+        <div className={styles.wrapper1}>
+          {/* TODO move array.map to Portfolio comp? and pass this div structure
+          through a function (item) => <div>{item}</div> */}
+          { [...Array(Portfolio.numItems)].map((_, i) =>
+            <div key={i} className={styles.block}>
+              <Portfolio.Item index={i} />
+              <div className={styles.backgroundWrapper}>
+                <div className={styles.background} />
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
-        <Home animRef={animClassesRef} />
-      </> }
+      </div>
+      <Home animRef={animClassesRef} />
       <Resume />
     </div>
   </div>
