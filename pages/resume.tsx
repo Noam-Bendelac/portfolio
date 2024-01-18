@@ -143,8 +143,8 @@ const ResumeMemo = memo(() => {
     
     <Section heading='Extra-curriculars' className={styles.smallHeading}>
       <div className={styles.projectList}>
-        {data.extracurriculars.map(activity =>
-          <Project project={activity} />
+        {data.extracurriculars.map((activity, i) =>
+          <Project project={activity} key={i} />
         )}
       </div>
     </Section>
@@ -154,8 +154,8 @@ const ResumeMemo = memo(() => {
     </Section>
     
     <Section heading='Publications' className={styles.smallHeading}>
-      {data.publications.map(pub =>
-        <p><Paragraph>{pub}</Paragraph></p>
+      {data.publications.map((pub, i) =>
+        <p key={i}><Paragraph>{pub}</Paragraph></p>
       )}
     </Section>
     

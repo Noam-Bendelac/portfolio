@@ -16,7 +16,7 @@ export const resume = {
     name: 'Noam Bendelac',
     contact: [
       'bendelac.noam@gmail.com',
-      'Chantilly, VA 20151',
+      'Chantilly, VA',
       'US Citizen',
     ],
     summary: 'Software engineer and UX designer seeking a full time role.',
@@ -65,7 +65,7 @@ export const resume = {
             paragraph`Utilized modern ${Emphasis('Android')} architecture, ${Emphasis('Kotlin')} Flow/Coroutines, Dagger, and ${Emphasis('RxJava')}`,
             paragraph`Collaborated with client and in-house ${Emphasis('designers')} to refine requirements and implement designs`,
             // 'Participated in scrum process and code review of my pull requests',
-            'Contributed to an app with 10 million downloads for a Fortune 500 media company',
+            'Contributed to an app with 10 million downloads for a Fortune 500 media company client',
           ],
         },
       ],
@@ -101,7 +101,7 @@ export const resume = {
         title: 'DSP Software Intern',
         time: 'May\u2014Aug 2019',
         details: [
-          paragraph`Created a ${Emphasis('Python')} UI to control a DSP system for a customer sales demo`,
+          paragraph`Created a ${Emphasis('Python')} UI to control a DSP backend system for a customer sales demo`,
           paragraph`Translated ${Emphasis('DSP')} engineers\' technical jargon to client-friendly user flow`,
         ],
       }],
@@ -121,8 +121,8 @@ export const resume = {
         time: '2023',
         github: 'https://github.com/Noam-Bendelac/portfolio',
         details: [
-          paragraph`Implemented this resume and a personal portfolio in ${Emphasis('Next.js')} and designed in ${Emphasis('Figma')}`,
-          paragraph`Optimized ${Emphasis('CSS animations')} by using only compositor properties and segregating from ${Emphasis('React')} renders`,
+          paragraph`Implemented and designed this resume and a personal portfolio in ${Emphasis('Next.js')}, ${Emphasis('React')}, and ${Emphasis('Figma')}`,
+          paragraph`Optimized ${Emphasis('CSS animations')} by using compositor properties and segregating from ${Emphasis('React')} rerenders`,
         ],
       },
       {
@@ -262,7 +262,7 @@ export const resume = {
   languages: 'Fluent in English and Hebrew',
   publications: [
     // '"Spatial Audio Designer," Web3D 2022, November 2022',
-    paragraph`Polys, N., & ${Bold('Bendelac, N.')} (2022, November). Spatial Audio Designer. In ${Italics('Proceedings of the 27th International Conference on 3D Web Technology')}.`,
+    paragraph`Polys, N., & ${Bold('Bendelac, N.')} (2022, November). Spatial Audio Designer. In ${Italics('Proceedings of the 27th International Conference on 3D Web Technology')}. ${Link('https://doi.org/10.1145/3564533.3564563', 'https://doi.org/10.1145/3564533.3564563')}`,
   ],
 }
 
