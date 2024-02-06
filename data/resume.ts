@@ -109,7 +109,7 @@ export const resume = {
   ],
   skills: {
     lists: [
-      ['Typescript', 'Javascript', 'Python', 'Java', 'C', 'C++', 'Kotlin', 'Go', 'Rust', 'C#', 'HTML/CSS'],
+      ['Typescript', 'Javascript', 'C++', 'C', 'Python', 'Java', 'Kotlin', 'Rust', 'Go', 'C#', 'CSS', 'HTML'],
       ['React', 'Next.js', 'SQL', 'Android', 'Django', 'Cloud', 'OpenGL', 'Three.js', 'Node.js'],
       ['Figma', 'Wireframing', 'Git', 'Agile', 'MIDI', 'DSP', 'Arduino', 'Analog circuits', '3D CAD'],
     ],
@@ -123,8 +123,18 @@ export const resume = {
         details: [
           paragraph`Implemented and designed this resume and a personal portfolio in ${Emphasis('Next.js')}, ${Emphasis('React')}, and ${Emphasis('Figma')}`,
           paragraph`Optimized ${Emphasis('CSS animations')} by using compositor properties and segregating from ${Emphasis('React')} rerenders`,
+          // paragraph`Optimized ${Emphasis('CSS animations')} using knowledge of browser GPU rendering pipeline`
         ],
       },
+      // {
+      //   name: 'C++ Raytracer Optimization',
+      //   time: '2024',
+      //   github: 'https://github.com/Noam-Bendelac/ray-tracing-acceleration',
+      //   details: [
+      //     paragraph`Built a multithreaded raytracer with shadows, reflection, and refraction in ${Emphasis('modern C++23')}`,
+      //     paragraph`Achieved 95% speedup using ${Emphasis('spatial acceleration data structure')} on axis-aligned bounding boxes`,
+      //   ],
+      // },
       {
         name: 'Piano Performance Visualization - Team Leader',
         time: '2023',
@@ -203,9 +213,10 @@ export const resume = {
     ],
     other: [
       {
-        name: 'Experimental Demo Projects',
-        time: '2023',
+        name: 'Demo Projects',
+        time: '2023-2024',
         details: [
+          paragraph`Raytracer ${Emphasis('performance')} optimization with ${Emphasis('multithreading')} and ${Emphasis('acceleration structure')} in ${Emphasis('modern C++23')}`,
           paragraph`Grass 3D graphics using 100,000 mesh ${Emphasis('instancing')} and a ${Emphasis('subsurface scattering shader')}`,
           paragraph`4-dimensional tetrahedral mesh geometry sliced into 3D ${Emphasis('procedural geometry')} in ${Emphasis('Three.js')}`,
           paragraph`Minesweeper in ${Emphasis('Rust')} running in a browser ${Emphasis('frontend')} through ${Emphasis('WebAssembly')}`
