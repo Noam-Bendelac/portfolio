@@ -40,16 +40,28 @@ export const resume = {
       },
     ],
     coursework: [
-      'Human Computer Interaction',
+      'Data Structures and Algorithms',
+      'Operating Systems',
+      'Information Visualization',
       'Human Centered Design',
       'Virtual Reality',
-      'Information Visualization',
       'Usability Engineering',
       'Computer Graphics',
-      'Operating Systems',
     ],
   }],
   experience: [
+    {
+      organization: 'Independent Tutoring Business',
+      roles: [{
+        title: 'Owner and Instructor',
+        time: 'Mar 2024\u2014Present',
+        details: [
+          paragraph`Taught CS algorithms, computer architecture, and web dev in ${Emphasis('Java, C, C++, Assembly, and Javascript')}`,
+          'Adapted quickly to teaching & debugging new codebase, curriculum, and language with each client', // TODO each/every?
+          'Optimized marketplace profile for search rankings and conversion of HS, college, & adult customers',
+        ],
+      }],
+    },
     {
       organization: 'WillowTree',
       roles: [
@@ -62,8 +74,8 @@ export const resume = {
           time: 'May\u2014Aug 2021',
           details: [
             paragraph`Implemented new features, ${Emphasis('architecture')} refactorings, and ${Emphasis('accessibility')} and ${Emphasis('performance')} fixes`,
-            paragraph`Utilized modern ${Emphasis('Android')} architecture, ${Emphasis('Kotlin')} Flow/Coroutines, Dagger, and ${Emphasis('RxJava')}`,
-            paragraph`Collaborated with client and in-house ${Emphasis('designers')} to refine requirements and implement designs`,
+            paragraph`Utilized ${Emphasis('Agile')} and ${Emphasis('Scrum')}, modern ${Emphasis('Android')} architecture, ${Emphasis('Kotlin')} Coroutines, Dagger, and ${Emphasis('RxJava')}`,
+            paragraph`Collaborated with client and in-house ${Emphasis('designers')} to refine vague requirements and improve designs`,
             // 'Participated in scrum process and code review of my pull requests',
             'Contributed to an app with 10 million downloads for a Fortune 500 media company client',
           ],
@@ -77,7 +89,7 @@ export const resume = {
         time: 'Oct 2019\u2014Sep 2021',
         github: 'https://github.com/echo-lab/collab-playlist',
         details: [
-          paragraph`Sole developer on ${Emphasis('full-stack')} web app for an HCI study on collaborative playlists UX`,
+          paragraph`Sole developer on ${Emphasis('full-stack')} web app for an HCI study on ${Emphasis('User Experience')} of collaborative playlists`,
           paragraph`Created a ${Emphasis('React')}/${Emphasis('Typescript')} frontend and a ${Emphasis('Node.js')} ${Emphasis('REST')} API using ${Emphasis('MongoDB')} and Spotify API`,
           'Tracked issues and 4000 lines of code in GitHub to report progress to client',
           paragraph`${Emphasis('Designed')} variants of UI to compare improvements to asynchronous user communication`,
@@ -98,11 +110,11 @@ export const resume = {
     {
       organization: 'CACI International Inc',
       roles: [{
-        title: 'DSP Software Intern',
+        title: 'Digital Signal Processing Software Intern',
         time: 'May\u2014Aug 2019',
         details: [
-          paragraph`Created a ${Emphasis('Python')} UI to control a DSP backend system for a customer sales demo`,
-          paragraph`Translated ${Emphasis('DSP')} engineers\' technical jargon to client-friendly user flow`,
+          paragraph`Created a ${Emphasis('Python')} ${Emphasis('Qt')} UI to control a DSP backend system for a critical customer sales demo`,
+          paragraph`Translated ${Emphasis('Digital Signal Processing')} engineers\' technical jargon to client-friendly user flow`,
         ],
       }],
     },
@@ -110,7 +122,7 @@ export const resume = {
   skills: {
     lists: [
       ['Typescript', 'Javascript', 'C++', 'C', 'Python', 'Java', 'Kotlin', 'Rust', 'Go', 'C#', 'CSS', 'HTML'],
-      ['React', 'Next.js', 'SQL', 'Android', 'Django', 'Cloud', 'OpenGL', 'Three.js', 'Node.js'],
+      ['React', 'Next.js', 'SQL', 'Node.js', 'Android', 'Django', 'Cloud', 'Qt', 'OpenGL', 'Three.js'],
       ['Figma', 'Wireframing', 'Git', 'Agile', 'MIDI', 'DSP', 'Arduino', 'Analog circuits', '3D CAD'],
     ],
   },
@@ -118,7 +130,7 @@ export const resume = {
     software: [
       {
         name: 'noambendelac.xyz Web Portfolio and Resume',
-        time: '2023',
+        time: '2024',
         github: 'https://github.com/Noam-Bendelac/portfolio',
         details: [
           paragraph`Implemented and designed this resume and a personal portfolio in ${Emphasis('Next.js')}, ${Emphasis('React')}, and ${Emphasis('Figma')}`,
@@ -136,6 +148,15 @@ export const resume = {
       //   ],
       // },
       {
+        name: 'Third Person Perspective in Virtual Reality',
+        time: '2023\u20142024',
+        github: 'https://github.com/Noam-Bendelac/3rd-person-vr',
+        details: [
+          paragraph`Prototyped control schemes and game mechanics for 3rd person exocentric ${Emphasis('VR')} in ${Emphasis('Unity')} and ${Emphasis('C#')}`,
+          paragraph`Ran ${Emphasis('user study')} on 3rd person VR design challenges like cybersickness and camera clipping`
+        ],
+      },
+      {
         name: 'Piano Performance Visualization - Team Leader',
         time: '2023',
         github: 'https://github.com/Noam-Bendelac/piano-viz',
@@ -146,32 +167,13 @@ export const resume = {
         ],
       },
       {
-        name: 'Third Person Perspective in Virtual Reality',
-        time: '2023',
-        github: 'https://github.com/Noam-Bendelac/3rd-person-vr',
-        details: [
-          paragraph`Prototyped control schemes and game mechanics for 3rd person exocentric ${Emphasis('VR')} in ${Emphasis('Unity')} and ${Emphasis('C#')}`,
-          paragraph`Ran ${Emphasis('user study')} on 3rd person VR design challenges like cybersickness and camera clipping`
-        ],
-      },
-      {
         name: 'Graduate Capstone - Interactive 3D Diagrams for Hybrid Classrooms - Team Leader',
         time: '2022',
         github: 'https://github.com/Noam-Bendelac/classroom-captain',
         details: [
           paragraph`Designed and built a ${Emphasis('full-stack')} STEM education app in ${Emphasis('Figma, Node, Typescript, React, and Three.js')}`,
           paragraph`Created 3D diagrams for physics and calculus, and ${Emphasis('procedural geometry')} of user-defined math`,
-          paragraph`Developed an ${Emphasis('HTTP')} and ${Emphasis('WebSocket')} server hosted on ${Emphasis('cloud')} to let teachers and students interact`,
-        ],
-      },
-      {
-        name: 'Undergrad Capstone - Spatial Audio Design Editor - Team Leader',
-        time: '2022',
-        github: 'https://github.com/Noam-Bendelac/spatial-audio-designer',
-        details: [
-          paragraph`Designed and implemented a 3D spatial audio editor using ${Emphasis('React')}, ${Emphasis('Typescript')}, and ${Emphasis('Three.js')}`,
-          paragraph`Visualized spatial audio fields heatmap following the Web Audio standard in a custom ${Emphasis('GLSL shader')}`,
-          'Mentored teammates in React and Three.js. Won Capstone Industry Sponsor Award',
+          paragraph`Developed a ${Emphasis('cloud')}-hosted ${Emphasis('HTTP')} and ${Emphasis('WebSocket')} server to let teachers and students interact`,
         ],
       },
     ],
@@ -214,13 +216,23 @@ export const resume = {
     other: [
       {
         name: 'Demo Projects',
-        time: '2023-2024',
+        time: '2024',
         details: [
           paragraph`Raytracer ${Emphasis('performance')} optimization with ${Emphasis('multithreading')} and ${Emphasis('acceleration structure')} in ${Emphasis('modern C++23')}`,
           paragraph`Grass 3D graphics using 100,000 mesh ${Emphasis('instancing')} and a ${Emphasis('subsurface scattering shader')}`,
           paragraph`4-dimensional tetrahedral mesh geometry sliced into 3D ${Emphasis('procedural geometry')} in ${Emphasis('Three.js')}`,
           paragraph`Minesweeper in ${Emphasis('Rust')} running in a browser ${Emphasis('frontend')} through ${Emphasis('WebAssembly')}`
         ]
+      },
+      {
+        name: 'Undergrad Capstone - Spatial Audio Design Editor - Team Leader',
+        time: '2022',
+        github: 'https://github.com/Noam-Bendelac/spatial-audio-designer',
+        details: [
+          paragraph`Designed and implemented a 3D spatial audio editor using ${Emphasis('React')}, ${Emphasis('Typescript')}, and ${Emphasis('Three.js')}`,
+          paragraph`Visualized spatial audio fields heatmap following the Web Audio standard in a custom ${Emphasis('GLSL shader')}`,
+          'Mentored teammates in React and Three.js. Won Capstone Industry Sponsor Award',
+        ],
       },
       {
         name: 'Dover Fueling Solutions Hackathon Winner, 1st Place',

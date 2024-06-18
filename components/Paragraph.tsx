@@ -8,7 +8,7 @@ export type Link = {
 }
 export const Link = (display: string, href?: string): Link => ({
   type: 'link',
-  href: href ?? `https://${display}`,
+  href: href ?? `https://www.${display}`,
   display
 })
 
