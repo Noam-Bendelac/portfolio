@@ -111,13 +111,13 @@
   );
   --light-overlay: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.3),
-    rgba(0, 0, 0, 0.04)
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.04)
   );
   --dark-overlay: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0.05),
-    rgba(0, 0, 0, 0.35)
+    rgba(0, 0, 0, 0.15)
   );
 }
 .bkgdNoShadow .background {
@@ -145,30 +145,16 @@
 
 .block:nth-child(odd) .background {
   --overlay: var(--light-overlay);
+  --backgroundColor: hsl(180, 40%, 76%);
 }
 .block:nth-child(even) .background {
   --overlay: var(--dark-overlay);
+  --backgroundColor: hsl(187, 33%, 66%);
 }
 .block:nth-child(1) .background {
-  --backgroundColor: hsl(180, 40%, 76%);
   --overlay: var(--very-light-overlay);
   /* make background reach top of page even when skewed */
   top: calc(-50vw*tan(var(--max-angle)));
-}
-.block:nth-child(2) .background {
-  --backgroundColor: hsl(187, 33%, 66%);
-}
-.block:nth-child(3) .background {
-  --backgroundColor: hsl(260, 28%, 76%);
-}
-.block:nth-child(4) .background {
-  --backgroundColor: hsl(267, 28%, 63%);
-}
-.block:nth-child(5) .background {
-  --backgroundColor: hsl(340, 40%, 76%);
-}
-.block:nth-child(6) .background {
-  --backgroundColor: hsl(347, 33%, 66%);
 }
 
 

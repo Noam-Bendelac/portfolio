@@ -122,8 +122,8 @@ export const resume = {
   skills: {
     lists: [
       ['Typescript', 'Javascript', 'C++', 'C', 'Python', 'Java', 'Kotlin', 'Rust', 'Go', 'C#', 'CSS', 'HTML'],
-      ['React', 'Next.js', 'SQL', 'Node.js', 'Android', 'Django', 'Cloud', 'Qt', 'OpenGL', 'Three.js'],
-      ['Figma', 'Wireframing', 'Git', 'Agile', 'MIDI', 'DSP', 'Arduino', 'Analog circuits', '3D CAD'],
+      ['React', 'Next.js', 'Node.js', 'SQL', 'Android', 'Django', 'Cloud', 'Linux', 'Qt', 'OpenGL', 'GPU'],
+      ['Git', 'Agile', 'Figma', 'Wireframing', 'DSP', 'Arduino', 'Digital circuits', 'Analog circuits', '3D CAD'],
     ],
   },
   projects: {
