@@ -174,7 +174,7 @@ export const resume = {
         details: [
           paragraph`Designed and built a ${Emphasis('full-stack')} STEM education app in ${Emphasis('Figma, Node, TypeScript, React, and WebGL')}`,
           paragraph`Created 3D diagrams for physics and calculus, and ${Emphasis('procedural geometry')} of user-defined math`,
-          paragraph`Developed a ${Emphasis('cloud')}-hosted ${Emphasis('HTTP')} and ${Emphasis('WebSocket')} server to let teachers and students interact`,
+          paragraph`Developed a ${Emphasis('cloud')}-hosted ${Emphasis('HTTP')} and ${Emphasis('WebSocket')} ${Emphasis('backend')} API to let teachers and students interact`,
         ],
       },
     ],
